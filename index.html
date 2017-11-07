@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title - billyboyz dev-version</title>
+    <!-- <script src="Scripts/System/jquery-1.10.2.min.js"></script>-->
+    <!-- bbz-assets-->
+    <script src="bz-assets/jquery/dist/jquery.min.js"></script>
+    <script src="Scripts/System/jface.min.js"></script>
+    <link type="text/css" href="Scripts/bootstrap/css/bootstrap-reboot.min.css" rel="stylesheet">
+    <link type="text/css" href="Scripts/bootstrap/css/bootstrap-grid.min.css" rel="stylesheet">
+    <link type="text/css" href="Scripts/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" href="Content/font-awesome.min.css" rel="stylesheet">
+    <script src="Scripts/popper.min.js"></script>
+    <script src="Scripts/bootstrap/js/bootstrap.min.js"></script>
+    <script src="Scripts/select2/js/select2.min.js"></script>
+    <script src="Scripts/select2/js/i18n/ru.js"></script>
+    <link type="text/css" href="Scripts/select2/css/select2.min.css" rel="stylesheet">
+    <script src="Scripts/notify.min.js"></script>
+    <link type="text/css" href="Content/jquery-ui-1.10.4.custom.min.css" rel="stylesheet">
+    <link type="text/css" href="Content/common.css" rel="stylesheet">
+    <script src="Scripts/System/jquery-ui-1.10.3.min.js" type="text/javascript"></script>
+    <!-- bbz-assets-->
+    <!-- Material Design Bootstrap-->
+    <!--  <link href="bz-assets/MDBootstrap/css/mdb.css" rel="stylesheet"> -->
+
+    <link href="Content/dental.material.css" rel="stylesheet">
+
+
+    <!-- На dev файл Scripts.js разбит на core.js - главный модуль и dev.widget.js - модуль с виджетом -->
+    <!-- <script src="Scripts/Scripts.js"></script> -->
+    <script src="Scripts/core.js"></script>
+    <script src="Scripts/dev.widget.clean.js"></script>
+
+    <link type="text/css" href="Content/dental.material.css" rel="stylesheet">
+    <link type="text/css" href="Content/dental-app.css" rel="stylesheet">
+
+    <link type="text/css" href="Content/Styles.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <h1 class="text-center">Demo dentall app</h1>
+
+    <script>
+        BsDocControls.push(new BS_BT_DentalGrid({
+            btid: 13084,
+            id: 50,
+            field: 'DentalGrid'
+        }).init());
+
+    </script>
+
+    <section class="BSDentalGrid container">
+        <h6 class="">Статичная разметка:</h6>
+        <div class="row">
+            <!-- Виды лечения выбранного зуба -->
+            <div class="treat-types-list col-lg-4 col-md-6 col-xs-12">
+                <div class="card">
+                    <div class="card-block p-2">
+                        <h4 class="card-title badge badge-pill light-blue lighten-2">Виды лечения</h4>
+                        <ul class="list-group card-content">
+                            <li>
+                                <form class="form-inline">
+                                    <div class="form-group">
+                                        <input type="checkbox" id="checkbox101">
+                                        <label for="checkbox101">Осмотр
+                                            <i class="fa fa-address-card"></i>
+                                        </label>
+                                    </div>
+                                </form>
+                            </li>
+                            <li>
+                                <form class="form-inline">
+                                    <div class="form-group">
+                                        <input type="checkbox" id="checkbox102">
+                                        <label for="checkbox102">Пломбирование
+                                            <i class="fa fa-address-card"></i>
+                                        </label>
+                                    </div>
+                                </form>
+                            </li>
+                            <li>
+                                <form class="form-inline">
+                                    <div class="form-group">
+                                        <input type="checkbox" id="checkbox103">
+                                        <label for="checkbox103">Удаление
+                                            <i class="fa fa-address-card"></i>
+                                        </label>
+                                    </div>
+                                </form>
+                            </li>
+                            <li>
+                                <form class="form-inline">
+                                    <div class="form-group">
+                                        <input type="checkbox" id="checkbox104">
+                                        <label for="checkbox104">Протезирование
+                                            <i class="fa fa-address-card"></i>
+                                        </label>
+                                    </div>
+                                </form>
+                            </li>
+                            <li>
+                                <form class="form-inline">
+                                    <div class="form-group">
+                                        <input type="checkbox" id="checkbox105">
+                                        <label for="checkbox105">Профилактика
+                                            <i class="fa fa-address-card"></i>
+                                        </label>
+                                    </div>
+                                </form>
+                            </li>
+                            <li>
+                                <form class="form-inline">
+                                    <div class="form-group">
+                                        <input type="checkbox" id="checkbox106">
+                                        <label for="checkbox106">Снимок
+                                            <i class="fa fa-address-card"></i>
+                                        </label>
+                                    </div>
+                                </form>
+                            </li>
+                            <li>
+                                <form class="form-inline">
+                                    <div class="form-group">
+                                        <input type="checkbox" id="checkbox107">
+                                        <label for="checkbox107">Лекарство
+                                            <i class="fa fa-address-card"></i>
+                                        </label>
+                                    </div>
+                                </form>
+                            </li>
+                            <li>
+                                <form class="form-inline">
+                                    <div class="form-group">
+                                        <input type="checkbox" id="checkbox108">
+                                        <label for="checkbox108">Лечение корневого канала
+                                            <i class="fa fa-address-card"></i>
+                                        </label>
+                                    </div>
+                                </form>
+                            </li>
+                            <li>
+                                <form class="form-inline">
+                                    <div class="form-group">
+                                        <input type="checkbox" id="checkbox109">
+                                        <label for="checkbox109">Физиотерапия
+                                            <i class="fa fa-address-card"></i>
+                                        </label>
+                                    </div>
+                                </form>
+                            </li>
+                            <li>
+                                <form class="form-inline">
+                                    <div class="form-group">
+                                        <input type="checkbox" id="checkbox110">
+                                        <label for="checkbox110">Вырывание зуба
+                                            <i class="fa fa-address-card"></i>
+                                        </label>
+                                    </div>
+                                </form>
+                            </li>
+
+
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+            <!-- treat-list end's -->
+
+            <!-- Прикрепленные файлы (снимки, фото)-->
+            <div class="files-card col-lg-6 col-md-6 col-xs-12">
+                <div class="card text-center">
+                    <h4 class="card-title">Прикрепленные файлы</h4>
+                    <div class="card-body">
+                        <p class="card-text text-left">Lorem ipsum</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <!-- История изменений -->
+        <div class="container">
+            <div class="card text-center">
+                <h4 class="card-title">История изменений</h4>
+                <div class="card-body">
+                    <p class="card-text text-left">Lorem ipsum</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <hr>
+</body>
+
