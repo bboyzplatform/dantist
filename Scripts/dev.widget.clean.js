@@ -179,10 +179,14 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                         <div class="tooth-double-item" \
                             data-position="' + posValue + '"\
                             data-active-state="inactive" >\
-                            <img src="/Content/Images/side-tooth.png"></img>\
+                            <img src="Content/svg/tooth.svg"></img>\
                             <span class="position-text badge badge-pill lighten-3 blue text-center">' + posValue + '</span>\
-                        </div>');/*<img src="Content/svg/tooth-'+posValue+'.svg"></img>\*/
-            }
+                        </div>');
+                        /* <img src="/Content/Images/side-tooth.png"></img>\ */
+                        /*<img src="Content/svg/tooth-'+posValue+'.svg"></img>\*/
+                        /* <object type="image/svg+xml" data="/Content/svg/tooth.svg">Браузер не поддерживает SVG</object>\
+                             */
+                    }   
             let counter = 1;
             return lineTemplate;
         },
@@ -486,7 +490,6 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                 var legendAbbr = $(element).data('legendAbbr');
                 var stateColor = $(element).data('color');
                 $(element).find('.abbr-text').text(legendAbbr);
-                /* $(element).css('background-color',stateColor);  */
             });
 
         });
