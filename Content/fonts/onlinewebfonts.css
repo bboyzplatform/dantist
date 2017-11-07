@@ -1,0 +1,150 @@
+@charset "utf-8";
+
+/*
+      www.OnlineWebFonts.Com 
+      You must credit the author Copy this link on your web 
+      <div>Font made from <a href="http://www.onlinewebfonts.com">oNline Web Fonts</a>is licensed by CC BY 3.0</div>
+      OR
+      <a href="http://www.onlinewebfonts.com">oNline Web Fonts</a>
+*/
+
+@font-face {
+    font-family: "onlinewebfonts";
+    src: url("onlinewebfonts.eot");
+    src: url("onlinewebfonts.eot?#iefix") format("embedded-opentype"), url("onlinewebfonts.woff2") format("woff2"), url("onlinewebfonts.woff") format("woff"), url("onlinewebfonts.ttf") format("truetype"), url("onlinewebfonts.svg#onlinewebfonts") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="i_"]:before,
+[class*=" i_"]:before {
+    font-family: "onlinewebfonts";
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+}
+
+
+.bbz-i.i_amalgam_instrument:before {
+    content: "\e010";
+}
+
+.bbz-i.i_automatic_toothbrush:before {
+    content: "\e011";
+}
+
+.bbz-i.i_bleaching:before {
+    content: "\e012";
+}
+
+.bbz-i.i_braces:before {
+    content: "\e013";
+}
+
+.bbz-i.i_bright_tooth:before {
+    content: "\e014";
+}
+
+.bbz-i.i_broken:before {
+    content: "\e015";
+}
+
+.bbz-i.i_bt_cool:before {
+    content: "\e016";
+}
+
+.bbz-i.i_caries:before {
+    content: "\e017";
+}
+
+.bbz-i.i_composite_filling:before {
+    content: "\e018";
+}
+
+.bbz-i.i_crown:before {
+    content: "\e019";
+}
+
+.bbz-i.i_dental_floss:before {
+    content: "\e01a";
+}
+
+.bbz-i.i_dentist:before {
+    content: "\e01b";
+}
+
+.bbz-i.i_denture:before {
+    content: "\e01c";
+}
+
+.bbz-i.i_gargle:before {
+    content: "\e01d";
+}
+
+.bbz-i.i_handpiece:before {
+    content: "\e01e";
+}
+
+.bbz-i.i_implants:before {
+    content: "\e01f";
+}
+
+.bbz-i.i_mirror_handle:before {
+    content: "\e020";
+}
+
+.bbz-i.i_nano:before {
+    content: "\e021";
+}
+
+.bbz-i.i_periodontitis:before {
+    content: "\e022";
+}
+
+.bbz-i.i_plaque:before {
+    content: "\e023";
+}
+
+.bbz-i.i_protect:before {
+    content: "\e024";
+}
+
+.bbz-i.i_refresh:before {
+    content: "\e025";
+}
+
+.bbz-i.i_repair:before {
+    content: "\e026";
+}
+
+.bbz-i.i_retainer:before {
+    content: "\e027";
+}
+
+.bbz-i.i_scaler:before {
+    content: "\e028";
+}
+
+.bbz-i.i_smile:before {
+    content: "\e029";
+}
+
+.bbz-i.i_tooth:before {
+    content: "\e02a";
+}
+
+.bbz-i.i_toothbrush:before {
+    content: "\e02b";
+}
+
+.bbz-i.i_toothpaste:before {
+    content: "\e02c";
+}
+
+.bbz-i.i_wisdom_teeth:before {
+    content: "\e02d";
+}
