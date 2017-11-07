@@ -182,10 +182,6 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                             <img src="Content/svg/tooth.svg"></img>\
                             <span class="position-text badge badge-pill lighten-3 blue text-center">' + posValue + '</span>\
                         </div>');
-                        /* <img src="/Content/Images/side-tooth.png"></img>\ */
-                        /*<img src="Content/svg/tooth-'+posValue+'.svg"></img>\*/
-                        /* <object type="image/svg+xml" data="/Content/svg/tooth.svg">Браузер не поддерживает SVG</object>\
-                             */
                     }   
             let counter = 1;
             return lineTemplate;
@@ -204,7 +200,8 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
             return template;
         },
         actionList: function () {
-            var template = $('<div class="state-change-btns">\
+            var template = $('<div class="action-list"></div>')
+            var $stateChangeBtnsTemplate = $('<div class="state-change-btns">\
             <h6>Изменить статус:</h6>\
             <div class="d-flex flex-column" data-toggle="buttons">\
             <button class="btn btn btn-outline-light-green" data-state="heal" data-legendAbbr="З" data-color="light-green">Здоров</button>\
@@ -213,29 +210,22 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
             <button class="btn btn-outline-red" data-state="disease" data-legendAbbr="ТЛ" data-color="red"> Требует лечения</button>\
             <button class="btn btn-outline-light-blue" data-state="implant" data-legendAbbr="И" data-color="light-blue">Имплант</button>\
           </div>');
-            /* function getActionList(template) {
-                $.ajax({
-                    type: "get",
-                    url: "api/getProcedures/",
-                    data: JSON.stringify({ btid: this.id, docId: this.docid }),
-                    contentType: 'application/json',
-                    dataType: "json",
-                    success: function(response) {
-                        $.each(response, function(index, value) {
-                            template.find('.list-group').append('<li class="list-group-item justify-content-between">\
-                                <div class="form-group">\
-                                    <input type="checkbox" class=""/> <b>' + index + ':</b> ' + value + '\
-                                </div></li>');
-                        });
-                    }
-                });
-            }
-            getActionList(template); */
-            // $(template).append($templateTabs);
+            
+            $stateChangeBtnsTemplate.append('<button class="btn btn-sm btn-primary invisible">Применить</button>');/* Временно скрыта */
 
-            /* 
-                $(template).append('<button class="btn btn-sm btn-primary invisible">Применить</button>'); */
-            return template;
+            var $treatTypesListTemplate = $('<div class="treat-types-list">\
+                                                <div class="card">\
+                                                    <div class="card-block p-2">\
+                                                    <h4 class="card-title badge badge-pill light-blue lighten-2">\
+                                                        <i class="bbz-i i_dentist"></i> Виды лечения</h4>\
+                                                    </div>\
+                                                    <ul class="treat-items list-group card-content">Ни один элемент не выбран</ul>\
+                                                </div>');
+
+            $(template)
+                .append($stateChangeBtnsTemplate)
+                .append($treatTypesListTemplate);
+          return template;
         },
         anamnesis: function (data) {
             var template = $('<div class="card sh4 p-4" data-dental-card><span class="heading"></span>\
