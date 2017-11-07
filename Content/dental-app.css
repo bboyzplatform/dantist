@@ -402,6 +402,23 @@ td[data-color] {
     font-size: 2rem;
 }
 
-.BSDentalGrid .treat-types-list .card-title.badge {
-    font-size: 1.2rem
+.BSDentalGrid .badge {
+    font-size: 1rem;
+}
+
+.BSDentalGrid .tooth-double-item .badge {
+    font-size: .8rem;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: .3rem;
+    border-bottom-right-radius: .3rem;
+    border-top: 1px solid;
+    background: white;
+    color: black;
+}
+
+.BSDentalGrid .tooth-double-item img {
+    width: 100%;
+    max-width: 50px;
+    padding: .1rem;
 }
