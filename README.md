@@ -1,4 +1,6 @@
 # dantist
 dental app v.2
-  -initial commit
-  -second commit
+  -UI дизайн макет для модуля "Дантист"
+  -front-end логика работы
+  _____________________________
+  В разработке. 
