@@ -1,3 +1,5 @@
+.BSDentalGrid{
+
 .card {
     font-weight: 400;
     border-radius: .3rem;
@@ -90,8 +92,6 @@ footer.page-footer .title {
 
 .state-change-btns .btn[class*="btn-outline-"] {
     background-color: transparent;
-    '
-
 }
 
 .btn-primary {
@@ -1371,7 +1371,9 @@ footer.page-footer .title {
     font-weight: bold;
 }
 
-.state-change-btns .btn[data-active-state="inactive"] {}
+.state-change-btns .btn[data-active-state="inactive"] {
+    color:initial;
+}
 
 .state-change-btns .btn:hover {
     -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
@@ -1386,6 +1388,5 @@ footer.page-footer .title {
 .tooth-grid .card-body {
     height: auto;
 }
-
-
-      
+/* End main widget wrapper */
+}

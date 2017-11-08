@@ -39,138 +39,23 @@
 
 <body>
     <h1 class="text-center">Demo dentall app</h1>
-
-    <script>
-        BsDocControls.push(new BS_BT_DentalGrid({
-            btid: 13084,
-            id: 50,
-            field: 'DentalGrid'
-        }).init());
-
-    </script>
-
-    <section class="BSDentalGrid" style="padding:2rem;">
-        <h4 class="text-center">Статичная разметка (Компоненты не реализованы):</h4>
-        <br>
-        <br>
-        <br>
-        <div class="row">
-            <!-- Виды лечения выбранного зуба -->
-            <div class="treat-types-list col-lg-4 col-md-6 col-xs-12">
-                <div class="card">
-                    <div class="card-block p-2">
-                        <h4 class="card-title badge badge-pill light-blue lighten-2"><i class="bbz-i i_dentist"></i> Виды лечения</h4>
-                        <ul class="list-group card-content">
-                            <li>
-                                <form class="form-inline">
-                                    <div class="form-group">
-                                        <input type="checkbox" id="checkbox101">
-                                        <label for="checkbox101">Осмотр
-                                            <i class="bbz-i i_mirror_handle"></i>
-                                        </label>
-                                    </div>
-                                </form>
-                            </li>
-                            <li>
-                                <form class="form-inline">
-                                    <div class="form-group">
-                                        <input type="checkbox" id="checkbox102">
-                                        <label for="checkbox102">Пломбирование
-                                        <i class="bbz-i i_composite_filling"></i>
-                                        </label>
-                                    </div>
-                                </form>
-                            </li>
-                            <li>
-                                <form class="form-inline">
-                                    <div class="form-group">
-                                        <input type="checkbox" id="checkbox103">
-                                        <label for="checkbox103">Удаление 
-                                            <i class="bbz-i i_crown"></i>
-                                        </label>
-                                    </div>
-                                </form>
-                            </li>
-                            <li>
-                                <form class="form-inline">
-                                    <div class="form-group">
-                                        <input type="checkbox" id="checkbox104">
-                                        <label for="checkbox104">Протезирование
-                                            <i class="bbz-i i_implants"></i>
-                                        </label>
-                                    </div>
-                                </form>
-                            </li>
-                            <li>
-                                <form class="form-inline">
-                                    <div class="form-group">
-                                        <input type="checkbox" id="checkbox105">
-                                        <label for="checkbox105">Профилактика
-                                            <i class="bbz-i i_bleaching"></i>
-                                        </label>
-                                    </div>
-                                </form>
-                            </li>
-                            <li>
-                                <form class="form-inline">
-                                    <div class="form-group">
-                                        <input type="checkbox" id="checkbox106">
-                                        <label for="checkbox106">Снимок
-                                            <i class="bbz-i i_nano"></i>
-                                        </label>
-                                    </div>
-                                </form>
-                            </li>
-                            <li>
-                                <form class="form-inline">
-                                    <div class="form-group">
-                                        <input type="checkbox" id="checkbox107">
-                                        <label for="checkbox107">Лекарство
-                                        <i class="bbz-i i_toothpaste"></i>
-                                        </label>
-                                    </div>
-                                </form>
-                            </li>
-                            <li>
-                                <form class="form-inline">
-                                    <div class="form-group">
-                                        <input type="checkbox" id="checkbox108">
-                                        <label for="checkbox108">Лечение корневого канала
-                                            <i class="bbz-i i_dental_floss"></i>
-                                        </label>
-                                    </div>
-                                </form>
-                            </li>
-                           
-                        </ul>
-                        <button type="submit" class="btn-sm btn-outline-info col-md-12">Сохранить изменения</button>
-                    </div>
-                </div>
-            </div>
-            <!-- treat-list end's -->
-
-            <!-- Прикрепленные файлы (снимки, фото)-->
-            <div class="files-card col-lg-6 col-md-6 col-xs-12">
-                <div class="card text-center">
-                    <h4 class="card-title">Прикрепленные файлы</h4>
-                    <div class="card-body">
-                        <p class="card-text text-left">Lorem ipsum</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <hr>
-        <!-- История изменений -->
-        <div class="container history-list">
-            <div class="card text-center">
-                <h4 class="card-title">История изменений</h4>
-                <div class="card-body">
-                    <p class="card-text ">Нет записей...</p>
-                </div>
-            </div>
-
-        </div>
-    </section>
-    <hr>
+    <section id="main" class="container-fluid BSDentalGrid">
+<!-- <script>
+    BsDocControls.push(new BS_BT_NavigationTabs({
+        btid: 13085,
+        id: 51,
+        field: 'NavigationTabs',
+        tabs: ['Зубная карта', 'Пациент', 'Справка']
+    }).init());
+</script> -->
+        <script>
+            BsDocControls.push(new BS_BT_DentalGrid({
+                btid: 13084,
+                id: 50,
+                field: 'DentalGrid'
+            }).init());
+        </script>
+</section>
+   
 </body>
 

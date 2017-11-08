@@ -13,6 +13,10 @@ textarea {
     touch-action: manipulation;
 }
 
+.BSDentalGrid .card-body {
+    height: initial;
+}
+
 .BSDentalGrid [type=checkbox]:checked+label:before {
     top: -4px;
     left: -3px;
@@ -337,4 +341,8 @@ textarea {
     width: 100%;
     max-width: 50px;
     padding: .1rem;
+}
+
+.BSDentalGrid .state-change-btns .badge i {
+    font-size: 1rem;
 }
