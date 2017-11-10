@@ -1,15 +1,15 @@
-.card {
+.BSDentalGrid .card {
     font-weight: 400;
     border-radius: .3rem;
 }
 
-.btn-outline-light-green {
+.BSDentalGrid .btn-outline-light-green {
     border: 2px solid #8bc34a;
     color: #8bc34a !important;
     background-color: transparent;
 }
 
-.btn {
+.BSDentalGrid .btn {
     font-size: 0.8rem;
     padding: 0.85rem 2.13rem;
     margin: 6px;
@@ -23,778 +23,776 @@
     cursor: pointer;
 }
 
-.light-blue.lighten-2 {
+.BSDentalGrid .light-blue.lighten-2 {
     background-color: #4fc3f7 !important;
 }
 
-.z-depth-1,
-.jumbotron,
-.navbar,
-.badge,
-.chip,
-.btn,
-.card:not([class*="card-outline-"]),
-.pagination .active .page-link,
-.modal-dialog.cascading-modal .modal-c-tabs .nav-tabs,
-.modal-dialog.modal-notify .modal-header {
+.BSDentalGrid .z-depth-1,
+.BSDentalGrid .jumbotron,
+.BSDentalGrid .navbar,
+.BSDentalGrid .badge,
+.BSDentalGrid .chip,
+.BSDentalGrid .btn,
+.BSDentalGrid .card:not([class*="card-outline-"]),
+.BSDentalGrid .pagination .active .page-link,
+.BSDentalGrid .modal-dialog.cascading-modal .modal-c-tabs .nav-tabs,
+.BSDentalGrid .modal-dialog.modal-notify .modal-header {
     -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
-.list-group .list-group-item,
-.jumbotron,
-.navbar-toggler,
-.navbar,
-.badge {
+.BSDentalGrid .list-group .list-group-item,
+.BSDentalGrid .jumbotron,
+.BSDentalGrid .navbar-toggler,
+.BSDentalGrid .navbar,
+.BSDentalGrid .badge {
     border-radius: 2px;
 }
 
-.z-depth-1,
-.jumbotron,
-.navbar,
-.badge,
-.chip,
-.btn,
-.card:not([class*="card-outline-"]),
-.pagination .active .page-link,
-.modal-dialog.cascading-modal .modal-c-tabs .nav-tabs,
-.modal-dialog.modal-notify .modal-header {
+.BSDentalGrid .z-depth-1,
+.BSDentalGrid .jumbotron,
+.BSDentalGrid .navbar,
+.BSDentalGrid .badge,
+.BSDentalGrid .chip,
+.BSDentalGrid .btn,
+.BSDentalGrid .card:not([class*="card-outline-"]),
+.BSDentalGrid .pagination .active .page-link,
+.BSDentalGrid .modal-dialog.cascading-modal .modal-c-tabs .nav-tabs,
+.BSDentalGrid .modal-dialog.modal-notify .modal-header {
     -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
-.light-blue {
+.BSDentalGrid .light-blue {
     background-color: #03a9f4 !important;
 }
 
-.white-text,
-.btn {
+.BSDentalGrid .white-text,
+.BSDentalGrid .btn {
     color: #FFFFFF !important;
 }
 
-.btn,
-.font-up,
-footer.page-footer .title {
+.BSDentalGrid .btn,
+.BSDentalGrid .font-up,
+.BSDentalGrid footer.page-footer .title {
     text-transform: uppercase;
 }
 
-.btn,
-.hiddendiv {
+.BSDentalGrid .btn,
+.BSDentalGrid .hidden div {
     word-wrap: break-word;
 }
 
-.btn[class*="btn-outline-"] {
+.BSDentalGrid .btn[class*="btn-outline-"] {
     padding-top: .76rem;
     padding-bottom: .76rem;
 }
 
-.state-change-btns .btn[class*="btn-outline-"] {
+.BSDentalGrid .state-change-btns .btn[class*="btn-outline-"] {
     background-color: transparent;
-    '
-
 }
 
-.btn-primary {
+.BSDentalGrid .btn-primary {
     background-color: #4285F4;
 }
 
-.btn-primary:hover,
-.btn-primary:focus,
-.btn-primary:active,
-.btn-primary.active {
+.BSDentalGrid .btn-primary:hover,
+.BSDentalGrid .btn-primary:focus,
+.BSDentalGrid .btn-primary:active,
+.BSDentalGrid .btn-primary.active {
     background-color: #5a95f5 !important;
 }
 
-.btn-primary.dropdown-toggle {
+.BSDentalGrid .btn-primary.dropdown-toggle {
     background-color: #4285F4 !important;
 }
 
-.btn-primary.dropdown-toggle:hover,
-.btn-primary.dropdown-toggle:focus {
+.BSDentalGrid .btn-primary.dropdown-toggle:hover,
+.BSDentalGrid .btn-primary.dropdown-toggle:focus {
     background-color: #5a95f5 !important;
 }
 
-.btn-outline-primary {
+.BSDentalGrid .btn-outline-primary {
     border: 2px solid #4285F4;
     color: #4285F4 !important;
     background-color: transparent;
 }
 
-.btn-outline-primary:hover,
-.btn-outline-primary:focus,
-.btn-outline-primary:active,
-.btn-outline-primary:active:focus,
-.btn-outline-primary.active {
+.BSDentalGrid .btn-outline-primary:hover,
+.BSDentalGrid .btn-outline-primary:focus,
+.BSDentalGrid .btn-outline-primary:active,
+.BSDentalGrid .btn-outline-primary:active:focus,
+.BSDentalGrid .btn-outline-primary.active {
     background-color: transparent;
     color: #4285F4;
     border-color: #4285F4;
 }
 
-.btn-danger {
+.BSDentalGrid .btn-danger {
     background-color: #ff3547;
 }
 
-.btn-danger:hover,
-.btn-danger:focus,
-.btn-danger:active,
-.btn-danger.active {
+.BSDentalGrid .btn-danger:hover,
+.BSDentalGrid .btn-danger:focus,
+.BSDentalGrid .btn-danger:active,
+.BSDentalGrid .btn-danger.active {
     background-color: #ff4f5e !important;
 }
 
-.btn-danger.dropdown-toggle {
+.BSDentalGrid .btn-danger.dropdown-toggle {
     background-color: #ff3547 !important;
 }
 
-.btn-danger.dropdown-toggle:hover,
-.btn-danger.dropdown-toggle:focus {
+.BSDentalGrid .btn-danger.dropdown-toggle:hover,
+.BSDentalGrid .btn-danger.dropdown-toggle:focus {
     background-color: #ff4f5e !important;
 }
 
-.btn-outline-danger {
+.BSDentalGrid .btn-outline-danger {
     border: 2px solid #ff3547;
     color: #ff3547 !important;
     background-color: transparent;
 }
 
-.btn-outline-danger:hover,
-.btn-outline-danger:focus,
-.btn-outline-danger:active,
-.btn-outline-danger:active:focus,
-.btn-outline-danger.active {
+.BSDentalGrid .btn-outline-danger:hover,
+.BSDentalGrid .btn-outline-danger:focus,
+.BSDentalGrid .btn-outline-danger:active,
+.BSDentalGrid .btn-outline-danger:active:focus,
+.BSDentalGrid .btn-outline-danger.active {
     background-color: transparent;
     color: #ff3547;
     border-color: #ff3547;
 }
 
-.btn-warning {
+.BSDentalGrid .btn-warning {
     background-color: #FF8800;
 }
 
-.btn-warning:hover,
-.btn-warning:focus,
-.btn-warning:active,
-.btn-warning.active {
+.BSDentalGrid .btn-warning:hover,
+.BSDentalGrid .btn-warning:focus,
+.BSDentalGrid .btn-warning:active,
+.BSDentalGrid .btn-warning.active {
     background-color: #ff941a !important;
 }
 
-.btn-warning.dropdown-toggle {
+.BSDentalGrid .btn-warning.dropdown-toggle {
     background-color: #FF8800 !important;
 }
 
-.btn-warning.dropdown-toggle:hover,
-.btn-warning.dropdown-toggle:focus {
+.BSDentalGrid .btn-warning.dropdown-toggle:hover,
+.BSDentalGrid .btn-warning.dropdown-toggle:focus {
     background-color: #ff941a !important;
 }
 
-.btn-outline-warning {
+.BSDentalGrid .btn-outline-warning {
     border: 2px solid #FF8800;
     color: #FF8800 !important;
     background-color: transparent;
 }
 
-.btn-outline-warning:hover,
-.btn-outline-warning:focus,
-.btn-outline-warning:active,
-.btn-outline-warning:active:focus,
-.btn-outline-warning.active {
+.BSDentalGrid .btn-outline-warning:hover,
+.BSDentalGrid .btn-outline-warning:focus,
+.BSDentalGrid .btn-outline-warning:active,
+.BSDentalGrid .btn-outline-warning:active:focus,
+.BSDentalGrid .btn-outline-warning.active {
     background-color: transparent;
     color: #FF8800;
     border-color: #FF8800;
 }
 
-.btn-success {
+.BSDentalGrid .btn-success {
     background-color: #00C851;
 }
 
-.btn-success:hover,
-.btn-success:focus,
-.btn-success:active,
-.btn-success.active {
+.BSDentalGrid .btn-success:hover,
+.BSDentalGrid .btn-success:focus,
+.BSDentalGrid .btn-success:active,
+.BSDentalGrid .btn-success.active {
     background-color: #00e25b !important;
 }
 
-.btn-success.dropdown-toggle {
+.BSDentalGrid .btn-success.dropdown-toggle {
     background-color: #00C851 !important;
 }
 
-.btn-success.dropdown-toggle:hover,
-.btn-success.dropdown-toggle:focus {
+.BSDentalGrid .btn-success.dropdown-toggle:hover,
+.BSDentalGrid .btn-success.dropdown-toggle:focus {
     background-color: #00e25b !important;
 }
 
-.btn-outline-success {
+.BSDentalGrid .btn-outline-success {
     border: 2px solid #00C851;
     color: #00C851 !important;
     background-color: transparent;
 }
 
-.btn-outline-success:hover,
-.btn-outline-success:focus,
-.btn-outline-success:active,
-.btn-outline-success:active:focus,
-.btn-outline-success.active {
+.BSDentalGrid .btn-outline-success:hover,
+.BSDentalGrid .btn-outline-success:focus,
+.BSDentalGrid .btn-outline-success:active,
+.BSDentalGrid .btn-outline-success:active:focus,
+.BSDentalGrid .btn-outline-success.active {
     background-color: transparent;
     color: #00C851;
     border-color: #00C851;
 }
 
-.btn-info {
+.BSDentalGrid .btn-info {
     background-color: #33b5e5;
 }
 
-.btn-info:hover,
-.btn-info:focus,
-.btn-info:active,
-.btn-info.active {
+.BSDentalGrid .btn-info:hover,
+.BSDentalGrid .btn-info:focus,
+.BSDentalGrid .btn-info:active,
+.BSDentalGrid .btn-info.active {
     background-color: #4abde8 !important;
 }
 
-.btn-info.dropdown-toggle {
+.BSDentalGrid .btn-info.dropdown-toggle {
     background-color: #33b5e5 !important;
 }
 
-.btn-info.dropdown-toggle:hover,
-.btn-info.dropdown-toggle:focus {
+.BSDentalGrid .btn-info.dropdown-toggle:hover,
+.BSDentalGrid .btn-info.dropdown-toggle:focus {
     background-color: #4abde8 !important;
 }
 
-.btn-outline-info {
+.BSDentalGrid .btn-outline-info {
     border: 2px solid #33b5e5;
     color: #33b5e5 !important;
     background-color: transparent;
 }
 
-.btn-outline-info:hover,
-.btn-outline-info:focus,
-.btn-outline-info:active,
-.btn-outline-info:active:focus,
-.btn-outline-info.active {
+.BSDentalGrid .btn-outline-info:hover,
+.BSDentalGrid .btn-outline-info:focus,
+.BSDentalGrid .btn-outline-info:active,
+.BSDentalGrid .btn-outline-info:active:focus,
+.BSDentalGrid .btn-outline-info.active {
     background-color: transparent;
     color: #33b5e5;
     border-color: #33b5e5;
 }
 
-.btn-default {
+.BSDentalGrid .btn-default {
     background-color: #2BBBAD;
 }
 
-.btn-default:hover,
-.btn-default:focus,
-.btn-default:active,
-.btn-default.active {
+.BSDentalGrid .btn-default:hover,
+.BSDentalGrid .btn-default:focus,
+.BSDentalGrid .btn-default:active,
+.BSDentalGrid .btn-default.active {
     background-color: #30cfc0 !important;
 }
 
-.btn-default.dropdown-toggle {
+.BSDentalGrid .btn-default.dropdown-toggle {
     background-color: #2BBBAD !important;
 }
 
-.btn-default.dropdown-toggle:hover,
-.btn-default.dropdown-toggle:focus {
+.BSDentalGrid .btn-default.dropdown-toggle:hover,
+.BSDentalGrid .btn-default.dropdown-toggle:focus {
     background-color: #30cfc0 !important;
 }
 
-.btn-outline-default {
+.BSDentalGrid .btn-outline-default {
     border: 2px solid #2BBBAD;
     color: #2BBBAD !important;
     background-color: transparent;
 }
 
-.btn-outline-default:hover,
-.btn-outline-default:focus,
-.btn-outline-default:active,
-.btn-outline-default:active:focus,
-.btn-outline-default.active {
+.BSDentalGrid .btn-outline-default:hover,
+.BSDentalGrid .btn-outline-default:focus,
+.BSDentalGrid .btn-outline-default:active,
+.BSDentalGrid .btn-outline-default:active:focus,
+.BSDentalGrid .btn-outline-default.active {
     background-color: transparent;
     color: #2BBBAD;
     border-color: #2BBBAD;
 }
 
-.btn-secondary {
+.BSDentalGrid .btn-secondary {
     background-color: #aa66cc;
 }
 
-.btn-secondary:hover,
-.btn-secondary:focus,
-.btn-secondary:active,
-.btn-secondary.active {
+.BSDentalGrid .btn-secondary:hover,
+.BSDentalGrid .btn-secondary:focus,
+.BSDentalGrid .btn-secondary:active,
+.BSDentalGrid .btn-secondary.active {
     background-color: #b579d2 !important;
 }
 
-.btn-secondary.dropdown-toggle {
+.BSDentalGrid .btn-secondary.dropdown-toggle {
     background-color: #aa66cc !important;
 }
 
-.btn-secondary.dropdown-toggle:hover,
-.btn-secondary.dropdown-toggle:focus {
+.BSDentalGrid .btn-secondary.dropdown-toggle:hover,
+.BSDentalGrid .btn-secondary.dropdown-toggle:focus {
     background-color: #b579d2 !important;
 }
 
-.btn-outline-secondary {
+.BSDentalGrid .btn-outline-secondary {
     border: 2px solid #aa66cc;
     color: #aa66cc !important;
     background-color: transparent;
 }
 
-.btn-outline-secondary:hover,
-.btn-outline-secondary:focus,
-.btn-outline-secondary:active,
-.btn-outline-secondary:active:focus,
-.btn-outline-secondary.active {
+.BSDentalGrid .btn-outline-secondary:hover,
+.BSDentalGrid .btn-outline-secondary:focus,
+.BSDentalGrid .btn-outline-secondary:active,
+.BSDentalGrid .btn-outline-secondary:active:focus,
+.BSDentalGrid .btn-outline-secondary.active {
     background-color: transparent;
     color: #aa66cc;
     border-color: #aa66cc;
 }
 
-.btn-elegant {
+.BSDentalGrid .btn-elegant {
     background-color: #2E2E2E;
 }
 
-.btn-elegant:hover,
-.btn-elegant:focus,
-.btn-elegant:active,
-.btn-elegant.active {
+.BSDentalGrid .btn-elegant:hover,
+.BSDentalGrid .btn-elegant:focus,
+.BSDentalGrid .btn-elegant:active,
+.BSDentalGrid .btn-elegant.active {
     background-color: #3b3b3b !important;
 }
 
-.btn-elegant.dropdown-toggle {
+.BSDentalGrid .btn-elegant.dropdown-toggle {
     background-color: #2E2E2E !important;
 }
 
-.btn-elegant.dropdown-toggle:hover,
-.btn-elegant.dropdown-toggle:focus {
+.BSDentalGrid .btn-elegant.dropdown-toggle:hover,
+.BSDentalGrid .btn-elegant.dropdown-toggle:focus {
     background-color: #3b3b3b !important;
 }
 
-.btn-outline-elegant {
+.BSDentalGrid .btn-outline-elegant {
     border: 2px solid #2E2E2E;
     color: #2E2E2E !important;
     background-color: transparent;
 }
 
-.btn-outline-elegant:hover,
-.btn-outline-elegant:focus,
-.btn-outline-elegant:active,
-.btn-outline-elegant:active:focus,
-.btn-outline-elegant.active {
+.BSDentalGrid .btn-outline-elegant:hover,
+.BSDentalGrid .btn-outline-elegant:focus,
+.BSDentalGrid .btn-outline-elegant:active,
+.BSDentalGrid .btn-outline-elegant:active:focus,
+.BSDentalGrid .btn-outline-elegant.active {
     background-color: transparent;
     color: #2E2E2E;
     border-color: #2E2E2E;
 }
 
-.btn-unique {
+.BSDentalGrid .btn-unique {
     background-color: #880e4f;
 }
 
-.btn-unique:hover,
-.btn-unique:focus,
-.btn-unique:active,
-.btn-unique.active {
+.BSDentalGrid .btn-unique:hover,
+.BSDentalGrid .btn-unique:focus,
+.BSDentalGrid .btn-unique:active,
+.BSDentalGrid .btn-unique.active {
     background-color: #9f105c !important;
 }
 
-.btn-unique.dropdown-toggle {
+.BSDentalGrid .btn-unique.dropdown-toggle {
     background-color: #880e4f !important;
 }
 
-.btn-unique.dropdown-toggle:hover,
-.btn-unique.dropdown-toggle:focus {
+.BSDentalGrid .btn-unique.dropdown-toggle:hover,
+.BSDentalGrid .btn-unique.dropdown-toggle:focus {
     background-color: #9f105c !important;
 }
 
-.btn-outline-unique {
+.BSDentalGrid .btn-outline-unique {
     border: 2px solid #880e4f;
     color: #880e4f !important;
     background-color: transparent;
 }
 
-.btn-outline-unique:hover,
-.btn-outline-unique:focus,
-.btn-outline-unique:active,
-.btn-outline-unique:active:focus,
-.btn-outline-unique.active {
+.BSDentalGrid .btn-outline-unique:hover,
+.BSDentalGrid .btn-outline-unique:focus,
+.BSDentalGrid .btn-outline-unique:active,
+.BSDentalGrid .btn-outline-unique:active:focus,
+.BSDentalGrid .btn-outline-unique.active {
     background-color: transparent;
     color: #880e4f;
     border-color: #880e4f;
 }
 
-.btn-dark-green {
+.BSDentalGrid .btn-dark-green {
     background-color: #388E3C;
 }
 
-.btn-dark-green:hover,
-.btn-dark-green:focus,
-.btn-dark-green:active,
-.btn-dark-green.active {
+.BSDentalGrid .btn-dark-green:hover,
+.BSDentalGrid .btn-dark-green:focus,
+.BSDentalGrid .btn-dark-green:active,
+.BSDentalGrid .btn-dark-green.active {
     background-color: #3fa044 !important;
 }
 
-.btn-dark-green.dropdown-toggle {
+.BSDentalGrid .btn-dark-green.dropdown-toggle {
     background-color: #388E3C !important;
 }
 
-.btn-dark-green.dropdown-toggle:hover,
-.btn-dark-green.dropdown-toggle:focus {
+.BSDentalGrid .btn-dark-green.dropdown-toggle:hover,
+.BSDentalGrid .btn-dark-green.dropdown-toggle:focus {
     background-color: #3fa044 !important;
 }
 
-.btn-outline-dark-green {
+.BSDentalGrid .btn-outline-dark-green {
     border: 2px solid #388E3C;
     color: #388E3C !important;
     background-color: transparent;
 }
 
-.btn-outline-dark-green:hover,
-.btn-outline-dark-green:focus,
-.btn-outline-dark-green:active,
-.btn-outline-dark-green:active:focus,
-.btn-outline-dark-green.active {
+.BSDentalGrid .btn-outline-dark-green:hover,
+.BSDentalGrid .btn-outline-dark-green:focus,
+.BSDentalGrid .btn-outline-dark-green:active,
+.BSDentalGrid .btn-outline-dark-green:active:focus,
+.BSDentalGrid .btn-outline-dark-green.active {
     background-color: transparent;
     color: #388E3C;
     border-color: #388E3C;
 }
 
-.btn-mdb-color {
+.BSDentalGrid .btn-mdb-color {
     background-color: #59698D;
 }
 
-.btn-mdb-color:hover,
-.btn-mdb-color:focus,
-.btn-mdb-color:active,
-.btn-mdb-color.active {
+.BSDentalGrid .btn-mdb-color:hover,
+.BSDentalGrid .btn-mdb-color:focus,
+.BSDentalGrid .btn-mdb-color:active,
+.BSDentalGrid .btn-mdb-color.active {
     background-color: #63759d !important;
 }
 
-.btn-mdb-color.dropdown-toggle {
+.BSDentalGrid .btn-mdb-color.dropdown-toggle {
     background-color: #59698D !important;
 }
 
-.btn-mdb-color.dropdown-toggle:hover,
-.btn-mdb-color.dropdown-toggle:focus {
+.BSDentalGrid .btn-mdb-color.dropdown-toggle:hover,
+.BSDentalGrid .btn-mdb-color.dropdown-toggle:focus {
     background-color: #63759d !important;
 }
 
-.btn-outline-mdb-color {
+.BSDentalGrid .btn-outline-mdb-color {
     border: 2px solid #59698D;
     color: #59698D !important;
     background-color: transparent;
 }
 
-.btn-outline-mdb-color:hover,
-.btn-outline-mdb-color:focus,
-.btn-outline-mdb-color:active,
-.btn-outline-mdb-color:active:focus,
-.btn-outline-mdb-color.active {
+.BSDentalGrid .btn-outline-mdb-color:hover,
+.BSDentalGrid .btn-outline-mdb-color:focus,
+.BSDentalGrid .btn-outline-mdb-color:active,
+.BSDentalGrid .btn-outline-mdb-color:active:focus,
+.BSDentalGrid .btn-outline-mdb-color.active {
     background-color: transparent;
     color: #59698D;
     border-color: #59698D;
 }
 
-.btn-red {
+.BSDentalGrid .btn-red {
     background-color: #D32F2F;
 }
 
-.btn-red:hover,
-.btn-red:focus,
-.btn-red:active,
-.btn-red.active {
+.BSDentalGrid .btn-red:hover,
+.BSDentalGrid .btn-red:focus,
+.BSDentalGrid .btn-red:active,
+.BSDentalGrid .btn-red.active {
     background-color: #d74444 !important;
 }
 
-.btn-red.dropdown-toggle {
+.BSDentalGrid .btn-red.dropdown-toggle {
     background-color: #D32F2F !important;
 }
 
-.btn-red.dropdown-toggle:hover,
-.btn-red.dropdown-toggle:focus {
+.BSDentalGrid .btn-red.dropdown-toggle:hover,
+.BSDentalGrid .btn-red.dropdown-toggle:focus {
     background-color: #d74444 !important;
 }
 
-.btn-outline-red {
+.BSDentalGrid .btn-outline-red {
     border: 2px solid #D32F2F;
     color: #D32F2F !important;
     background-color: transparent;
 }
 
-.btn-outline-red:hover,
-.btn-outline-red:focus,
-.btn-outline-red:active,
-.btn-outline-red:active:focus,
-.btn-outline-red.active {
+.BSDentalGrid .btn-outline-red:hover,
+.BSDentalGrid .btn-outline-red:focus,
+.BSDentalGrid .btn-outline-red:active,
+.BSDentalGrid .btn-outline-red:active:focus,
+.BSDentalGrid .btn-outline-red.active {
     background-color: transparent;
     color: #D32F2F;
     border-color: #D32F2F;
 }
 
-.btn-pink {
+.BSDentalGrid .btn-pink {
     background-color: #ec407a;
 }
 
-.btn-pink:hover,
-.btn-pink:focus,
-.btn-pink:active,
-.btn-pink.active {
+.BSDentalGrid .btn-pink:hover,
+.BSDentalGrid .btn-pink:focus,
+.BSDentalGrid .btn-pink:active,
+.BSDentalGrid .btn-pink.active {
     background-color: #ee578a !important;
 }
 
-.btn-pink.dropdown-toggle {
+.BSDentalGrid .btn-pink.dropdown-toggle {
     background-color: #ec407a !important;
 }
 
-.btn-pink.dropdown-toggle:hover,
-.btn-pink.dropdown-toggle:focus {
+.BSDentalGrid .btn-pink.dropdown-toggle:hover,
+.BSDentalGrid .btn-pink.dropdown-toggle:focus {
     background-color: #ee578a !important;
 }
 
-.btn-outline-pink {
+.BSDentalGrid .btn-outline-pink {
     border: 2px solid #ec407a;
     color: #ec407a !important;
     background-color: transparent;
 }
 
-.btn-outline-pink:hover,
-.btn-outline-pink:focus,
-.btn-outline-pink:active,
-.btn-outline-pink:active:focus,
-.btn-outline-pink.active {
+.BSDentalGrid .btn-outline-pink:hover,
+.BSDentalGrid .btn-outline-pink:focus,
+.BSDentalGrid .btn-outline-pink:active,
+.BSDentalGrid .btn-outline-pink:active:focus,
+.BSDentalGrid .btn-outline-pink.active {
     background-color: transparent;
     color: #ec407a;
     border-color: #ec407a;
 }
 
-.btn-purple {
+.BSDentalGrid .btn-purple {
     background-color: #8e24aa;
 }
 
-.btn-purple:hover,
-.btn-purple:focus,
-.btn-purple:active,
-.btn-purple.active {
+.BSDentalGrid .btn-purple:hover,
+.BSDentalGrid .btn-purple:focus,
+.BSDentalGrid .btn-purple:active,
+.BSDentalGrid .btn-purple.active {
     background-color: #a028bf !important;
 }
 
-.btn-purple.dropdown-toggle {
+.BSDentalGrid .btn-purple.dropdown-toggle {
     background-color: #8e24aa !important;
 }
 
-.btn-purple.dropdown-toggle:hover,
-.btn-purple.dropdown-toggle:focus {
+.BSDentalGrid .btn-purple.dropdown-toggle:hover,
+.BSDentalGrid .btn-purple.dropdown-toggle:focus {
     background-color: #a028bf !important;
 }
 
-.btn-outline-purple {
+.BSDentalGrid .btn-outline-purple {
     border: 2px solid #8e24aa;
     color: #8e24aa !important;
     background-color: transparent;
 }
 
-.btn-outline-purple:hover,
-.btn-outline-purple:focus,
-.btn-outline-purple:active,
-.btn-outline-purple:active:focus,
-.btn-outline-purple.active {
+.BSDentalGrid .btn-outline-purple:hover,
+.BSDentalGrid .btn-outline-purple:focus,
+.BSDentalGrid .btn-outline-purple:active,
+.BSDentalGrid .btn-outline-purple:active:focus,
+.BSDentalGrid .btn-outline-purple.active {
     background-color: transparent;
     color: #8e24aa;
     border-color: #8e24aa;
 }
 
-.btn-deep-purple {
+.BSDentalGrid .btn-deep-purple {
     background-color: #512da8;
 }
 
-.btn-deep-purple:hover,
-.btn-deep-purple:focus,
-.btn-deep-purple:active,
-.btn-deep-purple.active {
+.BSDentalGrid .btn-deep-purple:hover,
+.BSDentalGrid .btn-deep-purple:focus,
+.BSDentalGrid .btn-deep-purple:active,
+.BSDentalGrid .btn-deep-purple.active {
     background-color: #5b32bc !important;
 }
 
-.btn-deep-purple.dropdown-toggle {
+.BSDentalGrid .btn-deep-purple.dropdown-toggle {
     background-color: #512da8 !important;
 }
 
-.btn-deep-purple.dropdown-toggle:hover,
-.btn-deep-purple.dropdown-toggle:focus {
+.BSDentalGrid .btn-deep-purple.dropdown-toggle:hover,
+.BSDentalGrid .btn-deep-purple.dropdown-toggle:focus {
     background-color: #5b32bc !important;
 }
 
-.btn-outline-deep-purple {
+.BSDentalGrid .btn-outline-deep-purple {
     border: 2px solid #512da8;
     color: #512da8 !important;
     background-color: transparent;
 }
 
-.btn-outline-deep-purple:hover,
-.btn-outline-deep-purple:focus,
-.btn-outline-deep-purple:active,
-.btn-outline-deep-purple:active:focus,
-.btn-outline-deep-purple.active {
+.BSDentalGrid .btn-outline-deep-purple:hover,
+.BSDentalGrid .btn-outline-deep-purple:focus,
+.BSDentalGrid .btn-outline-deep-purple:active,
+.BSDentalGrid .btn-outline-deep-purple:active:focus,
+.BSDentalGrid .btn-outline-deep-purple.active {
     background-color: transparent;
     color: #512da8;
     border-color: #512da8;
 }
 
-.btn-indigo {
+.BSDentalGrid .btn-indigo {
     background-color: #3f51b5;
 }
 
-.btn-indigo:hover,
-.btn-indigo:focus,
-.btn-indigo:active,
-.btn-indigo.active {
+.BSDentalGrid .btn-indigo:hover,
+.BSDentalGrid .btn-indigo:focus,
+.BSDentalGrid .btn-indigo:active,
+.BSDentalGrid .btn-indigo.active {
     background-color: #4d5ec1 !important;
 }
 
-.btn-indigo.dropdown-toggle {
+.BSDentalGrid .btn-indigo.dropdown-toggle {
     background-color: #3f51b5 !important;
 }
 
-.btn-indigo.dropdown-toggle:hover,
-.btn-indigo.dropdown-toggle:focus {
+.BSDentalGrid .btn-indigo.dropdown-toggle:hover,
+.BSDentalGrid .btn-indigo.dropdown-toggle:focus {
     background-color: #4d5ec1 !important;
 }
 
-.btn-outline-indigo {
+.BSDentalGrid .btn-outline-indigo {
     border: 2px solid #3f51b5;
     color: #3f51b5 !important;
     background-color: transparent;
 }
 
-.btn-outline-indigo:hover,
-.btn-outline-indigo:focus,
-.btn-outline-indigo:active,
-.btn-outline-indigo:active:focus,
-.btn-outline-indigo.active {
+.BSDentalGrid .btn-outline-indigo:hover,
+.BSDentalGrid .btn-outline-indigo:focus,
+.BSDentalGrid .btn-outline-indigo:active,
+.BSDentalGrid .btn-outline-indigo:active:focus,
+.BSDentalGrid .btn-outline-indigo.active {
     background-color: transparent;
     color: #3f51b5;
     border-color: #3f51b5;
 }
 
-.btn-blue {
+.BSDentalGrid .btn-blue {
     background-color: #1976D2;
 }
 
-.btn-blue:hover,
-.btn-blue:focus,
-.btn-blue:active,
-.btn-blue.active {
+.BSDentalGrid .btn-blue:hover,
+.BSDentalGrid .btn-blue:focus,
+.BSDentalGrid .btn-blue:active,
+.BSDentalGrid .btn-blue.active {
     background-color: #2083e4 !important;
 }
 
-.btn-blue.dropdown-toggle {
+.BSDentalGrid .btn-blue.dropdown-toggle {
     background-color: #1976D2 !important;
 }
 
-.btn-blue.dropdown-toggle:hover,
-.btn-blue.dropdown-toggle:focus {
+.BSDentalGrid .btn-blue.dropdown-toggle:hover,
+.BSDentalGrid .btn-blue.dropdown-toggle:focus {
     background-color: #2083e4 !important;
 }
 
-.btn-outline-blue {
+.BSDentalGrid .btn-outline-blue {
     border: 2px solid #1976D2;
     color: #1976D2 !important;
     background-color: transparent;
 }
 
-.btn-outline-blue:hover,
-.btn-outline-blue:focus,
-.btn-outline-blue:active,
-.btn-outline-blue:active:focus,
-.btn-outline-blue.active {
+.BSDentalGrid .btn-outline-blue:hover,
+.BSDentalGrid .btn-outline-blue:focus,
+.BSDentalGrid .btn-outline-blue:active,
+.BSDentalGrid .btn-outline-blue:active:focus,
+.BSDentalGrid .btn-outline-blue.active {
     background-color: transparent;
     color: #1976D2;
     border-color: #1976D2;
 }
 
-.btn-light-blue {
+.BSDentalGrid .btn-light-blue {
     background-color: #82B1FF;
 }
 
-.btn-light-blue:hover,
-.btn-light-blue:focus,
-.btn-light-blue:active,
-.btn-light-blue.active {
+.BSDentalGrid .btn-light-blue:hover,
+.BSDentalGrid .btn-light-blue:focus,
+.BSDentalGrid .btn-light-blue:active,
+.BSDentalGrid .btn-light-blue.active {
     background-color: #9cc1ff !important;
 }
 
-.btn-light-blue.dropdown-toggle {
+.BSDentalGrid .btn-light-blue.dropdown-toggle {
     background-color: #82B1FF !important;
 }
 
-.btn-light-blue.dropdown-toggle:hover,
-.btn-light-blue.dropdown-toggle:focus {
+.BSDentalGrid .btn-light-blue.dropdown-toggle:hover,
+.BSDentalGrid .btn-light-blue.dropdown-toggle:focus {
     background-color: #9cc1ff !important;
 }
 
-.btn-outline-light-blue {
+.BSDentalGrid .btn-outline-light-blue {
     border: 2px solid #82B1FF;
     color: #82B1FF !important;
     background-color: transparent;
 }
 
-.btn-outline-light-blue:hover,
-.btn-outline-light-blue:focus,
-.btn-outline-light-blue:active,
-.btn-outline-light-blue:active:focus,
-.btn-outline-light-blue.active {
+.BSDentalGrid .btn-outline-light-blue:hover,
+.BSDentalGrid .btn-outline-light-blue:focus,
+.BSDentalGrid .btn-outline-light-blue:active,
+.BSDentalGrid .btn-outline-light-blue:active:focus,
+.BSDentalGrid .btn-outline-light-blue.active {
     background-color: transparent;
     color: #82B1FF;
     border-color: #82B1FF;
 }
 
-.btn-cyan {
+.BSDentalGrid .btn-cyan {
     background-color: #00bcd4;
 }
 
-.btn-cyan:hover,
-.btn-cyan:focus,
-.btn-cyan:active,
-.btn-cyan.active {
+.BSDentalGrid .btn-cyan:hover,
+.BSDentalGrid .btn-cyan:focus,
+.BSDentalGrid .btn-cyan:active,
+.BSDentalGrid .btn-cyan.active {
     background-color: #00d3ee !important;
 }
 
-.btn-cyan.dropdown-toggle {
+.BSDentalGrid .btn-cyan.dropdown-toggle {
     background-color: #00bcd4 !important;
 }
 
-.btn-cyan.dropdown-toggle:hover,
-.btn-cyan.dropdown-toggle:focus {
+.BSDentalGrid .btn-cyan.dropdown-toggle:hover,
+.BSDentalGrid .btn-cyan.dropdown-toggle:focus {
     background-color: #00d3ee !important;
 }
 
-.btn-outline-cyan {
+.BSDentalGrid .btn-outline-cyan {
     border: 2px solid #00bcd4;
     color: #00bcd4 !important;
     background-color: transparent;
 }
 
-.btn-outline-cyan:hover,
-.btn-outline-cyan:focus,
-.btn-outline-cyan:active,
-.btn-outline-cyan:active:focus,
-.btn-outline-cyan.active {
+.BSDentalGrid .btn-outline-cyan:hover,
+.BSDentalGrid .btn-outline-cyan:focus,
+.BSDentalGrid .btn-outline-cyan:active,
+.BSDentalGrid .btn-outline-cyan:active:focus,
+.BSDentalGrid .btn-outline-cyan.active {
     background-color: transparent;
     color: #00bcd4;
     border-color: #00bcd4;
 }
 
-.btn-teal {
+.BSDentalGrid .btn-teal {
     background-color: #00796b;
 }
 
-.btn-teal:hover,
-.btn-teal:focus,
-.btn-teal:active,
-.btn-teal.active {
+.BSDentalGrid .btn-teal:hover,
+.BSDentalGrid .btn-teal:focus,
+.BSDentalGrid .btn-teal:active,
+.BSDentalGrid .btn-teal.active {
     background-color: #009382 !important;
 }
 
-.btn-teal.dropdown-toggle {
+.BSDentalGrid .btn-teal.dropdown-toggle {
     background-color: #00796b !important;
 }
 
-.btn-teal.dropdown-toggle:hover,
-.btn-teal.dropdown-toggle:focus {
+.BSDentalGrid .btn-teal.dropdown-toggle:hover,
+.BSDentalGrid .btn-teal.dropdown-toggle:focus {
     background-color: #009382 !important;
 }
 
@@ -804,587 +802,587 @@ footer.page-footer .title {
     background-color: transparent;
 }
 
-.btn-outline-teal:hover,
-.btn-outline-teal:focus,
-.btn-outline-teal:active,
-.btn-outline-teal:active:focus,
-.btn-outline-teal.active {
+.BSDentalGrid .btn-outline-teal:hover,
+.BSDentalGrid .btn-outline-teal:focus,
+.BSDentalGrid .btn-outline-teal:active,
+.BSDentalGrid .btn-outline-teal:active:focus,
+.BSDentalGrid .btn-outline-teal.active {
     background-color: transparent;
     color: #00796b;
     border-color: #00796b;
 }
 
-.btn-green {
+.BSDentalGrid .btn-green {
     background-color: #388E3C;
 }
 
-.btn-green:hover,
-.btn-green:focus,
-.btn-green:active,
-.btn-green.active {
+.BSDentalGrid .btn-green:hover,
+.BSDentalGrid .btn-green:focus,
+.BSDentalGrid .btn-green:active,
+.BSDentalGrid .btn-green.active {
     background-color: #3fa044 !important;
 }
 
-.btn-green.dropdown-toggle {
+.BSDentalGrid .btn-green.dropdown-toggle {
     background-color: #388E3C !important;
 }
 
-.btn-green.dropdown-toggle:hover,
-.btn-green.dropdown-toggle:focus {
+.BSDentalGrid .btn-green.dropdown-toggle:hover,
+.BSDentalGrid .btn-green.dropdown-toggle:focus {
     background-color: #3fa044 !important;
 }
 
-.btn-outline-green {
+.BSDentalGrid .btn-outline-green {
     border: 2px solid #388E3C;
     color: #388E3C !important;
     background-color: transparent;
 }
 
-.btn-outline-green:hover,
-.btn-outline-green:focus,
-.btn-outline-green:active,
-.btn-outline-green:active:focus,
-.btn-outline-green.active {
+.BSDentalGrid .btn-outline-green:hover,
+.BSDentalGrid .btn-outline-green:focus,
+.BSDentalGrid .btn-outline-green:active,
+.BSDentalGrid .btn-outline-green:active:focus,
+.BSDentalGrid .btn-outline-green.active {
     background-color: transparent;
     color: #388E3C;
     border-color: #388E3C;
 }
 
-.btn-light-green {
+.BSDentalGrid .btn-light-green {
     background-color: #8bc34a;
 }
 
-.btn-light-green:hover,
-.btn-light-green:focus,
-.btn-light-green:active,
-.btn-light-green.active {
+.BSDentalGrid .btn-light-green:hover,
+.BSDentalGrid .btn-light-green:focus,
+.BSDentalGrid .btn-light-green:active,
+.BSDentalGrid .btn-light-green.active {
     background-color: #97c95d !important;
 }
 
-.btn-light-green.dropdown-toggle {
+.BSDentalGrid .btn-light-green.dropdown-toggle {
     background-color: #8bc34a !important;
 }
 
-.btn-light-green.dropdown-toggle:hover,
-.btn-light-green.dropdown-toggle:focus {
+.BSDentalGrid .btn-light-green.dropdown-toggle:hover,
+.BSDentalGrid .btn-light-green.dropdown-toggle:focus {
     background-color: #97c95d !important;
 }
 
-.btn-outline-light-green {
+.BSDentalGrid .btn-outline-light-green {
     border: 2px solid #8bc34a;
     color: #8bc34a !important;
     background-color: transparent;
 }
 
-.btn-outline-light-green:hover,
-.btn-outline-light-green:focus,
-.btn-outline-light-green:active,
-.btn-outline-light-green:active:focus,
-.btn-outline-light-green.active {
+.BSDentalGrid .btn-outline-light-green:hover,
+.BSDentalGrid .btn-outline-light-green:focus,
+.BSDentalGrid .btn-outline-light-green:active,
+.BSDentalGrid .btn-outline-light-green:active:focus,
+.BSDentalGrid .btn-outline-light-green.active {
     background-color: transparent;
     color: #8bc34a;
     border-color: #8bc34a;
 }
 
-.btn-lime {
+.BSDentalGrid .btn-lime {
     background-color: #afb42b;
 }
 
-.btn-lime:hover,
-.btn-lime:focus,
-.btn-lime:active,
-.btn-lime.active {
+.BSDentalGrid .btn-lime:hover,
+.BSDentalGrid .btn-lime:focus,
+.BSDentalGrid .btn-lime:active,
+.BSDentalGrid .btn-lime.active {
     background-color: #c3c930 !important;
 }
 
-.btn-lime.dropdown-toggle {
+.BSDentalGrid .btn-lime.dropdown-toggle {
     background-color: #afb42b !important;
 }
 
-.btn-lime.dropdown-toggle:hover,
-.btn-lime.dropdown-toggle:focus {
+.BSDentalGrid .btn-lime.dropdown-toggle:hover,
+.BSDentalGrid .btn-lime.dropdown-toggle:focus {
     background-color: #c3c930 !important;
 }
 
-.btn-outline-lime {
+.BSDentalGrid .btn-outline-lime {
     border: 2px solid #afb42b;
     color: #afb42b !important;
     background-color: transparent;
 }
 
-.btn-outline-lime:hover,
-.btn-outline-lime:focus,
-.btn-outline-lime:active,
-.btn-outline-lime:active:focus,
-.btn-outline-lime.active {
+.BSDentalGrid .btn-outline-lime:hover,
+.BSDentalGrid .btn-outline-lime:focus,
+.BSDentalGrid .btn-outline-lime:active,
+.BSDentalGrid .btn-outline-lime:active:focus,
+.BSDentalGrid .btn-outline-lime.active {
     background-color: transparent;
     color: #afb42b;
     border-color: #afb42b;
 }
 
-.btn-yellow {
+.BSDentalGrid .btn-yellow {
     background-color: #fbc02d;
 }
 
-.btn-yellow:hover,
-.btn-yellow:focus,
-.btn-yellow:active,
-.btn-yellow.active {
+.BSDentalGrid .btn-yellow:hover,
+.BSDentalGrid .btn-yellow:focus,
+.BSDentalGrid .btn-yellow:active,
+.BSDentalGrid .btn-yellow.active {
     background-color: #fbc846 !important;
 }
 
-.btn-yellow.dropdown-toggle {
+.BSDentalGrid .btn-yellow.dropdown-toggle {
     background-color: #fbc02d !important;
 }
 
-.btn-yellow.dropdown-toggle:hover,
-.btn-yellow.dropdown-toggle:focus {
+.BSDentalGrid .btn-yellow.dropdown-toggle:hover,
+.BSDentalGrid .btn-yellow.dropdown-toggle:focus {
     background-color: #fbc846 !important;
 }
 
-.btn-outline-yellow {
+.BSDentalGrid .btn-outline-yellow {
     border: 2px solid #fbc02d;
     color: #fbc02d !important;
     background-color: transparent;
 }
 
-.btn-outline-yellow:hover,
-.btn-outline-yellow:focus,
-.btn-outline-yellow:active,
-.btn-outline-yellow:active:focus,
-.btn-outline-yellow.active {
+.BSDentalGrid .btn-outline-yellow:hover,
+.BSDentalGrid .btn-outline-yellow:focus,
+.BSDentalGrid .btn-outline-yellow:active,
+.BSDentalGrid .btn-outline-yellow:active:focus,
+.BSDentalGrid .btn-outline-yellow.active {
     background-color: transparent;
     color: #fbc02d;
     border-color: #fbc02d;
 }
 
-.btn-amber {
+.BSDentalGrid .btn-amber {
     background-color: #ffa000;
 }
 
-.btn-amber:hover,
-.btn-amber:focus,
-.btn-amber:active,
-.btn-amber.active {
+.BSDentalGrid .btn-amber:hover,
+.BSDentalGrid .btn-amber:focus,
+.BSDentalGrid .btn-amber:active,
+.BSDentalGrid .btn-amber.active {
     background-color: #ffaa1a !important;
 }
 
-.btn-amber.dropdown-toggle {
+.BSDentalGrid .btn-amber.dropdown-toggle {
     background-color: #ffa000 !important;
 }
 
-.btn-amber.dropdown-toggle:hover,
-.btn-amber.dropdown-toggle:focus {
+.BSDentalGrid .btn-amber.dropdown-toggle:hover,
+.BSDentalGrid .btn-amber.dropdown-toggle:focus {
     background-color: #ffaa1a !important;
 }
 
-.btn-outline-amber {
+.BSDentalGrid .btn-outline-amber {
     border: 2px solid #ffa000;
     color: #ffa000 !important;
     background-color: transparent;
 }
 
-.btn-outline-amber:hover,
-.btn-outline-amber:focus,
-.btn-outline-amber:active,
-.btn-outline-amber:active:focus,
-.btn-outline-amber.active {
+.BSDentalGrid .btn-outline-amber:hover,
+.BSDentalGrid .btn-outline-amber:focus,
+.BSDentalGrid .btn-outline-amber:active,
+.BSDentalGrid .btn-outline-amber:active:focus,
+.BSDentalGrid .btn-outline-amber.active {
     background-color: transparent;
     color: #ffa000;
     border-color: #ffa000;
 }
 
-.btn-orange {
+.BSDentalGrid .btn-orange {
     background-color: #f57c00;
 }
 
-.btn-orange:hover,
-.btn-orange:focus,
-.btn-orange:active,
-.btn-orange.active {
+.BSDentalGrid .btn-orange:hover,
+.BSDentalGrid .btn-orange:focus,
+.BSDentalGrid .btn-orange:active,
+.BSDentalGrid .btn-orange.active {
     background-color: #ff8910 !important;
 }
 
-.btn-orange.dropdown-toggle {
+.BSDentalGrid .btn-orange.dropdown-toggle {
     background-color: #f57c00 !important;
 }
 
-.btn-orange.dropdown-toggle:hover,
-.btn-orange.dropdown-toggle:focus {
+.BSDentalGrid .btn-orange.dropdown-toggle:hover,
+.BSDentalGrid .btn-orange.dropdown-toggle:focus {
     background-color: #ff8910 !important;
 }
 
-.btn-outline-orange {
+.BSDentalGrid .btn-outline-orange {
     border: 2px solid #f57c00;
     color: #f57c00 !important;
     background-color: transparent;
 }
 
-.btn-outline-orange:hover,
-.btn-outline-orange:focus,
-.btn-outline-orange:active,
-.btn-outline-orange:active:focus,
-.btn-outline-orange.active {
+.BSDentalGrid .btn-outline-orange:hover,
+.BSDentalGrid .btn-outline-orange:focus,
+.BSDentalGrid .btn-outline-orange:active,
+.BSDentalGrid .btn-outline-orange:active:focus,
+.BSDentalGrid .btn-outline-orange.active {
     background-color: transparent;
     color: #f57c00;
     border-color: #f57c00;
 }
 
-.btn-deep-orange {
+.BSDentalGrid .btn-deep-orange {
     background-color: #ff7043;
 }
 
-.btn-deep-orange:hover,
-.btn-deep-orange:focus,
-.btn-deep-orange:active,
-.btn-deep-orange.active {
+.BSDentalGrid .btn-deep-orange:hover,
+.BSDentalGrid .btn-deep-orange:focus,
+.BSDentalGrid .btn-deep-orange:active,
+.BSDentalGrid .btn-deep-orange.active {
     background-color: #ff835d !important;
 }
 
-.btn-deep-orange.dropdown-toggle {
+.BSDentalGrid .btn-deep-orange.dropdown-toggle {
     background-color: #ff7043 !important;
 }
 
-.btn-deep-orange.dropdown-toggle:hover,
-.btn-deep-orange.dropdown-toggle:focus {
+.BSDentalGrid .btn-deep-orange.dropdown-toggle:hover,
+.BSDentalGrid .btn-deep-orange.dropdown-toggle:focus {
     background-color: #ff835d !important;
 }
 
-.btn-outline-deep-orange {
+.BSDentalGrid .btn-outline-deep-orange {
     border: 2px solid #ff7043;
     color: #ff7043 !important;
     background-color: transparent;
 }
 
-.btn-outline-deep-orange:hover,
-.btn-outline-deep-orange:focus,
-.btn-outline-deep-orange:active,
-.btn-outline-deep-orange:active:focus,
-.btn-outline-deep-orange.active {
+.BSDentalGrid .btn-outline-deep-orange:hover,
+.BSDentalGrid .btn-outline-deep-orange:focus,
+.BSDentalGrid .btn-outline-deep-orange:active,
+.BSDentalGrid .btn-outline-deep-orange:active:focus,
+.BSDentalGrid .btn-outline-deep-orange.active {
     background-color: transparent;
     color: #ff7043;
     border-color: #ff7043;
 }
 
-.btn-brown {
+.BSDentalGrid .btn-brown {
     background-color: #795548;
 }
 
-.btn-brown:hover,
-.btn-brown:focus,
-.btn-brown:active,
-.btn-brown.active {
+.BSDentalGrid .btn-brown:hover,
+.BSDentalGrid .btn-brown:focus,
+.BSDentalGrid .btn-brown:active,
+.BSDentalGrid .btn-brown.active {
     background-color: #896052 !important;
 }
 
-.btn-brown.dropdown-toggle {
+.BSDentalGrid .btn-brown.dropdown-toggle {
     background-color: #795548 !important;
 }
 
-.btn-brown.dropdown-toggle:hover,
-.btn-brown.dropdown-toggle:focus {
+.BSDentalGrid .btn-brown.dropdown-toggle:hover,
+.BSDentalGrid .btn-brown.dropdown-toggle:focus {
     background-color: #896052 !important;
 }
 
-.btn-outline-brown {
+.BSDentalGrid .btn-outline-brown {
     border: 2px solid #795548;
     color: #795548 !important;
     background-color: transparent;
 }
 
-.btn-outline-brown:hover,
-.btn-outline-brown:focus,
-.btn-outline-brown:active,
-.btn-outline-brown:active:focus,
-.btn-outline-brown.active {
+.BSDentalGrid .btn-outline-brown:hover,
+.BSDentalGrid .btn-outline-brown:focus,
+.BSDentalGrid .btn-outline-brown:active,
+.BSDentalGrid .btn-outline-brown:active:focus,
+.BSDentalGrid .btn-outline-brown.active {
     background-color: transparent;
     color: #795548;
     border-color: #795548;
 }
 
-.btn-grey {
+.BSDentalGrid .btn-grey {
     background-color: #616161;
 }
 
-.btn-grey:hover,
-.btn-grey:focus,
-.btn-grey:active,
-.btn-grey.active {
+.BSDentalGrid .btn-grey:hover,
+.BSDentalGrid .btn-grey:focus,
+.BSDentalGrid .btn-grey:active,
+.BSDentalGrid .btn-grey.active {
     background-color: #6e6e6e !important;
 }
 
-.btn-grey.dropdown-toggle {
+.BSDentalGrid .btn-grey.dropdown-toggle {
     background-color: #616161 !important;
 }
 
-.btn-grey.dropdown-toggle:hover,
-.btn-grey.dropdown-toggle:focus {
+.BSDentalGrid .btn-grey.dropdown-toggle:hover,
+.BSDentalGrid .btn-grey.dropdown-toggle:focus {
     background-color: #6e6e6e !important;
 }
 
-.btn-outline-grey {
+.BSDentalGrid .btn-outline-grey {
     border: 2px solid #616161;
     color: #616161 !important;
     background-color: transparent;
 }
 
-.btn-outline-grey:hover,
-.btn-outline-grey:focus,
-.btn-outline-grey:active,
-.btn-outline-grey:active:focus,
-.btn-outline-grey.active {
+.BSDentalGrid .btn-outline-grey:hover,
+.BSDentalGrid .btn-outline-grey:focus,
+.BSDentalGrid .btn-outline-grey:active,
+.BSDentalGrid .btn-outline-grey:active:focus,
+.BSDentalGrid .btn-outline-grey.active {
     background-color: transparent;
     color: #616161;
     border-color: #616161;
 }
 
-.btn-blue-grey {
+.BSDentalGrid .btn-blue-grey {
     background-color: #78909c;
 }
 
-.btn-blue-grey:hover,
-.btn-blue-grey:focus,
-.btn-blue-grey:active,
-.btn-blue-grey.active {
+.BSDentalGrid .btn-blue-grey:hover,
+.BSDentalGrid .btn-blue-grey:focus,
+.BSDentalGrid .btn-blue-grey:active,
+.BSDentalGrid .btn-blue-grey.active {
     background-color: #879ca7 !important;
 }
 
-.btn-blue-grey.dropdown-toggle {
+.BSDentalGrid .btn-blue-grey.dropdown-toggle {
     background-color: #78909c !important;
 }
 
-.btn-blue-grey.dropdown-toggle:hover,
-.btn-blue-grey.dropdown-toggle:focus {
+.BSDentalGrid .btn-blue-grey.dropdown-toggle:hover,
+.BSDentalGrid .btn-blue-grey.dropdown-toggle:focus {
     background-color: #879ca7 !important;
 }
 
-.btn-outline-blue-grey {
+.BSDentalGrid .btn-outline-blue-grey {
     border: 2px solid #78909c;
     color: #78909c !important;
     background-color: transparent;
 }
 
-.btn-outline-blue-grey:hover,
-.btn-outline-blue-grey:focus,
-.btn-outline-blue-grey:active,
-.btn-outline-blue-grey:active:focus,
-.btn-outline-blue-grey.active {
+.BSDentalGrid .btn-outline-blue-grey:hover,
+.BSDentalGrid .btn-outline-blue-grey:focus,
+.BSDentalGrid .btn-outline-blue-grey:active,
+.BSDentalGrid .btn-outline-blue-grey:active:focus,
+.BSDentalGrid .btn-outline-blue-grey.active {
     background-color: transparent;
     color: #78909c;
     border-color: #78909c;
 }
 
-.btn-white {
+.BSDentalGrid .btn-white {
     background-color: #fff;
 }
 
-.btn-white:hover,
-.btn-white:focus,
-.btn-white:active,
-.btn-white.active {
+.BSDentalGrid .btn-white:hover,
+.BSDentalGrid .btn-white:focus,
+.BSDentalGrid .btn-white:active,
+.BSDentalGrid .btn-white.active {
     background-color: white !important;
 }
 
-.btn-white.dropdown-toggle {
+.BSDentalGrid .btn-white.dropdown-toggle {
     background-color: #fff !important;
 }
 
-.btn-white.dropdown-toggle:hover,
-.btn-white.dropdown-toggle:focus {
+.BSDentalGrid .btn-white.dropdown-toggle:hover,
+.BSDentalGrid .btn-white.dropdown-toggle:focus {
     background-color: white !important;
 }
 
-.btn-outline-white {
+.BSDentalGrid .btn-outline-white {
     border: 2px solid #fff;
     color: #fff !important;
     background-color: transparent;
 }
 
-.btn-outline-white:hover,
-.btn-outline-white:focus,
-.btn-outline-white:active,
-.btn-outline-white:active:focus,
-.btn-outline-white.active {
+.BSDentalGrid .btn-outline-white:hover,
+.BSDentalGrid .btn-outline-white:focus,
+.BSDentalGrid .btn-outline-white:active,
+.BSDentalGrid .btn-outline-white:active:focus,
+.BSDentalGrid .btn-outline-white.active {
     background-color: transparent;
     color: #fff;
     border-color: #fff;
 }
 
-.btn-black {
+.BSDentalGrid .btn-black {
     background-color: #000;
 }
 
-.btn-black:hover,
-.btn-black:focus,
-.btn-black:active,
-.btn-black.active {
+.BSDentalGrid .btn-black:hover,
+.BSDentalGrid .btn-black:focus,
+.BSDentalGrid .btn-black:active,
+.BSDentalGrid .btn-black.active {
     background-color: #0d0d0d !important;
 }
 
-.btn-black.dropdown-toggle {
+.BSDentalGrid .btn-black.dropdown-toggle {
     background-color: #000 !important;
 }
 
-.btn-black.dropdown-toggle:hover,
-.btn-black.dropdown-toggle:focus {
+.BSDentalGrid .btn-black.dropdown-toggle:hover,
+.BSDentalGrid .btn-black.dropdown-toggle:focus {
     background-color: #0d0d0d !important;
 }
 
-.btn-outline-black {
+.BSDentalGrid .btn-outline-black {
     border: 2px solid #000;
     color: #000 !important;
     background-color: transparent;
 }
 
-.btn-outline-black:hover,
-.btn-outline-black:focus,
-.btn-outline-black:active,
-.btn-outline-black:active:focus,
-.btn-outline-black.active {
+.BSDentalGrid .btn-outline-black:hover,
+.BSDentalGrid .btn-outline-black:focus,
+.BSDentalGrid .btn-outline-black:active,
+.BSDentalGrid .btn-outline-black:active:focus,
+.BSDentalGrid .btn-outline-black.active {
     background-color: transparent;
     color: #000;
     border-color: #000;
 }
 
-.card {
+.BSDentalGrid .card {
     font-weight: 400;
     border-radius: .3rem;
 }
 
-.card:not([class*="card-outline-"]) {
+.BSDentalGrid .card:not([class*="card-outline-"]) {
     border: 0;
 }
 
-.card img {
+.BSDentalGrid .card img {
     border-radius: 2px 2px 0 0;
 }
 
-.card .card-body {
+.BSDentalGrid .card .card-body {
     position: relative;
 }
 
-.card .card-body h5 {
+.BSDentalGrid .card .card-body h5 {
     margin-bottom: 1rem;
     font-size: 1rem;
     font-weight: 400;
 }
 
-.card .card-body h3 {
+.BSDentalGrid .card .card-body h3 {
     margin-bottom: 1rem;
     font-weight: 400;
 }
 
-.card .card-body h4 {
+.BSDentalGrid .card .card-body h4 {
     font-weight: 400;
 }
 
-.card .card-body p {
+.BSDentalGrid .card .card-body p {
     margin-bottom: 1rem;
 }
 
-.card .card-title a {
+.BSDentalGrid .card .card-title a {
     -webkit-transition: 0.3s;
     transition: 0.3s;
 }
 
-.card .card-title a:hover {
+.BSDentalGrid .card .card-title a:hover {
     -webkit-transition: 0.3s;
     transition: 0.3s;
 }
 
-.card .card-text {
+.BSDentalGrid .card .card-text {
     font-size: 0.9rem;
     color: #747373;
     font-weight: 400;
 }
 
-.card .card-footer.links-light a {
+.BSDentalGrid .card .card-footer.links-light a {
     font-size: 15px;
     color: #757575;
 }
 
-.card .card-footer.links-light a:hover {
+.BSDentalGrid .card .card-footer.links-light a:hover {
     color: #d50000;
     -webkit-transition: 0.4s;
     transition: 0.4s;
 }
 
-.card .card-footer.links-light a .fa {
+.BSDentalGrid .card .card-footer.links-light a .fa {
     font-size: 17px;
 }
 
-.btn-outline-dark-green {
+.BSDentalGrid  .btn-outline-dark-green {
     border: 2px solid #388E3C;
     color: #388E3C !important;
 }
 
-.btn-outline-blue-grey {
+.BSDentalGrid .btn-outline-blue-grey {
     border: 2px solid #78909c;
     color: #78909c !important;
     background-color: transparent;
 }
 
-.btn-outline-red {
+.BSDentalGrid .btn-outline-red {
     border: 2px solid #D32F2F;
     color: #D32F2F !important;
     background-color: transparent;
 }
 
-.btn-outline-light-blue {
+.BSDentalGrid .btn-outline-light-blue {
     border: 2px solid #82B1FF;
     color: #82B1FF !important;
     background-color: transparent;
 }
 
-.btn-outline-light-green {
+.BSDentalGrid .btn-outline-light-green {
     border: 2px solid #8bc34a;
     color: #8bc34a!important;
     background-color: transparent;
 }
 
-.btn-outline-light-green.active,
-.btn-outline-light-green:active,
-.btn-outline-light-green:active:focus,
-.btn-outline-light-green:focus,
-.btn-outline-light-green:hover {
+.BSDentalGrid .btn-outline-light-green.active,
+.BSDentalGrid .btn-outline-light-green:active,
+.BSDentalGrid .btn-outline-light-green:active:focus,
+.BSDentalGrid .btn-outline-light-green:focus,
+.BSDentalGrid .btn-outline-light-green:hover {
     background-color: transparent;
     color: #8bc34a;
     border-color: #8bc34a;
 }
 
-.badge-pill {
+.BSDentalGrid .badge-pill {
     padding-right: 0.6em;
     padding-left: 0.6em;
     border-radius: 10rem;
 }
 
-.state-change-btns .btn.active,
-.state-change-btns .btn[data-active-state="active"],
+.BSDentalGrid .state-change-btns .btn.active,
+.BSDentalGrid .state-change-btns .btn[data-active-state="active"],
 {
     -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     -moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
-.state-change-btns .btn[data-active-state="active"] {
+.BSDentalGrid .state-change-btns .btn[data-active-state="active"] {
     background: #b6b6bc7d;
     font-weight: bold;
 }
 
-.state-change-btns .btn[data-active-state="inactive"] {}
+.BSDentalGrid .state-change-btns .btn[data-active-state="inactive"] {}
 
-.state-change-btns .btn:hover {
+.BSDentalGrid .state-change-btns .btn:hover,
+.BSDentalGrid .treat-types-list .btn:hover {
     -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     -moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
+{
 
-.badge-pill.lighten-3.blue {
-    background-color: rgb(19, 166, 248);
 }
 
-.tooth-grid .card-body {
-    height: auto;
+.BSDentalGrid .badge-pill.lighten-3.blue {
+    background-color: rgb(19, 166, 248);
 }
 
 
