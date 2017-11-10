@@ -79,6 +79,10 @@ textarea {
     /* border: 1px solid grey; */
 }
 
+.BSDentalGrid .tooth-grid .card-body {
+    height: auto;
+}
+
 .BSDentalGrid .tooth-grid .card,
 .BSDentalGrid .tooth-grid .card-body {
     flex-grow: 1;
@@ -341,6 +345,15 @@ textarea {
     width: 100%;
     max-width: 50px;
     padding: .1rem;
+}
+
+.BSDentalGrid .state-change-btns {
+    margin-bottom: 1rem;
+}
+
+.BSDentalGrid .state-change-btns .badge {
+    margin-top: .5rem;
+    margin-left: .5rem;
 }
 
 .BSDentalGrid .state-change-btns .badge i {
