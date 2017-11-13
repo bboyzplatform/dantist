@@ -359,3 +359,26 @@ textarea {
 .BSDentalGrid .state-change-btns .badge i {
     font-size: 1rem;
 }
+
+.BSDentalGrid .history-list .list-group-item-action .redact-btns {
+    display: none;
+    -webkit-transition: .5s;
+    -moz-transition: .5s;
+    transition: .5s;
+}
+
+.BSDentalGrid .history-list .list-group-item-action.active {
+    background-color: #fff;
+    color: black;
+    -webkit-transition: .5s;
+    -moz-transition: .5s;
+    transition: .5s;
+}
+
+.BSDentalGrid .history-list .list-group-item-action.active .redact-btns {
+    display: block;
+}
+
+.BSDentalGrid .history-list .nav-link.active {
+    border-bottom: 2px solid #13a6f8;
+}

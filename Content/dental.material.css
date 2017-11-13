@@ -1385,5 +1385,11 @@
     background-color: rgb(19, 166, 248);
 }
 
+.BSDentalGrid .md-form {
+    position: relative;
+}
 
-      
+.BSDentalGrid .md-form, .md-form .btn {
+    margin-bottom: 1.5rem;
+}
+
