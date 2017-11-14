@@ -189,7 +189,7 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
             let counter = 1;
             return lineTemplate;
         },
-        /* focusTooth: function () {
+        focusTooth: function () {
             var template = $('<div class="card">\
                                     <div class="card-block p-2">\
                                     <div class="badge badge-pill light-blue lighten-2">Фокус на зуб:</div>\
@@ -201,7 +201,7 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                                     </div>\
                                 </div>');
             return template;
-        }, */
+        },
         actionList: function (proceduresData) {
             var template = $('<div></div>');
             var $stateChangeBtnsTemplate = $('<div class="state-change-btns card">\
@@ -459,8 +459,8 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
         this.components.modalCont(this, this.options.btid);//this = widget
         this.$control.find('.action-list').append(this.components.actionList(proceduresData));
         this.$control.find('.anamnesis').append(this.components.anamnesis(dentalData));
-        this.$control.find('.history-list').append(this.components.historyList(this));    
-        
+        this.$control.find('.history-list').append(this.components.historyList(this));
+        this.$control.find('.focus-tooth').append(this.components.focusTooth())    
     },
 
     event: function () {
@@ -491,7 +491,7 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
         
 
         
- var modalCall = function (e, callType, fromElement, data){
+        var modalCall = function (e, callType, fromElement, data){
             console.log('showed');
             switch (callType) {
                 case 'new-comment':
@@ -571,6 +571,7 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
             }
         });
 
+        //МедКарта -> заполняется данными профиля 
         this.$control.on('initialUpdatedData', function (e, args) {
             $.each(args["customer"], function (key, value) {
                 if (key == 'fullname') {
@@ -595,6 +596,7 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                 }
             });
         });
+
         this.$control.on('initialUpdatedProceduresData', function(e, args){
             var procedures = args;
             console.table(procedures);
@@ -642,9 +644,8 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                 oldStateData: $(this).data()
             }, function (e, args) {
                 $(this).data('old-state', args);
-                //$('.focus-tooth .card-content', this).trigger('updateContent', args);
+                $('.focus-tooth .card-content', this).trigger('updateContent', args);
                 $('.state-change-btns', this).trigger('updateContent', args);
-               
                 $('.history-list .card-text', this).trigger('updateContent', args);
             });
 
@@ -653,8 +654,10 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                 var $toggledButton = $('.state-change-btns button[data-state="' + args.data.state + '"]', this.$control);
                 deactivate($(this).find('button'));
                 toggleState($toggledButton)
-        })
-        /* $('.focus-tooth .card-content', this.$control).on('updateContent',
+        });
+
+
+        $('.focus-tooth .card-content', this.$control).on('updateContent',
             function (e, args) {
                 var stateContent = $('<ul></ul>');
                 stateContent.append('<li class="preview-with-controls">\
@@ -666,8 +669,17 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                     <img data-marker-position="right" src ="/Content/svg/marker.svg" />\
                     <img data-marker-position="left" src ="/Content/svg/marker.svg" />\
                     <img data-marker-position="bottom" src ="/Content/svg/marker.svg" />\
-                    </span></li > ');
-                for (var key in args.data) {
+                    </span></li >');
+                canalList = $('<div class="alert alert-info alert-coupon">\
+                    <h4> Special Offer from JES and Ice - O - Matic</h4>\
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos a similique dicta modi minus nostrum magnam provident reprehenderit in quae.</p>\
+                </div >');
+                stateContent.on('click', function(e){
+                    toggleState(e.target);
+                });
+               /* data atributes output */
+                stateContent.append(canalList);
+                    for (var key in args.data) {
                     if (args.data.hasOwnProperty(key)) {
                         $(stateContent).append('<li><b>' + key + '</b>: ' + args.data[key] + '</li>');
                     } else {
@@ -675,7 +687,7 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                     }
                 }
                 $(this).html(stateContent);
-            }); */
+            });
 
         $('.history-list', this.$control).on('updateContent',
             function (e, args) {
@@ -705,8 +717,6 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                     $focusHistTab.children('.card-title').text('Зуб №'+args.data.position);
                     $focusHistTab.find('.content').html($histList);
                     $mainHistTab.find('.focus-hist-link').removeClass('disabled').toggle('active');
-
-
                 }
             }
         );
