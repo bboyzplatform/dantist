@@ -661,7 +661,7 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
             function (e, args) {
                 var stateContent = $('<ul></ul>');
                 stateContent.append('<li class="preview-with-controls">\
-                    <img class="focus-panel-left-img" src="/Content/Images/above-tooth.png">\
+                    <img class="focus-panel-left-img" src="/Content/svg/app-icon-grid.png">\
                     <img class="focus-panel-right-img" src="/Content/Images/side-tooth.png">\
                     <span class ="overlay-marker uk-transform-center">\
                     <img data-marker-position="top" src ="/Content/svg/marker.svg" />\
@@ -669,17 +669,24 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                     <img data-marker-position="right" src ="/Content/svg/marker.svg" />\
                     <img data-marker-position="left" src ="/Content/svg/marker.svg" />\
                     <img data-marker-position="bottom" src ="/Content/svg/marker.svg" />\
-                    </span></li >');
-                canalList = $('<div class="alert alert-info alert-coupon">\
-                    <h4> Special Offer from JES and Ice - O - Matic</h4>\
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos a similique dicta modi minus nostrum magnam provident reprehenderit in quae.</p>\
-                </div >');
+                    </span></li>');
+                var canalList = $('<div class="alert alert-info"></div>');
+                $('[overlay-marker]', stateContent).each(function (index, element) {
+                    // element == this
+                    dependedPanelList = $('<div data-position="'+$(element).data('position')+'">'+[index]+'Info block</div>').appendTo(canalList);
+                });
+                stateContent.append(canalList);
+
                 stateContent.on('click', function(e){
                     toggleState(e.target);
+                    let currentPosition = $(e.target).data('position')|| 'null';
+                    //Сменить стейт canalList ..-> пробросить data-props
                 });
+
                /* data atributes output */
-                stateContent.append(canalList);
-                    for (var key in args.data) {
+                
+                
+                for (var key in args.data) {
                     if (args.data.hasOwnProperty(key)) {
                         $(stateContent).append('<li><b>' + key + '</b>: ' + args.data[key] + '</li>');
                     } else {
