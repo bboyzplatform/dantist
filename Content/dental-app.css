@@ -185,7 +185,8 @@
         max-width: 50px;
     }
 
-    .BSDentalGrid .dental-card-table thead td {
+    .BSDentalGrid .dental-card-table thead td,
+    .BSDentalGrid .dental-card-table tbody tr.inline-body-divider td {
         text-align: center;
         background: white;
         border: 2px solid black;

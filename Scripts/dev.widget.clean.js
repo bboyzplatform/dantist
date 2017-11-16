@@ -163,9 +163,9 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                                     </div>\
                                     <div class="color-section col-xs-12 col-sm-12 col-md-12 col-lg-6" data-part-value="2">\
                                     </div>\
-                                    <div class="color-section col-xs-12 col-sm-12 col-md-12 col-lg-6" data-part-value="3">\
-                                    </div>\
                                     <div class="color-section reverse col-xs-12 col-sm-12 col-md-12 col-lg-6" data-part-value="4">\
+                                    </div>\
+                                    <div class="color-section col-xs-12 col-sm-12 col-md-12 col-lg-6" data-part-value="3">\
                                     </div>\
                                 </div>\
                                 </div>\
@@ -181,10 +181,17 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                         <div class="tooth-double-item" \
                             data-position="' + posValue + '"\
                             data-active-state="inactive">\
-                            <img src="Content/svg/oldtooths/t-' + posValue + '.svg"></img>\
+                            <svg id="circle" height="70px" width="40px" \
+                            xmlns="http://www.w3.org/2000/svg"  \
+                            xmlns: xlink="http://www.w3.org/1999/xlink">\
+                                    <image x="-15" y="0" height="70" width="60" xlink: href="Content/svg/oldtooths/t-' + posValue + '.svg" />\
+                            </svg>\
                             <span class="position-text badge badge-pill lighten-3 blue text-center">' + posValue + "</span>\
                         </div>");
-                         /*  <img src="Content/svg/t-'+posValue+'.svg"></img>\ */
+
+                         /*  <img src="Content/svg/t-'+posValue+'.svg"></img>\ <img src="Content/svg/oldtooths/t-' + posValue + '.svg"></img>\
+                            <span class="position-text badge badge-pill lighten-3 blue text-center">' + posValue + "</span>\ 
+                            */
                     }   
             return lineTemplate;
         },
@@ -225,7 +232,7 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                                                     </div>\
                                                     <div class="treat-items list-group card-content"><span class="text-center pb-2">Ни один элемент не выбран</span></div>\
                                                 </div>\
-                                                <button type="submit" class="btn btn-outline-info col-md-12 mt-2"> Сохранить изменения</button>');
+                                                <button type="submit" class="btn btn-outline-info col-md-12 mt-2"> Добавить</button>');
             $(template)
                 .append($stateChangeBtnsTemplate)
                 .append($treatTypesListTemplate);
@@ -233,113 +240,125 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
         },
         anamnesis: function (data) {
             var template = $('<div class="card sh4 p-4" data-dental-card><span class="heading"></span>\
-            <div class="user-inform custom-controls-stacked" data-user-inform></div>\
-            <div class="item-table"></div>\
-            </div>');
-            $tableGrid = $('<div class="row"></div>')
+                    <div class="user-inform custom-controls-stacked invisible" data-user-inform></div>\
+                    <div class="item-table"></div>\
+                </div>');
+            $tableGrid = $('<div class="row"></div>');
+             
             var $heading = $('<h4 class="card-title"><strong>Медицинская карта стоматологического больного</h4>');
+            /*  var $heading = $('<h4 class="card-title invisible"><strong>Медицинская карта стоматологического больного</h4>');
             var $userInfoCardBlockTemplate = $('<ul class="list-inline d-flex flex-wrap flex-column">\
                     <li class="list-inline-item" data-prop="fullname"><b>ФИО: </b><span></span></li>\
                     <li class="list-inline-item" data-prop="gender"><b>Пол: </b><span></span></li>\
                     <li class="list-inline-item" data-prop="birthday"><b>Дата рождения: </b><span></span></li>\
                     <li class="list-inline-item" data-prop="phone"><b>Телефон: </b><span></span></li>\
                     <li class="list-inline-item" data-prop="mail"><b>E-mail: </b><span></span></li>\
-                </ul>');
-            var $legendTemplate = $('<div class="dental-legend-container">\
-                                        <h4>Легенда:</h4>\
-                                            <div class="row">\
-                                                <div class="col-md-12 d-flex flex-row">\
-                                                <p class="dental-legend-item" >\
-                                                    <span data-state="heal" data-legendabbr="З" data-color="light-green">З</span> - Здоров</p>\
-                                                <p class="dental-legend-item" >\
-                                                    <span data-state="healed" data-legendabbr="В" data-color="dark-green">В</span> - Вылечен</p>\
-                                                <p class="dental-legend-item" >\
-                                                    <span data-state="removed" data-legendabbr="У" data-color="light-grey">У</span> - Удален</p>\
-                                                <p class="dental-legend-item" >\
-                                                    <span data-state="disease" data-legendabbr="ТЛ" data-color="red">ТЛ</span> - Требует лечения</p>\
-                                                <p class="dental-legend-item">\
-                                                    <span data-state="implant" data-legendabbr="И" data-color="light-blue">И</span> - Имплант</p>\
-                                                </div>\
-                                            </div>\
-                                        </div>');
+                 </ul>');*/
+                var $legendTemplate = $('<div class="dental-legend-container">\
+                <h4>Легенда:</h4>\
+                    <div class="row">\
+                        <div class="col-md-12 d-flex flex-row">\
+                        <p class="dental-legend-item" >\
+                            <span data-state="heal" data-legendabbr="З" data-color="white">З</span> - Здоров</p>\
+                        <p class="dental-legend-item" >\
+                            <span data-state="healed" data-legendabbr="В" data-color="dark-green">В</span> - Вылечен</p>\
+                        <p class="dental-legend-item" >\
+                            <span data-state="removed" data-legendabbr="У" data-color="light-grey">У</span> - Удален</p>\
+                        <p class="dental-legend-item" >\
+                            <span data-state="disease" data-legendabbr="ТЛ" data-color="red">ТЛ</span> - Требует лечения</p>\
+                        <p class="dental-legend-item">\
+                            <span data-state="implant" data-legendabbr="И" data-color="light-blue">И</span> - Имплант</p>\
+                        </div>\
+                    </div>\
+                </div>');
 
-            var $dentalTable = $('<table></table>').addClass('dental-card-table table table-striped table-bordered table-hover table-responsive');
-            $dentalTable.data('table-data', data);
-            var $thead = $('<thead></thead>');
-            var $tbody = $('<tbody></tbody>');
-            $tr = $('<tr>');
-            var tRow = '<tr>';
+                var $dentalTable = $('<table></table>').addClass('dental-card-table table table-striped table-bordered table-hover table-responsive');
+                $dentalTable.data('table-data', data);
+                //var $thead = $('<thead"></thead>'); //Шапка таблицы находиться в середине таблицы
+                var $tbody = $('<tbody></tbody>');
+                //$tr = $('<tr>');
+                var tRow = '<tr class="inline-body-divider">';
 
-            for (var i = 8; i > 0; i--) {
-                var cell = '<td data-row-pos="' + i + '">' + i + '</td>';
-                tRow += cell;
-            }
-
-            for (var i = 1; i <= 8; i++) {
-                var cell = '<td data-row-pos="' + i + '">' + i + '</td>';
-                tRow += cell;
-            }
-
-            tRow += '</tr>';
-            $thead.append(tRow);
-
-            for (var index = 0; index < 1; index++) {
+                for (var index = 0; index < 1; index++) {
                 //var tr = '<tr data-position-group='+(index+1)+'>';
-                var tr = '<tr>'
+                var tr = "<tr>";
+                    for (var i = 8; i > 0; i--) {
+                        var cell = '<td data-group="' + (index + 1) + '" data-pos="' + i + '"><span class="abbr-text">' + i + "</span></td>";
+                        tr += cell;
+                    }
+                    for (var i = 1; i <= 8; i++) {
+                        var cell = "<td data-group=" + (index + 1) * 2 + ' data-pos="' + i + '"><span class="abbr-text">' + i + "</span></td>";
+                        tr += cell;
+                    }
+                    tr += "</tr>";
+                    $tbody.append(tr);
+                }
+                
+                /* Шапку таблицы вставляем в середину таблицы */
                 for (var i = 8; i > 0; i--) {
-                    var cell = '<td data-group="' + (index + 1) + '" data-pos="' + i + '"><span class="abbr-text">' + i + '</span></td>';
-                    tr += (cell);
+                    var cell = '<td data-row-pos="' + i + '">' + i + "</td>";
+                    tRow += cell;
                 }
+
                 for (var i = 1; i <= 8; i++) {
-                    var cell = '<td data-group=' + (index + 1) * 2 + ' data-pos="' + i + '"><span class="abbr-text">' + i + '</span></td>';
-                    tr += (cell);
+                    var cell = '<td data-row-pos="' + i + '">' + i + "</td>";
+                    tRow += cell;
                 }
-                tr += '</tr>';
-                $tbody.append(tr);
-            }
-            
-            for (var index = 3; index < 4; index++) {
-                var tr = '<tr>'
-                for (var i = 8; i > 0; i--) {
-                    var cell = '<td data-group="' + (index) + '" data-pos="' + i + '"><span class="abbr-text">' + i + '</span></td>';
-                    tr += (cell);
+
+                tRow += "</tr>";
+                $tbody.append(tRow);
+                //$thead.append(tRow);
+
+                /* 3 и 4 ряды зубов */
+                for (var index = 4; index > 3; index--) {
+                    var tr = "<tr>";
+                    for (var i = 8; i > 0; i--) {
+                        var cell = '<td data-group="' + index + '" data-pos="' + i + '"><span class="abbr-text">' + i + "</span></td>";
+                        tr += cell;
+                    }
+                    for (var i = 1; i <= 8; i++) {
+                        var cell = "<td data-group=" + (index-1) + ' data-pos="' + i + '"><span class="abbr-text">' + i + "</span></td>";
+                        tr += cell;
+                    }
+                    tr += "</tr>";
+                    $tbody.append(tr);
                 }
-                for (var i = 1; i <= 8; i++) {
-                    var cell = '<td data-group=' + (index + 1) + ' data-pos="' + i + '"><span class="abbr-text">' + i + '</span></td>';
-                    tr += (cell);
-                }
-                tr += '</tr>';
-                $tbody.append(tr);
-            }
-            
-            $dentalTable.append($thead);
-            $dentalTable.append($tbody);
-            $tableLegend = $('<div></div>').addClass('card').append($legendTemplate);
 
-            var $itemsList = $('<ul class="list-group d-flex" data-dental-card></ul>');
-            $('.heading', template).html($heading);
-            
-            var _getPos = function (elem) { return $(elem).data('position'); }
+                //$dentalTable.append($thead);
+                $dentalTable.append($tbody);
+                $tableLegend = $("<div></div>")
+                .addClass("card")
+                .append($legendTemplate);
 
-            template.find('.user-inform').html($userInfoCardBlockTemplate)
-            template.find('.item-table').html($itemsList);
-            template.append($tableGrid)
-            template.append($dentalTable);
-            template.append($tableLegend);
+                var $itemsList = $('<ul class="list-group d-flex" data-dental-card></ul>');
+                $(".heading", template).html($heading);
 
-            return template;
-        },
+                var _getPos = function(elem) {
+                return $(elem).data("position");
+                };
+
+                //template.find(".user-inform").html($userInfoCardBlockTemplate);
+                
+                template
+                .find(".item-table")
+                .html($itemsList);
+                template.append($tableGrid);
+                template.append($dentalTable);
+                template.append($tableLegend);
+
+                return template;
+            },
         historyList: function(widget){
             var template = $('<div class="card"></div>');
             var $navPanel = $('<nav class="nav nav-tabs mb-3 nav-fill" role="tablist">\
-                <a class="nav-item nav-link active main-hist-link" data-toggle="tab" href="#'+widget.id+'-main-hist-tab" role="tab">История изменений</a>\
-                <a class="nav-item nav-link focus-hist-link" data-toggle="tab" href="#'+widget.id+'-focus-hist-tab" role="tab"  >Фокус на зуб</a>\
+                <a class="nav-item nav-link active main-hist-link" data-toggle="tab" href="#'+widget.id+'-main-hist-tab" role="tab">Процесс Лечения:</a>\
+                <a class="nav-item nav-link focus-hist-link" data-toggle="tab" href="#'+widget.id+'-focus-hist-tab" role="tab">История изменений</a>\
                 </nav>');
             var $histTabsPanel = $('<div class="tab-content" id="'+widget.id+'-hist-tabs"></div>');
             var $mainHistTab = $('<div class="main-hist-tab tab-pane fade show active" id="' + widget.id +'-main-hist-tab">\
-                                    <h4 class= "card-title text-center"> История изменений</h4 >\
+                                    <h4 class= "card-title text-center"> Зуб №</h4 >\
                                     <div class="card-body">\
-                                        <div class="card-text content">Нет записей...</div>\
+                                        <div class="card-text content">Зуб не выбран...</div>\
                                     </div>\
                                      <button type="button" class="btn btn-outline-primary hidden" data-toggle="modal" data-target="#'+ widget.$modal[0].id +'" data-call-type="new-comment">Новый комментарий</button>\
                                 </div>');
@@ -451,7 +470,7 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
             .find('.tooth-grid').append(this.components.toothGrid());
         this.$control.find('.color-section')
             .each(function (ind, elem) {
-                let containerNumber = ind + 1;
+                let containerNumber = $(elem).data('partValue');
                 $(elem).append(that.components.toothGridItem(ind, containerNumber, dentalData));
             });
         //this.$control.find('.focus-tooth').append(this.components.focusTooth());
@@ -459,7 +478,7 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
         this.$control.find('.action-list').append(this.components.actionList(proceduresData));
         this.$control.find('.anamnesis').append(this.components.anamnesis(dentalData));
         this.$control.find('.history-list').append(this.components.historyList(this));
-        this.$control.find('.focus-tooth').append(this.components.focusTooth())    
+        //this.$control.find('.focus-tooth').append(this.components.focusTooth())    
     },
 
     event: function () {
@@ -486,8 +505,6 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                
             modalCall(e, callType, button, data);
             })
-
-        
 
         
         var modalCall = function (e, callType, fromElement, data){
