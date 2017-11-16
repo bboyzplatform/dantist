@@ -163,9 +163,9 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                                     </div>\
                                     <div class="color-section col-xs-12 col-sm-12 col-md-12 col-lg-6" data-part-value="2">\
                                     </div>\
-                                    <div class="color-section reverse col-xs-12 col-sm-12 col-md-12 col-lg-6" data-part-value="4">\
-                                    </div>\
                                     <div class="color-section col-xs-12 col-sm-12 col-md-12 col-lg-6" data-part-value="3">\
+                                    </div>\
+                                    <div class="color-section reverse col-xs-12 col-sm-12 col-md-12 col-lg-6" data-part-value="4">\
                                     </div>\
                                 </div>\
                                 </div>\
@@ -181,12 +181,11 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                         <div class="tooth-double-item" \
                             data-position="' + posValue + '"\
                             data-active-state="inactive">\
-                            <img src="Content/svg/tooth.svg"></img>\
-                            <span class="position-text badge badge-pill lighten-3 blue text-center">' + posValue + '</span>\
-                        </div>');
+                            <img src="Content/svg/oldtooths/t-' + posValue + '.svg"></img>\
+                            <span class="position-text badge badge-pill lighten-3 blue text-center">' + posValue + "</span>\
+                        </div>");
                          /*  <img src="Content/svg/t-'+posValue+'.svg"></img>\ */
                     }   
-            let counter = 1;
             return lineTemplate;
         },
         focusTooth: function () {
