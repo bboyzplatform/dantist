@@ -179,7 +179,7 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                             <svg id="circle" height="70px" width="40px" \
                             xmlns="http://www.w3.org/2000/svg"  \
                             xmlns: xlink="http://www.w3.org/1999/xlink">\
-                                    <image x="-15" y="-10" height="70" width="60" xlink: href="Content/svg/oldtooths/t-' + posValue + '.svg" />\
+                                    <image x="-15" y="0" height="70" width="60" xlink: href="Content/svg/oldtooths/t-' + posValue + '.svg" />\
                             </svg>\
                             <span class="position-text badge badge-pill lighten-3 blue text-center">' + posValue + "</span>\
                         </div>");
