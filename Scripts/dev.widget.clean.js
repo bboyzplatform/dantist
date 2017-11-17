@@ -254,32 +254,37 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                     <li class="list-inline-item" data-prop="phone"><b>Телефон: </b><span></span></li>\
                     <li class="list-inline-item" data-prop="mail"><b>E-mail: </b><span></span></li>\
                  </ul>');*/
-                var $legendTemplate = $('<div id="card dental-legend-container" role="tablist">\
-                    <div class="card-header" role="tab">\
-                        <h4><a data-togglke="collapse" href="#collapse-legend-container"> Легенда:</a></h4>\
-                    </div>\    
+                var $legendTemplate = $('<div id="dental-legend-container" role="tablist" data-children=".legend-item">\
+                <div class="card legend-item">\
+                <div class="card-header" role="tab">\
+                        <h4><a data-toggle="collapse" href="#collapse-legend-container" data-parent="#dental-legend-container"> Легенда:</a></h4>\
+                    </div>\
+                    <div id="collapse-legend-container" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">\
                     <div class="row">\
-                        <div class="col-md-12 d-flex flex-row">\
+                        <div class="col-md-12 d-flex flex-row justify-content-around">\
+                        <div  class="d-flex flex-column">\
                         <p class="dental-legend-item" >\
                             <span data-state="heal" data-legendabbr=" " data-color="white"> </span> - Здоров</p>\
                         <p class="dental-legend-item" >\
-                            <span data-state="O" data-legendabbr="О" data-color="light-grey">О</span> - Отсутствующий зуб</p>\
+                            <span data-state="O" data-legendabbr="О" data-color="light-gray">О</span> - Отсутствующий зуб</p>\
                         <p class="dental-legend-item">\
                             <span data-state="disease" data-legendabbr="К" data-color="red">Pt</span> - кариес</p>\
                         <p class="dental-legend-item">\
                             <span data-state="disease" data-legendabbr="Pt" data-color="red">Pt</span> - периодонтит</p>\
                         <p class="dental-legend-item">\
-                            <span data-state="plomb" data-legendabbr="П" data-color="brown">П</span> - Пломбирован</p>\
+                            <span data-state="plomb" data-legendabbr="П" data-color="lighter-blue">П</span> - Пломбирован</p>\
                         <p class="dental-legend-item">\
                             <span data-state="disease" data-legendabbr="A" data-color="red">A</span> - Парадантоз</p>\
                         <p class="dental-legend-item">\
-                            <span data-state="koronka" data-legendabbr="К" data-color="red">K</span> - Коронка</p>\
+                            <span data-state="koronka" data-legendabbr="К" data-color="lighter-blue">K</span> - Коронка</p>\
                         <p class="dental-legend-item">\
                             <span data-state="implant" data-legendabbr="И" data-color="light-blue">И</span> - Имплант</p>\
                         <p class="dental-legend-item">\
                             <span data-state="implant" data-legendabbr="Им" data-color="light-blue">Им</span> - Искусственный зуб</p>\
+                        </div>\
+                        <div  class="d-flex flex-column">\
                         <p class="dental-legend-item">\
-                            <span data-state="shtift" data-legendabbr="Ш" data-color="yellow">A</span> - Штифт</p>\
+                            <span data-state="shtift" data-legendabbr="Ш" data-color="lighter-blue">A</span> - Штифт</p>\
                         <p class="dental-legend-item">\
                             <span data-state="disease" data-legendabbr="Г" data-color="red">Г</span> - Гранулема</p>\
                         <p class="dental-legend-item">\
@@ -296,6 +301,8 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                             <span data-state="disease" data-legendabbr="Кл" data-color="red">Кл</span> - Клиновидный дефект</p> \
                         </div>\
                     </div>\
+                </div>\
+                </div>\
                 </div>');
 
                 var $dentalTable = $('<table></table>').addClass('dental-card-table table table-striped table-bordered table-hover table-responsive');
