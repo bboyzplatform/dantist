@@ -120,15 +120,17 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
     constructor: function (options) {
         this.className="BSDentalGrid";
         BS_BT_DentalGrid.$super.call(this, options); //Приватная переменная хранящая путь до сервера, предоставляющего информацию для модуля
-        this.dataUrl='api/getToothMap';
-        this.proceduresUrl='api/getProcedures';
+        this.dataUrl='/api/getToothMap';
+        this.proceduresUrl='/api/getProcedures';
+        this.doctorDataUrl = '/api/getDoctorData';
         console.log(options);
     }
     , components: {
         layoutGrid: function () {
             var template=$('<div class="row">\
                 <div class="col-md-12 col-lg-9 col-sm-12 ">\
-                    <div class="tooth-grid"></div>\
+                <h4 class="doctor-name">Врач:<span class="doctor-name_fullname"></span></h4>\
+                <div class="tooth-grid"></div>\
                     <hr class="divider"/>\
                     <div class="col-md-12 col-sm-12 anamnesis">\
                     </div>\
@@ -440,16 +442,36 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
         }
         );
         return data;
-    }
-    , getProcedures: function(proceduresUrl) {
+    },
+    getDoctorData: function(doctorDataUrl){
+        var that = this;
+        this.doctorData = '';
+        $.ajax({
+            type: "get",
+            url: doctorDataUrl,
+            data: JSON.stringify({
+                "btid": that.id,
+                "docId": that.docId
+            }),
+            contentType: 'application/json',
+            dataType: "json", 
+            success: function (response) {
+                that.doctorData = response;
+                that.$control.trigger('initialUpdateDoctorData', response);
+            }
+        });
+        return this.doctorData;
+    },
+    getProcedures: function(proceduresUrl) {
         var $this=this;
         var data='Нет данных';
         $.ajax( {
             type: "get", url: proceduresUrl, data: JSON.stringify( {
                 "btid": this.id, "docId": this.docId
             }
-            ), contentType: 'application/json', dataType: "json", success: function (response) {
-                $this.proceduresData=response;
+            ), contentType: 'application/json', dataType: "json", 
+            success: function (response) {
+                $this.proceduresData = response;
                 $this.$control.trigger('initialUpdatedProceduresData', response);
             }
         }
@@ -460,6 +482,7 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
         // Получим data с сервера
         this.getToothData(this.dataUrl);
         this.getProcedures(this.proceduresUrl);
+        this.getDoctorData(this.doctorDataUrl);
         this.render(this.components, this.dentalData, this.proceduresData); //И привяжем DOM события к нужным элементам модуля
         this.event();
         return this;
@@ -485,7 +508,7 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
         }
         ;
         /* State - ui а не состояние модели */
-        var toggleState=function (element) {
+        var toggleState = function (element) {
             $(element).data('active-state', ($(element).data('active-state')=='active' ? 'inactive': 'active'));
             $(element).attr('data-active-state', ($(element).attr('data-active-state')=='active' ? 'inactive': 'active'));
         }
@@ -532,8 +555,8 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                 data
             }
             );
-        }
-        );
+        });
+
         this.$control.find('.state-change-btns button').on('click', function (e, args) {
             //var state = $(e.currentTarget).data('activity-state');
             deactivate('.state-change-btns button');
@@ -593,6 +616,18 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
             );
         }
         );
+        
+        this.$control.on('initialUpdateDoctorData', function(e,args){
+            console.log('doctorGeted data');
+            var fullName = args.doctor['full_name'];
+            if(fullName){
+                $(e.currentTarget).find('.doctor-name_fullname').text(fullName);
+            }else{
+                console.log(fullName)
+            }
+            
+        });
+
         this.$control.on('initialUpdatedData', function (e, args) {
             var dataMap=args.customer.tooth_map;
             var $updateCollection=$('.tooth-double-item', this.$control);
