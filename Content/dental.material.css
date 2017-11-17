@@ -1359,11 +1359,9 @@
 }
 
 .BSDentalGrid .state-change-btns .btn[data-active-state="active"] {
-    background: #b6b6bc7d;
+    background: #b6b6bcbf;
     font-weight: bold;
 }
-
-.BSDentalGrid .state-change-btns .btn[data-active-state="inactive"] {}
 
 .BSDentalGrid .state-change-btns .btn:hover,
 .BSDentalGrid .treat-types-list .btn:hover {
