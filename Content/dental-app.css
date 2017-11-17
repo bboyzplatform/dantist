@@ -1,384 +1,468 @@
-/* tooth app styles */
+    /* tooth app styles */
 
-[role=button],
-a,
-area,
-button,
-input:not([type=range]),
-label,
-select,
-summary,
-textarea {
-    -ms-touch-action: manipulation;
-    touch-action: manipulation;
-}
+    [role=button],
+    a,
+    area,
+    button,
+    input:not([type=range]),
+    label,
+    select,
+    summary,
+    textarea {
+        -ms-touch-action: manipulation;
+        touch-action: manipulation;
+    }
 
-.BSDentalGrid .card-body {
-    height: initial;
-}
+    .BSDentalGrid .card-body {
+        height: initial;
+    }
 
-.BSDentalGrid [type=checkbox]:checked+label:before {
-    top: -4px;
-    left: -3px;
-    width: 12px;
-    height: 22px;
-    border-style: solid;
-    border-width: 2px;
-    border-color: transparent #4285F4 #4285F4 transparent;
-    -webkit-transform: rotate(40deg);
-    -ms-transform: rotate(40deg);
-    transform: rotate(40deg);
-    -webkit-backface-visibility: hidden;
-    -webkit-transform-origin: 100% 100%;
-    -ms-transform-origin: 100% 100%;
-    transform-origin: 100% 100%;
-}
+    .BSDentalGrid [type=checkbox]:checked+label:before {
+        top: -4px;
+        left: -3px;
+        width: 12px;
+        height: 22px;
+        border-style: solid;
+        border-width: 2px;
+        border-color: transparent #4285F4 #4285F4 transparent;
+        -webkit-transform: rotate(40deg);
+        -ms-transform: rotate(40deg);
+        transform: rotate(40deg);
+        -webkit-backface-visibility: hidden;
+        -webkit-transform-origin: 100% 100%;
+        -ms-transform-origin: 100% 100%;
+        transform-origin: 100% 100%;
+    }
 
-.BSDentalGrid [type=checkbox]+label:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 17px;
-    height: 17px;
-    z-index: 0;
-    border: 1.5px solid #8a8a8a;
-    border-radius: 1px;
-    margin-top: 11px;
-    margin-left: 11px;
-    -webkit-transition: .2s;
-    transition: .2s;
-}
+    .BSDentalGrid [type=checkbox]+label:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 17px;
+        height: 17px;
+        z-index: 0;
+        border: 1.5px solid #8a8a8a;
+        border-radius: 1px;
+        margin-top: 11px;
+        margin-left: 11px;
+        -webkit-transition: .2s;
+        transition: .2s;
+    }
 
-.BSDentalGrid [type=radio],
-[type=checkbox] {
-    position: absolute;
-    left: -9999px;
-    visibility: hidden;
-}
+    .BSDentalGrid [type=radio],
+    [type=checkbox] {
+        position: absolute;
+        left: -9999px;
+        visibility: hidden;
+    }
 
-.BSDentalGrid [type=radio]+label,
-.BSDentalGrid [type=checkbox]+label {
-    position: relative;
-    padding-left: 35px;
-    cursor: pointer;
-    display: inline-block;
-    height: 25px;
-    line-height: 25px;
-    font-size: 1rem;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -khtml-user-select: none;
-    -ms-user-select: none;
-}
+    .BSDentalGrid [type=radio]+label,
+    .BSDentalGrid [type=checkbox]+label {
+        position: relative;
+        padding-left: 35px;
+        cursor: pointer;
+        display: inline-block;
+        height: 25px;
+        line-height: 25px;
+        font-size: 1rem;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -khtml-user-select: none;
+        -ms-user-select: none;
+    }
 
-.BSDentalGrid .color-section {
-    min-height: 180px;
-    padding-right: 0;
-    padding-left: 0;
-    /* border: 1px solid grey; */
-}
+    .BSDentalGrid .color-section {
+        min-height: 180px;
+        padding-right: 0;
+        padding-left: 0;
+        /* border: 1px solid grey; */
+    }
 
-.BSDentalGrid .tooth-grid .card-body {
-    height: auto;
-}
+    .BSDentalGrid .tooth-grid .card-body {
+        height: auto;
+    }
 
-.BSDentalGrid .tooth-grid .card,
-.BSDentalGrid .tooth-grid .card-body {
-    flex-grow: 1;
-}
+    .BSDentalGrid .tooth-grid .card,
+    .BSDentalGrid .tooth-grid .card-body {
+        flex-grow: 1;
+    }
 
-.BSDentalGrid .tooth-line {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
+    .BSDentalGrid .tooth-line {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
 
-.BSDentalGrid .tooth-double-item {
-    display: flex;
-    flex-direction: column;
-    padding: 2px;
-    margin: 5px;
-    transform: scale(1);
-    transition: .5s;
-}
+    .BSDentalGrid .tooth-double-item {
+        display: flex;
+        flex-direction: column;
+        padding: 2px;
+        margin: 5px;
+        transform: scale(1);
+        transition: .5s;
+    }
 
-.BSDentalGrid .tooth-double-item.active img {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    border-radius: 5px
-}
+    .BSDentalGrid .tooth-double-item.active img {
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        border-radius: 5px
+    }
 
-.BSDentalGrid .action-list .list-group {
-    max-height: 300px;
-    overflow: auto;
-}
+    .BSDentalGrid .action-list .list-group {
+        max-height: 300px;
+        overflow: auto;
+    }
 
-.BSDentalGrid .card img {
-    max-width: initial;
-    max-height: initial;
-}
+    .BSDentalGrid .card img {
+        max-width: initial;
+        max-height: initial;
+    }
 
-.BSDentalGrid .head-logo {
-    max-width: 25px;
-}
+    .BSDentalGrid .head-logo {
+        max-width: 25px;
+    }
 
-.BSDentalGrid .tooth-grid .card-header>* {
-    color: white;
-}
+    .BSDentalGrid .tooth-grid .card-header>* {
+        color: white;
+    }
 
-.BSDentalGrid .tooth-grid .color-section.reverse .tooth-line {
-    flex-direction: row-reverse;
-}
+    .BSDentalGrid .tooth-grid .color-section.reverse .tooth-line {
+        flex-direction: row-reverse;
+    }
 
-.BSDentalGrid .tooth-double-item>*:not(span) {
-    padding: .3rem;
-}
+    .BSDentalGrid .tooth-double-item>*:not(span) {
+        padding: .3rem;
+    }
 
-.BSDentalGrid .d-flex[data-dental-card] {
-    flex-wrap: wrap;
-    flex-direction: row;
-}
+    .BSDentalGrid .d-flex[data-dental-card] {
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
 
-.BSDentalGrid .focus-tooth li {
-    list-style-type: none;
-}
+    .BSDentalGrid .focus-tooth li {
+        list-style-type: none;
+    }
 
-.BSDentalGrid .preview-with-controls {
-    display: inline-block;
-    position: relative;
-    max-width: 100%;
-    vertical-align: middle;
-    -webkit-backface-visibility: hidden;
-}
+    .BSDentalGrid .preview-with-controls {
+        display: inline-block;
+        position: relative;
+        max-width: 100%;
+        vertical-align: middle;
+        -webkit-backface-visibility: hidden;
+    }
 
-.BSDentalGrid .focus-panel-left-img {
-    width: 45px;
-    height: 90px;
-}
+    .BSDentalGrid .focus-panel-left-img {
+        width: 45px;
+        height: 90px;
+    }
 
-.BSDentalGrid .focus-panel-left-img {
-    width: 95px;
-    height: 100px;
-}
+    .BSDentalGrid .focus-panel-left-img {
+        width: 95px;
+        height: 100px;
+    }
 
-.BSDentalGrid .overlay-marker {
-    transition: 1s;
-    top: 50%;
-    background: rgba(66, 66, 66, 0.2);
-    padding: 0.5em;
-    position: absolute;
-    left: 0;
-    text-align: left;
-    color: white;
-    width: 100%;
-    max-width: 100px;
-    max-height: 100%;
-    height: 150px;
-    transform: translate(50%, -50%);
-    left: -37%;
-}
+    .BSDentalGrid .overlay-marker {
+        transition: 1s;
+        top: 50%;
+        background: rgba(66, 66, 66, 0.2);
+        padding: 0.5em;
+        position: absolute;
+        left: 0;
+        text-align: left;
+        color: white;
+        width: 100%;
+        max-width: 100px;
+        max-height: 100%;
+        height: 150px;
+        transform: translate(50%, -50%);
+        left: -37%;
+    }
 
-.BSDentalGrid td[data-color] {
-    font-size: 1rem;
-    text-align: center;
-    font-weight: bold;
-    max-width: 50px;
-}
+    .BSDentalGrid td[data-color] {
+        font-size: 1rem;
+        text-align: center;
+        font-weight: bold;
+        max-width: 50px;
+    }
 
-.BSDentalGrid .dental-card-table thead td {
-    text-align: center;
-    background: white;
-    border: 2px solid black;
-}
+    .BSDentalGrid .dental-card-table thead td,
+    .BSDentalGrid .dental-card-table tbody tr.inline-body-divider td {
+        text-align: center;
+        background: white;
+        border: 2px solid black;
+    }
 
-.BSDentalGrid [data-state]:not(.btn) {
-    -webkit-box-shadow: inset 0 0 5px #000000;
-    box-shadow: inset 0 0 5px #000000;
-    border-radius: .5rem;
-    color: white;
-}
+    .BSDentalGrid [data-state]:not(.btn) {
+        -webkit-box-shadow: inset 0 0 5px #000000;
+        box-shadow: inset 0 0 5px #000000;
+        border-radius: .5rem;
+        color: white;
+    }
 
-.BSDentalGrid [data-state="implant"]:not(.btn) {
-    background-color: rgb(19, 166, 248);
-}
+    .BSDentalGrid [data-state="implant"]:not(.btn) {
+        background-color: rgb(19, 166, 248);
+    }
 
-.BSDentalGrid [data-state="removed"]:not(.btn) {
-    background-color: lightgrey;
-}
+    .BSDentalGrid [data-state="shtift"]:not(.btn) {
+        background-color: rgb(19, 166, 248);
+    }
 
-.BSDentalGrid [data-state="disease"]:not(.btn) {
-    background-color: red;
-}
+    .BSDentalGrid [data-state="removed"]:not(.btn) {
+        background-color: #aaaaaa;
+    }
 
-.BSDentalGrid [data-state="healed"]:not(.btn) {
-    background-color: green;
-}
+    .BSDentalGrid [data-state="koronka"]:not(.btn) {
+        background-color: #aaaaaa;
+    }
 
-.BSDentalGrid [data-state="heal"]:not(.btn) {
-    background-color: white;
-    color: black;
-}
+    .BSDentalGrid [data-state="plomb"]:not(.btn) {
+        background-color: #aaaaaa;
+    }
 
-.BSDentalGrid .dental-legend-item span[data-state] {
-    padding: 10px;
-    font-size: 14px;
-    font-weight: bold;
-}
+    .BSDentalGrid [data-state="disease"]:not(.btn) {
+        background-color: red;
+    }
 
-.BSDentalGrid [data-marker-position="top"] {
-    top: -5%;
-    left: 37%;
-    position: relative;
-}
+    .BSDentalGrid [data-state="healed"]:not(.btn) {
+        background-color: green;
+    }
 
-.BSDentalGrid [data-marker-position="left"] {
-    top: 6%;
-    left: 0%;
-    position: relative;
-}
+    .BSDentalGrid [data-state="heal"]:not(.btn) {
+        background-color: white;
+        color: black;
+    }
 
-.BSDentalGrid [data-marker-position="right"] {
-    top: 23%;
-    right: -23%;
-    position: relative;
-}
+    .BSDentalGrid .dental-legend-item span[data-state] {
+        padding: 10px;
+        font-size: 14px;
+        font-weight: bold;
+        min-width: 40px;
+        display: inline-block;
+        min-height: 40px;
+    }
 
-.BSDentalGrid [data-marker-position="bottom"] {
-    bottom: 8%;
-    left: 50%;
-    display: none;
-    position: absolute;
-    transform: translateX(-50%);
-}
+    .BSDentalGrid .dental-legend-item span[data-color="light-gray"] {
+        background-color: #aaaaaa;
+    }
 
-.BSDentalGrid [data-marker-position="center"] {
-    top: 23%;
-    right: -10%;
-    position: relative;
-}
+    .BSDentalGrid .dental-legend-item span[data-color="dark-gray"] {
+        background-color: #606060;
+    }
 
-.BSDentalGrid [data-marker-position]:hover {
-    transition: .5s;
-    border-radius: .5rem;
-    -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, .18), 0 4px 15px 0 rgba(0, 0, 0, .15);
-    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, .18), 0 4px 15px 0 rgba(0, 0, 0, .15);
-}
+    .BSDentalGrid .dental-legend-item span[data-color="lighter-blue"] {
+        background-color: lightsteelblue;
+    }
 
-.BSDentalGrid .overlay-marker img:hover {
-    -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
-    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
-    z-index: 1;
-    overflow: hidden;
-    padding: 0;
-    border-radius: 50%;
-    background-color: #0fabf1;
-    -webkit-transition: .3s;
-    transition: .3s;
-}
+    .BSDentalGrid .dental-legend-item span[data-color="white"] {
+        background-color: white;
+        /* color: black; */
+    }
 
-.BSDentalGrid .tooth-double-item[data-active-state=active] {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: .5s;
-    transform: scale(1.15);
-    border-radius: 5px;
-    -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    -moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    border: 1px solid black;
-}
+    .BSDentalGrid [data-marker-position="top"] {
+        top: -3px;
+        left: 32px;
+        position: relative;
+    }
 
-.BSDentalGrid .dental-legend-container {
-    padding: 1rem;
-}
+    .BSDentalGrid [data-marker-position="left"] {
+        top: 6px;
+        left: 0px;
+        position: relative;
+    }
 
-.BSDentalGrid .dental-legend-item {
-    margin-right: .5rem;
-}
+    .BSDentalGrid [data-marker-position="right"] {
+        top: 31px;
+        right: -17px;
+        position: relative;
+    }
 
-.BSDentalGrid .focus-tooth {
-    margin-top: .5rem;
-}
+    .BSDentalGrid [data-marker-position="bottom"] {
+        bottom: 8px;
+        left: 52px;
+        position: absolute;
+        transform: translateX(-50%);
+    }
 
-.BSDentalGrid .color-section {
-    padding-top: 40px;
-    padding-bottom: 40px;
-    border-bottom: solid 1px #275da1;
-}
+    .BSDentalGrid [data-marker-position="center"] {
+        top: 31px;
+        right: -7px;
+        position: relative;
+    }
 
-.BSDentalGrid .treat-types-list {
-    display: block;
-}
+    .BSDentalGrid .tooth-double-item[data-active-state=active] {
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: .5s;
+        transform: scale(1.15);
+        border-radius: 5px;
+        -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+        -moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+        border: 1px solid black;
+    }
 
-.BSDentalGrid .treat-types-list .list-group>li {
-    list-style: none;
-    border-bottom: 1px solid #e8ede0;
-}
+    .BSDentalGrid .dental-legend-container {
+        padding: 1rem;
+    }
 
-.BSDentalGrid .treat-types-list .list-group.card-content label {
-    font-size: 1.2rem;
-    margin-bottom: 1.5rem;
-    margin-top: 1rem;
-    margin-left: 1rem;
-}
+    .BSDentalGrid .dental-legend-item {
+        margin-right: .5rem;
+    }
 
-.BSDentalGrid .treat-types-list .list-group.card-content label>i {
-    color: #4285F4;
-    font-size: 2rem;
-}
+    .BSDentalGrid .focus-tooth {
+        margin-top: .5rem;
+    }
 
-.BSDentalGrid .badge {
-    font-size: 1rem;
-}
+    .BSDentalGrid .color-section {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        border-bottom: solid 1px #275da1;
+    }
 
-.BSDentalGrid .tooth-double-item .badge {
-    font-size: .8rem;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    border-bottom-left-radius: .3rem;
-    border-bottom-right-radius: .3rem;
-    border-top: 1px solid;
-    background: white;
-    color: black;
-}
+    .BSDentalGrid .treat-types-list {
+        display: block;
+    }
 
-.BSDentalGrid .tooth-double-item img {
-    width: 100%;
-    max-width: 50px;
-    padding: .1rem;
-}
+    .BSDentalGrid .treat-types-list .list-group>li {
+        list-style: none;
+        border-bottom: 1px solid #e8ede0;
+    }
 
-.BSDentalGrid .state-change-btns {
-    margin-bottom: 1rem;
-}
+    .BSDentalGrid .treat-types-list .list-group.card-content label {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+        margin-top: 1rem;
+        margin-left: 1rem;
+    }
 
-.BSDentalGrid .state-change-btns .badge {
-    margin-top: .5rem;
-    margin-left: .5rem;
-}
+    .BSDentalGrid .treat-types-list .list-group.card-content label>i {
+        color: #4285F4;
+        font-size: 2rem;
+    }
 
-.BSDentalGrid .state-change-btns .badge i {
-    font-size: 1rem;
-}
+    .BSDentalGrid .badge {
+        font-size: 1rem;
+    }
 
-.BSDentalGrid .history-list .list-group-item-action .redact-btns {
-    display: none;
-    -webkit-transition: .5s;
-    -moz-transition: .5s;
-    transition: .5s;
-}
+    .BSDentalGrid .tooth-double-item .badge {
+        font-size: .8rem;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: .3rem;
+        border-bottom-right-radius: .3rem;
+        border-top: 1px solid;
+        background: white;
+        color: black;
+    }
 
-.BSDentalGrid .history-list .list-group-item-action.active {
-    background-color: #fff;
-    color: black;
-    -webkit-transition: .5s;
-    -moz-transition: .5s;
-    transition: .5s;
-}
+    .BSDentalGrid .tooth-double-item img {
+        width: 100%;
+        max-width: 50px;
+        padding: .1rem;
+    }
 
-.BSDentalGrid .history-list .list-group-item-action.active .redact-btns {
-    display: block;
-}
+    .BSDentalGrid .state-change-btns {
+        margin-bottom: 1rem;
+        max-height: 300px;
+        overflow: auto;
+    }
 
-.BSDentalGrid .history-list .nav-link.active {
-    border-bottom: 2px solid #13a6f8;
-}
+    .BSDentalGrid .state-change-btns .btn-sm {
+        padding: .25rem .5rem;
+        font-size: .875rem;
+        line-height: 0.5;
+        border-radius: .2rem;
+    }
+
+    .BSDentalGrid .state-change-btns .badge {
+        margin-top: .5rem;
+        margin-left: .5rem;
+    }
+
+    .BSDentalGrid .state-change-btns .badge i {
+        font-size: 1rem;
+    }
+
+    .BSDentalGrid .history-list .list-group-item-action .redact-btns {
+        display: none;
+        -webkit-transition: .5s;
+        -moz-transition: .5s;
+        transition: .5s;
+    }
+
+    .BSDentalGrid .history-list .list-group-item-action.active {
+        background-color: #fff;
+        color: black;
+        -webkit-transition: .5s;
+        -moz-transition: .5s;
+        transition: .5s;
+    }
+
+    .BSDentalGrid .history-list .list-group-item-action.active .redact-btns {
+        display: block;
+    }
+
+    .BSDentalGrid .history-list .nav-link.active {
+        border-bottom: 2px solid #13a6f8;
+    }
+
+    .BSDentalGrid [data-marker-position]:hover {
+        transition: .5s;
+        border-radius: .5rem;
+        -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, .18), 0 4px 15px 0 rgba(0, 0, 0, .15);
+        box-shadow: 0 5px 11px 0 rgba(0, 0, 0, .18), 0 4px 15px 0 rgba(0, 0, 0, .15);
+    }
+
+    .BSDentalGrid .overlay-marker img:hover {
+        -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+        box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+        z-index: 1;
+        overflow: hidden;
+        padding: 0;
+        border-radius: 50%;
+        background-color: #0fabf1;
+        border: 1px dashed white;
+        -webkit-transition: .3s;
+        transition: .3s;
+    }
+
+    .BSDentalGrid [data-marker-position][data-active-state="active"] {
+        -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+        box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+        z-index: 1;
+        overflow: hidden;
+        padding: 0;
+        border-radius: 40%;
+        border: 1px solid black;
+        background-color: #aee2f870;
+        -webkit-transition: .3s;
+        transition: .3s;
+    }
+
+    .BSDentalGrid [data-marker-position][data-active-state="active"]:hover {
+        -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+        box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+        z-index: 1;
+        overflow: hidden;
+        padding: 0;
+        border-radius: 50%;
+        border: 1px solid black;
+        background-color: #aee2f870;
+        -webkit-transition: .3s;
+        transition: .3s;
+    }
+
+    .BSDentalGrid [data-marker-position],
+    .BSDentalGrid [data-marker-position][data-active-state="inactive"] {
+        border: 1px solid transparent;
+    }
+
+    .BSDentalGrid .collapse:not('.show'),
+    .BSDentalGrid .collapse:not('.collapsing') {
+        display: none !important;
+    }
+
+    .BSDentalGrid .doctor-name_fullname{
+        font-style: normal;
+        font-size: 1rem;
+        padding-left:.5rem;
+    }

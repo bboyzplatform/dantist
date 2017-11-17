@@ -9,18 +9,10 @@
     background-color: transparent;
 }
 
-.BSDentalGrid .btn {
-    font-size: 0.8rem;
-    padding: 0.85rem 2.13rem;
-    margin: 6px;
-    border-radius: 2px;
-    border: 0;
-    -webkit-transition: .2s ease-out;
-    transition: .2s ease-out;
-    text-transform: uppercase;
-    white-space: normal !important;
-    word-wrap: break-word;
-    cursor: pointer;
+.BSDentalGrid .btn-outline-light-grey {
+    border: 2px solid #b0c4de;
+    color: #b0c4de !important;
+    background-color: transparent;
 }
 
 .BSDentalGrid .light-blue.lighten-2 {
@@ -84,12 +76,14 @@
 }
 
 .BSDentalGrid .btn[class*="btn-outline-"] {
-    padding-top: .76rem;
-    padding-bottom: .76rem;
+    padding-top: 0.75rem;
+    padding-bottom: .75rem;
+    margin-bottom: .6rem;
 }
 
 .BSDentalGrid .state-change-btns .btn[class*="btn-outline-"] {
     background-color: transparent;
+    line-height: 0;
 }
 
 .BSDentalGrid .btn-primary {
@@ -1311,12 +1305,12 @@
     font-size: 17px;
 }
 
-.BSDentalGrid  .btn-outline-dark-green {
+.BSDentalGrid .btn-outline-dark-green {
     border: 2px solid #388E3C;
     color: #388E3C !important;
 }
 
-.BSDentalGrid .btn-outline-blue-grey {
+.BSDentalGrid .btn-outline-light-grey {
     border: 2px solid #78909c;
     color: #78909c !important;
     background-color: transparent;
@@ -1365,11 +1359,9 @@
 }
 
 .BSDentalGrid .state-change-btns .btn[data-active-state="active"] {
-    background: #b6b6bc7d;
+    background: #b6b6bcbf;
     font-weight: bold;
 }
-
-.BSDentalGrid .state-change-btns .btn[data-active-state="inactive"] {}
 
 .BSDentalGrid .state-change-btns .btn:hover,
 .BSDentalGrid .treat-types-list .btn:hover {
@@ -1377,9 +1369,8 @@
     -moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
-{
 
-}
+{}
 
 .BSDentalGrid .badge-pill.lighten-3.blue {
     background-color: rgb(19, 166, 248);
@@ -1389,7 +1380,7 @@
     position: relative;
 }
 
-.BSDentalGrid .md-form, .md-form .btn {
+.BSDentalGrid .md-form,
+.md-form .btn {
     margin-bottom: 1.5rem;
 }
-
