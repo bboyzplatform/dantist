@@ -218,7 +218,6 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                 <button class="btn  btn-outline-red" data-state="disease" data-legendAbbr="К" data-color="red"> Кариес</button>\
                 <button class="btn  btn-outline-red" data-state="disease" data-legendAbbr="Pt" data-color="red"> Периодонтит</button>\
                 <button class="btn  btn-outline-red" data-state="disease" data-legendAbbr="A" data-color="red"> Парадантоз</button>\
-                <button class="btn  btn-outline-red" data-state="disease" data-legendAbbr="A" data-color="red"> Парадантоз</button>\
                 <button class="btn  btn-outline-red" data-state="disease" data-legendAbbr="Г" data-color="red"> Гранулема</button>\
                 <button class="btn  btn-outline-red" data-state="disease" data-legendAbbr="Гк" data-color="red"> Кистогранулема</button>\
                 <button class="btn  btn-outline-red" data-state="disease" data-legendAbbr="Ки" data-color="red"> Киста</button>\
