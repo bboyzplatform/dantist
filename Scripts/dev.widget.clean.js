@@ -208,24 +208,23 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
             <div class="card-block"><h4 class="card-title badge badge-pill light-blue lighten-2">\
                 <i class="bbz-i i_repair"></i> Состояние:\
             </div>\
-            <div class="d-flex flex-column card-body" data-toggle="buttons">\
-                <button class="btn btn-sm btn-outline-light-green" data-state="heal" data-legendAbbr=" " data-color="light-green">Здоров</button>\
-                <button class="btn btn-sm btn-outline-blue-grey" data-state="removed" data-legendAbbr="О" data-color="light-grey">Отсутствует</button>\
-                <button class="btn btn-sm btn-outline-light-grey" data-state="plomb" data-legendAbbr="П" data-color="light-gray">Пломбирован</button>\
-                <button class="btn btn-sm btn-outline-light-grey" data-state="koronka" data-legendAbbr="K" data-color="light-gray">Коронка</button>\
-                <button class="btn btn-sm btn-outline-light-blue" data-state="implant" data-legendAbbr="Им" data-color="light-blue">Имплант</button>\
-                <button class="btn btn-sm btn-outline-light-blue" data-state="i-implant" data-legendAbbr="И" data-color="light-blue">Искусственный зуб</button>\
-                <button class="btn btn-sm btn-outline-light-blue" data-state="shtift" data-legendAbbr="Ш" data-color="light-blue">Штифт</button>\
-                <button class="btn btn-sm btn-outline-red" data-state="disease" data-legendAbbr="К" data-color="red"> Кариес</button>\
-                <button class="btn btn-sm btn-outline-red" data-state="disease" data-legendAbbr="Pt" data-color="red"> Периодонтит</button>\
-                <button class="btn btn-sm btn-outline-red" data-state="disease" data-legendAbbr="A" data-color="red"> Парадантоз</button>\
-                <button class="btn btn-sm btn-outline-red" data-state="disease" data-legendAbbr="A" data-color="red"> Парадантоз</button>\
-                <button class="btn btn-sm btn-outline-red" data-state="disease" data-legendAbbr="Г" data-color="red"> Гранулема</button>\
-                <button class="btn btn-sm btn-outline-red" data-state="disease" data-legendAbbr="Гк" data-color="red"> Кистогранулема</button>\
-                <button class="btn btn-sm btn-outline-red" data-state="disease" data-legendAbbr="Ки" data-color="red"> Киста</button>\
-                <button class="btn btn-sm btn-outline-red" data-state="disease" data-legendAbbr="R" data-color="red"> Корень</button>\
-                <button class="btn btn-sm btn-outline-red" data-state="disease" data-legendAbbr="Гп" data-color="red"> Гипоплазия</button>\
-                <button class="btn btn-sm btn-outline-red" data-state="disease" data-legendAbbr="Кл" data-color="red"> Клиновидный дефект</button>\
+            <div class="d-flex flex-column card-block" data-toggle="buttons">\
+                <button class="btn btn-outline-light-green" data-state="heal" data-legendAbbr=" " data-color="light-green">Здоров</button>\
+                <button class="btn  btn-outline-blue-grey" data-state="removed" data-legendAbbr="О" data-color="light-grey">Отсутствует</button>\
+                <button class="btn  btn-outline-light-grey" data-state="plomb" data-legendAbbr="П" data-color="light-gray">Пломбирован</button>\
+                <button class="btn  btn-outline-light-grey" data-state="koronka" data-legendAbbr="K" data-color="light-gray">Коронка</button>\
+                <button class="btn  btn-outline-light-blue" data-state="implant" data-legendAbbr="Им" data-color="light-blue">Имплант</button>\
+                <button class="btn  btn-outline-light-blue" data-state="shtift" data-legendAbbr="Ш" data-color="light-blue">Штифт</button>\
+                <button class="btn  btn-outline-red" data-state="disease" data-legendAbbr="К" data-color="red"> Кариес</button>\
+                <button class="btn  btn-outline-red" data-state="disease" data-legendAbbr="Pt" data-color="red"> Периодонтит</button>\
+                <button class="btn  btn-outline-red" data-state="disease" data-legendAbbr="A" data-color="red"> Парадантоз</button>\
+                <button class="btn  btn-outline-red" data-state="disease" data-legendAbbr="A" data-color="red"> Парадантоз</button>\
+                <button class="btn  btn-outline-red" data-state="disease" data-legendAbbr="Г" data-color="red"> Гранулема</button>\
+                <button class="btn  btn-outline-red" data-state="disease" data-legendAbbr="Гк" data-color="red"> Кистогранулема</button>\
+                <button class="btn  btn-outline-red" data-state="disease" data-legendAbbr="Ки" data-color="red"> Киста</button>\
+                <button class="btn  btn-outline-red" data-state="disease" data-legendAbbr="R" data-color="red"> Корень</button>\
+                <button class="btn  btn-outline-red" data-state="disease" data-legendAbbr="Гп" data-color="red"> Гипоплазия</button>\
+                <button class="btn  btn-outline-red" data-state="disease" data-legendAbbr="Кл" data-color="red"> Клиновидный дефект</button>\
             </div>');
             /*  $stateChangeBtnsTemplate.append('<button class="btn btn-sm btn-primary invisible">Применить</button>'); Временно скрыта */
             var $treatTypesListTemplate=$('<div class="treat-types-list">\
@@ -290,8 +289,6 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                             <span data-state="disease" data-legendabbr="Г" data-color="red">Г</span> - Гранулема</p>\
                         <p class="dental-legend-item">\
                             <span data-state="disease" data-legendabbr="Гк" data-color="red">Гк</span> - Кистогранулема</p>\
-                        <p class="dental-legend-item">\
-                            <span data-state="disease" data-legendabbr="Ки" data-color="red">Ки</span> - Киста</p>\
                         <p class="dental-legend-item">\
                             <span data-state="disease" data-legendabbr="Ки" data-color="red">Ки</span> - Киста</p>\
                         <p class="dental-legend-item">\

@@ -203,7 +203,19 @@
         background-color: rgb(19, 166, 248);
     }
 
+    .BSDentalGrid [data-state="shtift"]:not(.btn) {
+        background-color: rgb(19, 166, 248);
+    }
+
     .BSDentalGrid [data-state="removed"]:not(.btn) {
+        background-color: #aaaaaa;
+    }
+
+    .BSDentalGrid [data-state="koronka"]:not(.btn) {
+        background-color: #aaaaaa;
+    }
+
+    .BSDentalGrid [data-state="plomb"]:not(.btn) {
         background-color: #aaaaaa;
     }
 
@@ -365,15 +377,18 @@
         margin-top: .5rem;
         margin-left: .5rem;
     }
+
     .BSDentalGrid .state-change-btns .badge i {
         font-size: 1rem;
     }
+
     .BSDentalGrid .history-list .list-group-item-action .redact-btns {
         display: none;
         -webkit-transition: .5s;
         -moz-transition: .5s;
         transition: .5s;
     }
+
     .BSDentalGrid .history-list .list-group-item-action.active {
         background-color: #fff;
         color: black;
@@ -381,18 +396,22 @@
         -moz-transition: .5s;
         transition: .5s;
     }
+
     .BSDentalGrid .history-list .list-group-item-action.active .redact-btns {
         display: block;
     }
+
     .BSDentalGrid .history-list .nav-link.active {
         border-bottom: 2px solid #13a6f8;
     }
+
     .BSDentalGrid [data-marker-position]:hover {
         transition: .5s;
         border-radius: .5rem;
         -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, .18), 0 4px 15px 0 rgba(0, 0, 0, .15);
         box-shadow: 0 5px 11px 0 rgba(0, 0, 0, .18), 0 4px 15px 0 rgba(0, 0, 0, .15);
     }
+
     .BSDentalGrid .overlay-marker img:hover {
         -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
         box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
@@ -405,6 +424,7 @@
         -webkit-transition: .3s;
         transition: .3s;
     }
+
     .BSDentalGrid [data-marker-position][data-active-state="active"] {
         -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
         box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
@@ -417,6 +437,7 @@
         -webkit-transition: .3s;
         transition: .3s;
     }
+
     .BSDentalGrid [data-marker-position][data-active-state="active"]:hover {
         -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
         box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
@@ -429,10 +450,12 @@
         -webkit-transition: .3s;
         transition: .3s;
     }
+
     .BSDentalGrid [data-marker-position],
     .BSDentalGrid [data-marker-position][data-active-state="inactive"] {
         border: 1px solid transparent;
     }
+
     .BSDentalGrid .collapse:not('.show'),
     .BSDentalGrid .collapse:not('.collapsing') {
         display: none !important;

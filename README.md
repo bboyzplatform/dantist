@@ -44,7 +44,44 @@ R     —     корень
 1 - подвижность
 2 - подвижность
 3 - подвижность
-_______________________________________
+____________________
+<p class="dental-legend-item" >\
+                            <span data-state="heal" data-legendabbr=" " data-color="white"> </span> - Здоров</p>\
+                        <p class="dental-legend-item" >\
+                            <span data-state="O" data-legendabbr="О" data-color="light-gray">О</span> - Отсутствующий зуб</p>\
+                        <p class="dental-legend-item">\
+                            <span data-state="disease" data-legendabbr="К" data-color="red">К</span> - кариес</p>\
+                        <p class="dental-legend-item">\
+                            <span data-state="disease" data-legendabbr="Pt" data-color="red">Pt</span> - периодонтит</p>\
+                        <p class="dental-legend-item">\
+                            <span data-state="plomb" data-legendabbr="П" data-color="lighter-blue">П</span> - Пломбирован</p>\
+                        <p class="dental-legend-item">\
+                            <span data-state="disease" data-legendabbr="A" data-color="red">A</span> - Парадантоз</p>\
+                        <p class="dental-legend-item">\
+                            <span data-state="koronka" data-legendabbr="К" data-color="lighter-blue">K</span> - Коронка</p>\
+                        <p class="dental-legend-item">\
+                            <span data-state="implant" data-legendabbr="И" data-color="light-blue">И</span> - Имплант</p>\
+                        <p class="dental-legend-item">\
+                            <span data-state="implant" data-legendabbr="Им" data-color="light-blue">Им</span> - Искусственный зуб</p>\
+                        </div>\
+                        <div  class="d-flex flex-column">\
+                        <p class="dental-legend-item">\
+                            <span data-state="shtift" data-legendabbr="Ш" data-color="lighter-blue">Ш</span> - Штифт</p>\
+                        <p class="dental-legend-item">\
+                            <span data-state="disease" data-legendabbr="Г" data-color="red">Г</span> - Гранулема</p>\
+                        <p class="dental-legend-item">\
+                            <span data-state="disease" data-legendabbr="Гк" data-color="red">Гк</span> - Кистогранулема</p>\
+                        <p class="dental-legend-item">\
+                            <span data-state="disease" data-legendabbr="Ки" data-color="red">Ки</span> - Киста</p>\
+                        <p class="dental-legend-item">\
+                            <span data-state="disease" data-legendabbr="Ки" data-color="red">Ки</span> - Киста</p>\
+                        <p class="dental-legend-item">\
+                            <span data-state="disease" data-legendabbr="К" data-color="red">R</span> - Корень</p>\
+                        <p class="dental-legend-item">\
+                            <span data-state="disease" data-legendabbr="Гп" data-color="red">Гп</span> - Гипоплазия</p>\
+                        <p class="dental-legend-item">\
+                            <span data-state="disease" data-legendabbr="Кл" data-color="red">Кл</span> - Клиновидный дефект</p> \
+___________________
 Процедуры:
 Зондирование-
 Данная процедура осуществляют при помощи зубоврачебного зонда. Это позволяет составить суждение о характере эмали, выявить дефекты на ней. Зондом определяют плотность дна и стенок полости в твердых тканях зубов, а также их болевую чувствительность. Зондирование дает возможность судить о глубине кариозной полости, состояние ее краев.
