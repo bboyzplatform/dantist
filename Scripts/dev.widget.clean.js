@@ -123,6 +123,7 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
         this.dataUrl='/api/getToothMap';
         this.proceduresUrl='/api/getProcedures';
         this.doctorDataUrl = '/api/getDoctorData';
+        this.saveRecordUrl = '/api/saveNewRecord/';
         console.log(options);
     }
     , components: {
@@ -390,11 +391,12 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
             var $mainHistTab=$('<div class="main-hist-tab tab-pane fade show active" id="' + widget.id +'-main-hist-tab">\
                                     <h4 class= "card-title text-center">Зуб № <span data-position></span></h4 >\
                                     <div class="card-body">\
-                                    <h6 class="doctor-name">Врач: <span class="doctor-name_fullname"></span></h6>\
-                                    <span class="h6"><b>Дата:</b> <span="hist-date">'+ curr_date + "-" + curr_month + "-" + curr_year +'</span></span>\
-                                    <span class="h6"><b>Номер зуба:</b> <span class="hist-active-tooth-number" data-position="" data-dynamic>Зуб не выбран...</span></span>\
-                                    <span class="h6"><b>Состояние:</b> <span class="abbr-text" data-dynamic data-legendabbr>Зуб не выбран...</span></span>\
-                                    <textarea data-comment="" class="form-control comment-text invisible" rows="4" placeholder="Новый комментарий"></textarea>\
+                                    <h6 class="doctor-name">Врач: <span class="doctor-name_fullname" data-record-value></span></h6>\
+                                    <span class="h6"><b>Дата:</b> <span class="hist-date" data-record-value>'+ curr_date + "-" + curr_month + "-" + curr_year +'</span></span>\
+                                    <span class="h6"><b>Номер зуба:</b> <span class="hist-active-tooth-number" data-position="" data-record-value>Зуб не выбран...</span></span>\
+                                    <span class="h6"><b>Состояние:</b> <span class="abbr-text" data-record-value data-legendabbr>Зуб не выбран...</span></span>\
+                                    <span class="h6"><b>Процедуры:</b> <ul data-procedures data-record-value>Процедуры не определены...</ul></span>\
+                                    <textarea data-record-value data-comment="" class="form-control comment-text invisible" rows="4" placeholder="Новый комментарий"></textarea>\
                                     <button type="button" class="btn btn-outline-primary m-5 invisible" data-toggle="modal" data-target="#'+ widget.$modal[0].id +'" data-call-type="new-record"> Сохранить запись в историю</button>\
                                 </div>');
 
@@ -589,18 +591,13 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
 
         //hist update
         this.$control.on('currentProceduresAccepted', function(e, data){
-            
                 var $histProcList = $('<ul class="current-procedures"></ul>');
                 $.each(data.proceduresList, function (indexInArray, valueOfElement) {
                     $histProcList.append('<li>' + valueOfElement + '</li>');
                 });
-                $('.main-hist-tab span.active-tooth-number', this.$control)
-                    .text(data.activeData['position']);
-
-                $('.main-hist-tab .content', this.$control)
-                    .html('<h6>Процедуры:</h6>' + $histProcList.html());
+                $('.main-hist-tab [data-procedures]', this.$control)
+                    .html($histProcList.html());
            
-            
         });
 
         this.$control.on('changeToothState', function (e, args) {
@@ -665,8 +662,7 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                     if (dataMap[position].hasOwnProperty(prop)) {
                         $(element).data(prop, dataMap[position][prop]);
                         $(element).attr('data-' + prop, dataMap[position][prop]);
-                    }
-                    ;
+                    };
                 }
             }
             );
@@ -851,39 +847,89 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
             var callType = $button.data('call-type'); // Extract info from data-* attributes
             // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
             // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-            var data = $button.data() 
-            that.dentalData.tooth_map['position'];
+            var currentElementData = $button.data() 
+            var serviceRecord = that.dentalData.customer.tooth_map[currentElementData.position];
+            var data = {
+                serviceRecord
+            };
             modalCall(e, callType, $button, data);
         });
 
-        var modalCall = function (e, callType, fromElement) {
-            console.log(comment);
-           
-            console.log('showed');
+        /* Сохранение новой записи */
+        this.$modal.on('shown.bs.modal', function (e) {
+            $('[data-save-new-record]').on('click', function (e, serviceRecord) {
+                var $elemsCollection = $('[data-record-value]', that.$control);
+                var serviceRecord = [];
+                
+                $elemsCollection.each(function (index, elem) {
+                    var recData = ''
+                    if (typeof $(elem)[0].type == 'undefined') {
+                        recData = elem.innerText;
+                    } else {
+                        recData = elem.value;
+                    }
+                    serviceRecord.push(recData);
+                });
+                that.$control.trigger('saveNewRecord', {serviceRecord});
+            });
+        });
+        
+        //Сохранение новой записи в журнал
+        this.$control.on('saveNewRecord', function (e, data){
+            console.log(data.serviceRecord);
+            var keysArray = ['Врач', 'Дата', 'Номер зуба', 'Состояние', 'Процедуры', 'Комментарии'];
+            var oldServiceRecord = that.dentalData.customer.serviceHistory;
+            var maxIndex = 0;
+            for (let index in that.dentalData.customer.serviceHistory) {
+                maxIndex = index;
+            }
+            var oldSRMap = oldServiceRecord[parseInt(maxIndex) + 1] = {};
+
+            for (var key in keysArray) {
+                oldSRMap[keysArray[key]] = data.serviceRecord[key];
+            }
+
+            $.ajax({
+                type: "post", 
+                url: '/api/saveToothState/', 
+                data: JSON.stringify({
+                    "btid": this.id, "docId": this.docId, "serviceHistory": that.de
+                }),
+                contentType: 'application/json',
+                 dataType: "json", 
+                success: function (response) {
+                    //sadasd
+                }
+            });
+        });
+        var modalCall = function (e, callType, fromElement,data) {
+            $(e.currentTarget).data('modal-type', callType);
             switch (callType) {
                 case 'new-record': $(e.currentTarget).find('.modal-title').text('Новая запись в журнал');
-                    console.log(that);
-                    debugger;
-                    var comment = $(fromElement).parent().find('[data-comment]').val();
-                    var position = data['position'];
-
-                    console.log(that.dentalData.tooth_map[position]);
-                    debugger;
+                    $elementsCont = $(fromElement).parent();
+                    var comment = $elementsCont.find('[data-comment]').val();
+                    var doctorName = $elementsCont.find('.doctor-name_fullname').text();
+                    var date = $elementsCont.find('.hist-date').text();
+                    var procedures = $elementsCont.find('[data-procedures]').parent().html()
+                    var proceduresArr = [];
+                    $elementsCont.find('[data-procedures] *').each(function (index, element) { 
+                        proceduresArr.push($(element).text());
+                    });
                     var $newCommentMarkup = $('<div class="form-controls">\
-                                                    <label for="dateTimeComment"> Дата: </label>\
-                                                    <input type="datetime" id="dateTimeComment" />\
-                                                    <div class= "col-auto" >\
-                                                    <label class="sr-only" for="commentTextArea">Комментарий:</label>\
-                                                        <div class="comments">\
-                                                            <div class="add-comment-wrap">\
-                                                                <textarea class="form-control comment-text" rows="4" placeholder="Новый комментарий" value="'+comment+'"></textarea>\
-                                                                <br>\
-                                                                <button class="btn btn-success add-record">Добавить запись</button>\
-                                                            </div>\
+                                                   <div class="col-auto" >\
+                                                   <p>Ответственный врач: '+ doctorName + '</p>\
+                                                   <p>Дата: '+date+'</p>\
+                                                   <p>Номер зуба: '+ data.serviceRecord.position+'</p>\
+                                                   <p>Состояние: '+data.serviceRecord.legendabbr+'</p>\
+                                                   <p class="comments">Комментарий: '+comment+'</p>\
+                                                   <p>'+ procedures+'</p>\
+                                                    <button class="btn btn-success" data-save-new-record >\
+                                                    Сохранить</button>\
                                                         </div>\
                                                     </div>\
                                                 </div>');
                     $(e.currentTarget).find('.modal-body').html($newCommentMarkup);
+                   
                     break;
                 default: break;
             }
