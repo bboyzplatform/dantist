@@ -143,6 +143,11 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                     </div>\
                 </div>\
                 <hr>\
+                <br />\
+                <div class="container m-3"><!--dev-console remove it in prod --> \
+                <h4>Dev-Console: data</h4>\
+                    <blockquote id="dev-console"></blockquote>\
+                </div>\
             </div>');
             return template;
         }
@@ -169,9 +174,7 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
         }
         , toothGridItem: function (index, containerNumber, dentalData) {
             var lineTemplate=$('<div class="tooth-line"></div>');
-            for (let i=1;
-            i < 9;
-            i++) {
+            for (let i=1; i < 9; i++) {
                 posValue=containerNumber.toLocaleString() + i.toLocaleString();
                 $(lineTemplate).append('\
                         <div class="tooth-double-item" \
@@ -210,21 +213,21 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                 <i class="bbz-i i_repair"></i> Состояние:\
             </div>\
             <div class="d-flex flex-column card-block" data-toggle="buttons">\
-                <button class="btn btn-outline-light-green" data-state="heal" data-legendAbbr=" " data-color="light-green">Здоров</button>\
-                <button class="btn  btn-outline-blue-grey" data-state="removed" data-legendAbbr="О" data-color="light-grey">Отсутствует</button>\
-                <button class="btn  btn-outline-light-grey" data-state="plomb" data-legendAbbr="П" data-color="light-gray">Пломбирован</button>\
-                <button class="btn  btn-outline-light-grey" data-state="koronka" data-legendAbbr="K" data-color="light-gray">Коронка</button>\
-                <button class="btn  btn-outline-light-blue" data-state="implant" data-legendAbbr="Им" data-color="light-blue">Имплант</button>\
-                <button class="btn  btn-outline-light-blue" data-state="shtift" data-legendAbbr="Ш" data-color="light-blue">Штифт</button>\
-                <button class="btn  btn-outline-red" data-state="disease" data-legendAbbr="К" data-color="red"> Кариес</button>\
-                <button class="btn  btn-outline-red" data-state="disease" data-legendAbbr="Pt" data-color="red"> Периодонтит</button>\
-                <button class="btn  btn-outline-red" data-state="disease" data-legendAbbr="A" data-color="red"> Парадантоз</button>\
-                <button class="btn  btn-outline-red" data-state="disease" data-legendAbbr="Г" data-color="red"> Гранулема</button>\
-                <button class="btn  btn-outline-red" data-state="disease" data-legendAbbr="Гк" data-color="red"> Кистогранулема</button>\
-                <button class="btn  btn-outline-red" data-state="disease" data-legendAbbr="Ки" data-color="red"> Киста</button>\
-                <button class="btn  btn-outline-red" data-state="disease" data-legendAbbr="R" data-color="red"> Корень</button>\
-                <button class="btn  btn-outline-red" data-state="disease" data-legendAbbr="Гп" data-color="red"> Гипоплазия</button>\
-                <button class="btn  btn-outline-red" data-state="disease" data-legendAbbr="Кл" data-color="red"> Клиновидный дефект</button>\
+                <button class="btn btn-outline-light-green" data-state="heal" data-legendabbr=" " data-color="light-green">Здоров</button>\
+                <button class="btn  btn-outline-blue-grey" data-state="removed" data-legendabbr="О" data-color="light-grey">Отсутствует</button>\
+                <button class="btn  btn-outline-light-grey" data-state="plomb" data-legendabbr="П" data-color="light-gray">Пломбирован</button>\
+                <button class="btn  btn-outline-light-grey" data-state="koronka" data-legendabbr="K" data-color="light-gray">Коронка</button>\
+                <button class="btn  btn-outline-light-blue" data-state="implant" data-legendabbr="Им" data-color="light-blue">Имплант</button>\
+                <button class="btn  btn-outline-light-blue" data-state="shtift" data-legendabbr="Ш" data-color="light-blue">Штифт</button>\
+                <button class="btn  btn-outline-red" data-state="disease" data-legendabbr="К" data-color="red"> Кариес</button>\
+                <button class="btn  btn-outline-red" data-state="disease" data-legendabbr="Pt" data-color="red"> Периодонтит</button>\
+                <button class="btn  btn-outline-red" data-state="disease" data-legendabbr="A" data-color="red"> Парадантоз</button>\
+                <button class="btn  btn-outline-red" data-state="disease" data-legendabbr="Г" data-color="red"> Гранулема</button>\
+                <button class="btn  btn-outline-red" data-state="disease" data-legendabbr="Гк" data-color="red"> Кистогранулема</button>\
+                <button class="btn  btn-outline-red" data-state="disease" data-legendabbr="Ки" data-color="red"> Киста</button>\
+                <button class="btn  btn-outline-red" data-state="disease" data-legendabbr="R" data-color="red"> Корень</button>\
+                <button class="btn  btn-outline-red" data-state="disease" data-legendabbr="Гп" data-color="red"> Гипоплазия</button>\
+                <button class="btn  btn-outline-red" data-state="disease" data-legendabbr="Кл" data-color="red"> Клиновидный дефект</button>\
             </div>');
             /*  $stateChangeBtnsTemplate.append('<button class="btn btn-sm btn-primary invisible">Применить</button>'); Временно скрыта */
             var $treatTypesListTemplate=$('<div class="treat-types-list">\
@@ -235,7 +238,7 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                                                     </div>\
                                                     <div class="treat-items list-group card-content"><span class="text-center pb-2">Ни один элемент не выбран</span></div>\
                                                 </div>\
-                                                <button type="submit" class="btn btn-outline-info col-md-12 mt-2" data-add-procedures> Добавить процедуры</button>');
+                                                <button type="submit" class="btn btn-outline-info col-md-12 mt-2" data-add-procedures> Применить процедуры</button>');
             $(template).append($stateChangeBtnsTemplate).append($treatTypesListTemplate);
             return template;
         }
@@ -385,21 +388,20 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
             var $histTabsPanel=$('<div class="tab-content" id="'+widget.id+'-hist-tabs"></div>');
             
             var $mainHistTab=$('<div class="main-hist-tab tab-pane fade show active" id="' + widget.id +'-main-hist-tab">\
-                                    <h4 class= "card-title text-center"> Зуб №<span class="active-tooth-number"></span></h4 >\
+                                    <h4 class= "card-title text-center">Зуб № <span data-position></span></h4 >\
                                     <div class="card-body">\
-                                    <h6 class="doctor-name">Врач:<span class="doctor-name_fullname"></span></h6>\
-                                    <small class="hist-date">Дата: '+ curr_date + "-" + curr_month + "-" + curr_year +'</small>\
-                                        <div class="card-text content">Зуб не выбран...</div>\
-                                    </div>\
-                                     <button type="button" class="btn btn-outline-primary hidden" data-toggle="modal" data-target="#'+ widget.$modal[0].id +'" data-save-current-process> Применить процедуру</button>\
+                                    <h6 class="doctor-name">Врач: <span class="doctor-name_fullname"></span></h6>\
+                                    <span class="h6"><b>Дата:</b> <span="hist-date">'+ curr_date + "-" + curr_month + "-" + curr_year +'</span></span>\
+                                    <span class="h6"><b>Номер зуба:</b> <span class="hist-active-tooth-number" data-position="" data-dynamic>Зуб не выбран...</span></span>\
+                                    <span class="h6"><b>Состояние:</b> <span class="abbr-text" data-dynamic data-legendabbr>Зуб не выбран...</span></span>\
+                                    <textarea data-comment="" class="form-control comment-text invisible" rows="4" placeholder="Новый комментарий"></textarea>\
+                                    <button type="button" class="btn btn-outline-primary m-5 invisible" data-toggle="modal" data-target="#'+ widget.$modal[0].id +'" data-call-type="new-record"> Сохранить запись в историю</button>\
                                 </div>');
 
             var $focusHistTab=$('<div class="focus-hist-tab tab-pane fade" id="' + widget.id +'-focus-hist-tab" data-tab>\
-                <h4 class= "card-title text-center"> Зуб №</h4 >\
                 <div class="card-body">\
-                    <div class="card-text content">Не выбран зуб...</div>\
+                    <div class="card-text content">В истории еще не было записей...</div>\
                 </div>\
-                 <button type="button" class="btn btn-outline-primary hidden" data-toggle="modal" data-target="#'+ widget.$modal[0].id +'" data-call-type="new-comment">Добавить комментарий</button>\
             </div>');
             $histTabsPanel.append($mainHistTab).append($focusHistTab);
             $(template).append($navPanel).append($histTabsPanel);
@@ -409,12 +411,12 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
             var modalContent=function () {
                 var previewMarkup='<h6>Just a modal</h6>\
                         <span><b>Дата</b>: </span>\
-                        <span><b>Процедура</b>: Удаление зуба</span>\
-                        <span><b>Комментарии</b>: Удаление прошло успешно, осложнений нет</span>';
+                        <span><b>Процедуры</b>:</span>\
+                        <span><b>Комментарии</b>: </span>';
                 return previewMarkup;
             }
             var stateMarkups= {
-                'new-comment': function() {
+                'new-record': function() {
                     return '<div class="form-row">\
                                 <div class="form-group col-md-6" >\
                                 <label for="inputEmail4">Email</label>\
@@ -426,8 +428,7 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                             </div>\
                         </div>';
                 }
-            }
-            ;
+            };
             var modal=document.getElementById(btId + '-dental-modal') || $('<div id="' + btId + '-preview-modal" class="modal fade preview-modal" role="dialog">' +
             '<div class="modal-dialog modal-lg">'+
             '<div class="modal-content">' +
@@ -442,6 +443,11 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                  '</div>').appendTo('body');
 
             widget.$modal=$(modal);
+        },
+        /* Comment devConsole component in prod. */
+        devConsole: function(){
+            let template = $('<ul class="dev-console"></ul>');
+            return template;
         }
     }
     , getToothData: function (url) {
@@ -514,7 +520,9 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
         this.components.modalCont(this, this.options.btid); //this = widget
         this.$control.find('.action-list').append(this.components.actionList(proceduresData));
         this.$control.find('.anamnesis').append(this.components.anamnesis(dentalData));
-        this.$control.find('.history-list').append(this.components.historyList(this)); //this.$control.find('.focus-tooth').append(this.components.focusTooth())    
+        this.$control.find('.history-list').append(this.components.historyList(this)); 
+        //this.$control.find('.focus-tooth').append(this.components.focusTooth())    
+        this.$control.find('#dev-console').append(this.components.devConsole(dentalData));
     }
     , event: function () {
         var that=this; //Toothgrid actions
@@ -527,42 +535,8 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
         var toggleState = function (element) {
             $(element).data('active-state', ($(element).data('active-state')=='active' ? 'inactive': 'active'));
             $(element).attr('data-active-state', ($(element).attr('data-active-state')=='active' ? 'inactive': 'active'));
-        }
-        ;
-        this.$modal.on('show.bs.modal', function (e) {
-            let data=$(event.currentTarget).data();
-            var button=$(event.target) // Button that triggered the modal
-            var callType=button.data('call-type') // Extract info from data-* attributes
-            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-            var modal=$(this);
-            modalCall(e, callType, button, data);
-        });
-
-         var modalCall=function (e, callType, fromElement, data) {
-            console.log('showed');
-            switch (callType) {
-                case 'new-comment': $(e.currentTarget).find('.modal-title').text('Новый комментарий');
-                console.log(that);
-                var $newCommentMarkup=$('<div class="form-controls">\
-                                                    <label for="dateTimeComment"> Дата: </label>\
-                                                    <input type="datetime" id="dateTimeComment" />\
-                                                    <div class= "col-auto" >\
-                                                    <label class="sr-only" for="commentTextArea">Комментарий:</label>\
-                                                        <div class="comments">\
-                                                            <div class="add-comment-wrap">\
-                                                                <textarea class="form-control comment-text" rows="4" placeholder="Новый комментарий"></textarea>\
-                                                                <br>\
-                                                                <button class="btn btn-success add-comment">Добавить</button>\
-                                                            </div>\
-                                                        </div>\
-                                                    </div>\
-                                                </div>');
-                $(e.currentTarget).find('.modal-body').html($newCommentMarkup);
-                break;
-                default: break;
-            }
-        }
+        };
+       
         this.$control.find('.tooth-grid').on('click', '.tooth-double-item', function (e) {
             var $item=$(e.currentTarget);
             var data=$(this).data();
@@ -584,19 +558,16 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                 deactivate('.state-change-btns button');
             }
             else {
-                $(that.$control).trigger('changeToothState', {
-                    data
-                }
-                );
+                $(that.$control).trigger('changeToothState', {data});
             }
         }
         );
-        // procedures change listner
+        /* procedures change listner
         this.$control.find('.treat-items').on('change', 'input[type = checkbox]', function (e) {
             
-        });
+        });*/
+
         //add current procedures to HistProcess list
-        
         this.$control.find('button[data-add-procedures]').on('click', function(e){
             var activeStateElement = $('.state-change-btns [data-active-state="active"]', this.$control);
            
@@ -615,9 +586,10 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                 alert('Выберите зуб!');
             }
         });
+
         //hist update
         this.$control.on('currentProceduresAccepted', function(e, data){
-           
+            
                 var $histProcList = $('<ul class="current-procedures"></ul>');
                 $.each(data.proceduresList, function (indexInArray, valueOfElement) {
                     $histProcList.append('<li>' + valueOfElement + '</li>');
@@ -629,10 +601,12 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                     .html('<h6>Процедуры:</h6>' + $histProcList.html());
            
             
-        })
+        });
+
         this.$control.on('changeToothState', function (e, args) {
             var itemPosition=args.data.position;
-            var $updatingItems=$('[data-position="' + itemPosition + '"]', this.$control).not('button');
+            var $updatingItems = $('[data-position="' + itemPosition + '"]', this.$control).not('button');
+            
             for (var prop in args.data) {
                 if (args.data['bs.button']) {
                     delete args.data['bs.button'];
@@ -722,6 +696,7 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
             $('.treat-types-list .card-content', this).html($itemsList)
         }
         );
+
          this.$control.on('initialUpdatedData', function (e, args) {
             var dataMap=args.customer.tooth_map;
             var $dentalTableCells=$('.dental-card-table [data-pos]', this.$control);
@@ -736,7 +711,7 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                     }
                     ;
                 }
-                var legendAbbr=$(element).data('legendAbbr');
+                var legendAbbr=$(element).data('legendabbr');
                 var stateColor=$(element).data('color');
                 $(element).find('.abbr-text').text(legendAbbr);
             }
@@ -751,14 +726,39 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
             $('.focus-tooth .card-content', this).trigger('updateContent', args);
             $('.state-change-btns', this).trigger('updateContent', args);
             $('.history-list .card-text', this).trigger('updateContent', args);
-        }
-        );
+        });
+
         $('.state-change-btns', this.$control).on('updateContent', function (e, args) {
             var $toggledButton=$('.state-change-btns button[data-state="' + args.data.state + '"]', this.$control);
             deactivate($(this).find('button'));
-            toggleState($toggledButton)
+            toggleState($toggledButton);
         }
         );
+
+        /* dev console --> updateContent*/
+
+        this.$control.on('initialUpdatedData', function (e, args) {
+            var $consoleList = $('<ul class="alert alert-info"></ul>');
+            /* data atributes output */
+            for (var key in args.customer.serviceHistory) {
+                if (args.customer.serviceHistory.hasOwnProperty(key)) {
+                    let histStringObject = args.customer.serviceHistory[key];
+                    let $histItemBlock = $('<ul class="hist-block"></ul>');
+                    for(let item in histStringObject ){
+                        $histItemBlock.append('<li><b>' + item + '</b>: ' + histStringObject[item] + '</li>');
+                    }
+                    $consoleList.append($histItemBlock);
+                }
+                else {
+                    $consoleList.html('Ничего не выбрано');
+                }
+            }
+            $('#dev-console', this).html($consoleList);
+        
+        });
+
+        /* <-- dev console */
+
         $('.focus-tooth .card-content', this.$control).on('updateContent', function (e, args) {
             var stateContent=$('<ul></ul>');
             stateContent.append('<li class="preview-with-controls">\
@@ -792,8 +792,7 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                 }
             }
             $(this).html(stateContent);
-        }
-        );
+        });
 
         //history list initial update from data
         this.$control.on('initialUpdatedData', function (e, args) {
@@ -824,8 +823,72 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                 $focusHistTab.find('.content').html($histList);
                 $mainHistTab.find('.focus-hist-link').removeClass('disabled').toggle('active');
             }
+        });
+        /* History list events on widget state change was triggered */
+        this.$control.on('changeActiveTooth', function(e, args){
+            console.log(args);
+            var $mainHistTab = $('.main-hist-tab', this);
+            $('[data-legendabbr]', $mainHistTab).text(args.data['legendabbr']);
+            $('[data-position]', $mainHistTab).text(args.data['position']);
+            $('[data-call-type]', $mainHistTab).data('position', args.data['position']);
+            $('[data-call-type], .comment-text', $mainHistTab).removeClass('invisible');
+        });
+        /* history on state change */
+
+        this.$control.on('changeToothState', function(e, args){
+            console.log(args);
+            var $mainHistTab = $('.main-hist-tab', this);
+            $('[data-legendabbr]', $mainHistTab)
+                .data('legendabbr', args.data['legendabbr'])
+                .text(args.data['legendabbr']);
+        });
+
+        this.$modal.on('show.bs.modal', function (e) {
+            if ($(e.relatedTarget, that.$control).length !== 0){
+                console.log('modal from dental widget');
+            }
+            var $button = $(event.target) // Button that triggered the modal
+            var callType = $button.data('call-type'); // Extract info from data-* attributes
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            var data = $button.data() 
+            that.dentalData.tooth_map['position'];
+            modalCall(e, callType, $button, data);
+        });
+
+        var modalCall = function (e, callType, fromElement) {
+            console.log(comment);
+           
+            console.log('showed');
+            switch (callType) {
+                case 'new-record': $(e.currentTarget).find('.modal-title').text('Новая запись в журнал');
+                    console.log(that);
+                    debugger;
+                    var comment = $(fromElement).parent().find('[data-comment]').val();
+                    var position = data['position'];
+
+                    console.log(that.dentalData.tooth_map[position]);
+                    debugger;
+                    var $newCommentMarkup = $('<div class="form-controls">\
+                                                    <label for="dateTimeComment"> Дата: </label>\
+                                                    <input type="datetime" id="dateTimeComment" />\
+                                                    <div class= "col-auto" >\
+                                                    <label class="sr-only" for="commentTextArea">Комментарий:</label>\
+                                                        <div class="comments">\
+                                                            <div class="add-comment-wrap">\
+                                                                <textarea class="form-control comment-text" rows="4" placeholder="Новый комментарий" value="'+comment+'"></textarea>\
+                                                                <br>\
+                                                                <button class="btn btn-success add-record">Добавить запись</button>\
+                                                            </div>\
+                                                        </div>\
+                                                    </div>\
+                                                </div>');
+                    $(e.currentTarget).find('.modal-body').html($newCommentMarkup);
+                    break;
+                default: break;
+            }
         }
-        );
+
     }
 }
 

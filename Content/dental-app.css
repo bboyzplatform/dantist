@@ -461,8 +461,12 @@
         display: none !important;
     }
 
-    .BSDentalGrid .doctor-name_fullname{
+    .BSDentalGrid .doctor-name_fullname {
         font-style: normal;
         font-size: 1rem;
-        padding-left:.5rem;
+        padding-left: .5rem;
+    }
+
+    .BSDentalGrid .hist-block {
+        border-bottom: 1px solid grey;
     }
