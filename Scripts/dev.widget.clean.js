@@ -123,10 +123,10 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
         this.dataUrl='/api/getToothMap';
         this.proceduresUrl='/api/getProcedures';
         this.doctorDataUrl = '/api/getDoctorData';
-        this.saveRecordUrl = '/api/saveNewRecord/';
+        this.saveRecordUrl = '/api/saveNewRecord';
         console.log(options);
-    }
-    , components: {
+    },
+    components: {
         layoutGrid: function () {
             var template=$('<div class="row">\
                 <div class="col-md-12 col-lg-9 col-sm-12 ">\
@@ -151,8 +151,8 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                 </div>\
             </div>');
             return template;
-        }
-        , toothGrid: function () {
+        },
+        toothGrid: function () {
             var template=$('<div class="card">\
                                 <div class="card-header light-blue lighten-1">\
                                      <span class="badge badge-pill light-blue lighten-2">\
@@ -172,8 +172,8 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                                 </div>\
                             </div>');
             return template;
-        }
-        , toothGridItem: function (index, containerNumber, dentalData) {
+        },
+        toothGridItem: function (index, containerNumber, dentalData) {
             var lineTemplate=$('<div class="tooth-line"></div>');
             for (let i=1; i < 9; i++) {
                 posValue=containerNumber.toLocaleString() + i.toLocaleString();
@@ -184,7 +184,7 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                             <svg id="circle" height="70px" width="40px" \
                             xmlns="http://www.w3.org/2000/svg"  \
                             xmlns: xlink="http://www.w3.org/1999/xlink">\
-                                    <image x="-15" y="0" height="70" width="60" xlink: href="Content/svg/oldtooths/t-' + posValue + '.svg" />\
+                                    <image x="-15" y="-5" height="70" width="60" xlink: href="Content/svg/oldtooths/t-' + posValue + '.svg" />\
                             </svg>\
                             <span class="position-text badge badge-pill lighten-3 blue text-center">' + posValue + "</span>\
                         </div>");
@@ -802,15 +802,14 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                 var historyData = args.customer.serviceHistory;
                 var $histList=$('<ul class="list-group"></ul>');
                 for (var key in historyData) {
-                    var $itemContainer=$('<li data-toggle="list"><h6>Запись №'+key+'</h6></li>');
+                    var $itemContainer=$('<li data-toggle="list"><h6>Запись №<span data-history-id="'+key+'">'+key+'</span></h6></li>');
                     for (var prop in historyData[key]) {
-                        /* console.log(prop); */
                         $itemContainer.append('<span><b>' + prop + '</b>: ' + historyData[key][prop]+'</span>')
                     }
                     $itemContainer.addClass('d-flex flex-column list-group-item list-group-item-action align-items-start');
                     var $changeBtns=$('<div class="btn-group redact-btns" role="group">\
-                    <button type="button" class="btn btn-info" data-edit-btn><i class="fa fa-pencil-square-o" /></i> Изменить </button>\
-                    <button type = "button" class = "btn btn-danger" data-remove-btn><i class="fa fa-remove"/></i> Удалить</button > \
+                    <button type="button" class="btn btn-info" data-edit-btn data-history-id="'+key+'"><i class="fa fa-pencil-square-o" /></i> Изменить </button>\
+                    <button type = "button" class = "btn btn-danger" data-remove-btn data-history-id="'+ key +'"><i class="fa fa-remove"/></i> Удалить</button > \
                     </div>');
                     $itemContainer.append($changeBtns);
                     $histList.append($itemContainer);
@@ -863,8 +862,12 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                 
                 $elemsCollection.each(function (index, elem) {
                     var recData = ''
-                    if (typeof $(elem)[0].type == 'undefined') {
+                    if (typeof $(elem)[0].type == 'undefined' && !$(elem).data('procedures')) {
                         recData = elem.innerText;
+                    } else if ($(elem).data('procedures') == '') {
+                        $(elem).find('li').each(function (index, element) {
+                            recData += ' ' + element.innerText;
+                        });
                     } else {
                         recData = elem.value;
                     }
@@ -889,19 +892,48 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                 oldSRMap[keysArray[key]] = data.serviceRecord[key];
             }
 
-            $.ajax({
+            /*//FOR POSTS у меня не работает на моем локал серваке - залипуха
+             $.ajax({
                 type: "post", 
-                url: '/api/saveToothState/', 
+                url: that.saveRecordUrl, 
                 data: JSON.stringify({
-                    "btid": this.id, "docId": this.docId, "serviceHistory": that.de
+                    "btid": this.id, 
+                    "docId": this.docId,
+                    "serviceHistory": that.dentalData.customer.serviceHistory
                 }),
                 contentType: 'application/json',
-                 dataType: "json", 
+                dataType: "json", 
                 success: function (response) {
-                    //sadasd
+                    //обновить компоненты читающие данные из объекта tooth_map(!)
+                    that.$control.trigger('refreshAfterSave');
                 }
-            });
+            }); */
+            that.$control.trigger('refreshAfterSave');
         });
+
+        //обновить компонеенты History List после добавления\редактирования или удаления записи истории
+        this.$control.on('refreshAfterSave', function (e) {
+            var historyData = that.dentalData.customer.serviceHistory;
+            var $focusHistTab = $('.focus-hist-tab', this);
+            var $histList = $('<ul class="list-group"></ul>');
+            for (var key in historyData) {
+                var $itemContainer = $('<li data-toggle="list"><h6>Запись №<span data-history-id="' + key + '">' + key + '</span></h6></li>');
+                for (var prop in historyData[key]) {
+                    $itemContainer.append('<span><b>' + prop + '</b>: ' + historyData[key][prop] + '</span>')
+                }
+                $itemContainer.addClass('d-flex flex-column list-group-item list-group-item-action align-items-start');
+                var $changeBtns = $('<div class="btn-group redact-btns" role="group">\
+                <button type="button" class="btn btn-info" data-edit-btn data-history-id="'+ key + '"><i class="fa fa-pencil-square-o" /></i> Изменить </button>\
+                <button type = "button" class = "btn btn-danger" data-remove-btn data-history-id="'+ key + '"><i class="fa fa-remove"/></i> Удалить</button > \
+                </div>');
+                $itemContainer.append($changeBtns);
+                $histList.append($itemContainer);
+            }
+                $focusHistTab.find('.content').html($histList);
+                that.$modal.modal('hide');
+            debugger;
+        });
+
         var modalCall = function (e, callType, fromElement,data) {
             $(e.currentTarget).data('modal-type', callType);
             switch (callType) {
@@ -931,96 +963,11 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                     $(e.currentTarget).find('.modal-body').html($newCommentMarkup);
                    
                     break;
+                case 'edit-record': $(e.currentTarget).find('.modal-title').text('Редактировать запись журнала');
+                    
                 default: break;
             }
         }
 
     }
-}
-
-);
-function BSConfirm(options, callback) {
-    callback=callback || function () {}
-    ;
-    var deferredObject=$.Deferred();
-    var defaults= {
-        type: "confirm", //alert, prompt,confirm 
-        modalSize: 'modal-sm', //modal-sm, modal-lg
-        okButtonText: 'Ok', cancelButtonText: 'Отмена', yesButtonText: 'Да', noButtonText: 'Нет', headerText: 'Внимание', messageText: 'Действительно удалить?', alertType: 'default', //default, primary, success, info, warning, danger
-    }
-    $.extend(defaults, options);
-    var _show=function () {
-        var headClass="navbar-default";
-        switch (defaults.alertType) {
-            case "primary": headClass="alert-primary";
-            break;
-            case "success": headClass="alert-success";
-            break;
-            case "info": headClass="alert-info";
-            break;
-            case "warning": headClass="alert-warning";
-            break;
-            case "danger": headClass="alert-danger";
-            break;
-        }
-        $('BODY').append( '<div id="ezAlerts" class="modal fade">' + '<div class="modal-dialog" class="' + defaults.modalSize + '">' + '<div class="modal-content">' + '<div id="ezAlerts-header" class="modal-header ' + headClass + '">' + '<button id="close-button" type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>' + '<h4 id="ezAlerts-title" class="modal-title">Modal title</h4>' + '</div>' + '<div id="ezAlerts-body" class="modal-body">' + '<div id="ezAlerts-message" ></div>' + '</div>' + '<div id="ezAlerts-footer" class="modal-footer">' + '</div>' + '</div>' + '</div>' + '</div>');
-        $('.modal-header').css( {
-            'padding': '15px 15px', '-webkit-border-top-left-radius': '5px', '-webkit-border-top-right-radius': '5px', '-moz-border-radius-topleft': '5px', '-moz-border-radius-topright': '5px', 'border-top-left-radius': '5px', 'border-top-right-radius': '5px'
-        }
-        );
-        $('#ezAlerts-title').text(defaults.headerText);
-        $('#ezAlerts-message').html(defaults.messageText);
-        var keyb="false",
-        backd="static";
-        var calbackParam="";
-        switch (defaults.type) {
-            case 'alert': keyb="true";
-            backd="true";
-            $('#ezAlerts-footer').html('<button class="btn btn-' + defaults.alertType + '">' + defaults.okButtonText + '</button>').on('click', ".btn", function () {
-                calbackParam=true;
-                $('#ezAlerts').modal('hide');
-            }
-            );
-            break;
-            case 'confirm' : var btnhtml='<button id="ezok-btn" class="btn btn-primary">'+defaults.yesButtonText+'</button>';
-            if (defaults.noButtonText && defaults.noButtonText.length > 0) {
-                btnhtml+='<button id="ezclose-btn" class="btn btn-default">'+defaults.noButtonText+'</button>';
-            }
-            $('#ezAlerts-footer').html(btnhtml).on('click', 'button', function (e) {
-                if (e.target.id==='ezok-btn') {
-                    calbackParam=true;
-                    $('#ezAlerts').modal('hide');
-                }
-                else if (e.target.id==='ezclose-btn') {
-                    calbackParam=false;
-                    $('#ezAlerts').modal('hide');
-                }
-            }
-            );
-            break;
-            case 'prompt' : $('#ezAlerts-message').html(defaults.messageText + '<br /><br /><div class="form-group"><input type="' + defaults.inputFieldType + '" class="form-control" id="prompt" /></div>');
-            $('#ezAlerts-footer').html('<button class="btn btn-primary">' + defaults.okButtonText + '</button>').on('click', ".btn", function () {
-                calbackParam=$('#prompt').val();
-                $('#ezAlerts').modal('hide');
-            }
-            );
-            break;
-        }
-        $('#ezAlerts').modal( {
-            show: false, backdrop: backd, keyboard: keyb=="true"
-        }
-        ).on('hidden.bs.modal', function (e) {
-            $('#ezAlerts').remove();
-            if (calbackParam) deferredObject.resolve(callback());
-            else deferredObject.reject();
-        }
-        ).on('shown.bs.modal', function (e) {
-            if ($('#prompt').length > 0) {
-                $('#prompt').focus();
-            }
-        }
-        ).modal('show');
-    }
-    _show();
-    return deferredObject.promise();
-}
+});
