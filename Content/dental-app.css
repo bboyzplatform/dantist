@@ -470,3 +470,7 @@
     .BSDentalGrid .hist-block {
         border-bottom: 1px solid grey;
     }
+
+    .BSDentalGrid .focus-hist-tab .list-group-item.active {
+        border:1px solid transparent;
+    }

@@ -144,12 +144,12 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                     </div>\
                 </div>\
                 <hr>\
-                <br />\
-                <div class="container m-3"><!--dev-console remove it in prod --> \
+                 </div>');
+                /* <div class="container m-3"><!--dev-console remove it in prod --> \
                 <h4>Dev-Console: data</h4>\
                     <blockquote id="dev-console"></blockquote>\
-                </div>\
-            </div>');
+                </div>\ */
+           
             return template;
         },
         toothGrid: function () {
@@ -194,7 +194,7 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
             }
             return lineTemplate;
         }
-        , focusTooth: function () {
+       /*  , focusTooth: function () {
             var template=$('<div class="card">\
                                     <div class="card-block p-2">\
                                     <div class="badge badge-pill light-blue lighten-2">Фокус на зуб:</div>\
@@ -206,7 +206,7 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                                     </div>\
                                 </div>');
             return template;
-        }
+        } */
         , actionList: function (proceduresData) {
             var template=$('<div></div>');
             var $stateChangeBtnsTemplate=$('<div class="state-change-btns card">\
@@ -310,9 +310,7 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
             $dentalTable.data('table-data', data); //var $thead = $('<thead></thead>'); //Шапка таблицы находиться в середине таблицы
             var $tbody=$('<tbody></tbody>'); //$tr = $('<tr>');
             var tRow='<tr class="inline-body-divider">';
-            for (var index=0;
-            index < 1;
-            index++) {
+            for (var index=0; index < 1; index++) {
                 //var tr = '<tr data-position-group='+(index+1)+'>';
                 var tr="<tr>";
                 for (var i=8;
@@ -383,12 +381,12 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
             document.write(curr_year + "-" + curr_month + "-" + curr_date);
 
             var $navPanel=$('<nav class="nav nav-tabs mb-3 nav-fill" role="tablist">\
-                <a class="nav-item nav-link active main-hist-link" data-toggle="tab" href="#'+widget.id+'-main-hist-tab" role="tab">Процесс Лечения:</a>\
-                <a class="nav-item nav-link focus-hist-link" data-toggle="tab" href="#'+widget.id+'-focus-hist-tab" role="tab">История изменений</a>\
+                <a class="nav-item nav-link active main-hist-link active disabled" data-toggle="tab" href="#'+widget.id+'-main-hist-tab" role="tab">Процесс Лечения:</a>\
+                <a class="nav-item nav-link focus-hist-link active disabled" data-toggle="tab" href="#'+widget.id+'-focus-hist-tab" role="tab">История изменений</a>\
                 </nav>');
-            var $histTabsPanel=$('<div class="tab-content" id="'+widget.id+'-hist-tabs"></div>');
+            var $histTabsPanel=$('<div class="tab-content row" id="'+widget.id+'-hist-tabs"></div>');
             
-            var $mainHistTab=$('<div class="main-hist-tab tab-pane fade show active" id="' + widget.id +'-main-hist-tab">\
+            var $mainHistTab=$('<div class="col-md-6 main-hist-tab tab-pane fade show active" id="' + widget.id +'-main-hist-tab">\
                                     <h4 class= "card-title text-center">Зуб № <span data-position></span></h4 >\
                                     <div class="card-body">\
                                     <h6 class="doctor-name">Врач: <span class="doctor-name_fullname" data-record-value></span></h6>\
@@ -400,7 +398,7 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                                     <button type="button" class="btn btn-outline-primary m-5 invisible" data-toggle="modal" data-target="#'+ widget.$modal[0].id +'" data-call-type="new-record"> Сохранить запись в историю</button>\
                                 </div>');
 
-            var $focusHistTab=$('<div class="focus-hist-tab tab-pane fade" id="' + widget.id +'-focus-hist-tab" data-tab>\
+            var $focusHistTab = $('<div class="col-md-6 focus-hist-tab tab-pane fade show active" id="' + widget.id +'-focus-hist-tab" data-tab>\
                 <div class="card-body">\
                     <div class="card-text content">В истории еще не было записей...</div>\
                 </div>\
@@ -445,12 +443,12 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                  '</div>').appendTo('body');
 
             widget.$modal=$(modal);
-        },
-        /* Comment devConsole component in prod. */
+        }
+        /* Comment devConsole component in prod. 
         devConsole: function(){
             let template = $('<ul class="dev-console"></ul>');
             return template;
-        }
+        }*/
     }
     , getToothData: function (url) {
         var $this=this;
@@ -524,7 +522,7 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
         this.$control.find('.anamnesis').append(this.components.anamnesis(dentalData));
         this.$control.find('.history-list').append(this.components.historyList(this)); 
         //this.$control.find('.focus-tooth').append(this.components.focusTooth())    
-        this.$control.find('#dev-console').append(this.components.devConsole(dentalData));
+        //this.$control.find('#dev-console').append(this.components.devConsole(dentalData));
     }
     , event: function () {
         var that=this; //Toothgrid actions
@@ -562,12 +560,7 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
             else {
                 $(that.$control).trigger('changeToothState', {data});
             }
-        }
-        );
-        /* procedures change listner
-        this.$control.find('.treat-items').on('change', 'input[type = checkbox]', function (e) {
-            
-        });*/
+        });
 
         //add current procedures to HistProcess list
         this.$control.find('button[data-add-procedures]').on('click', function(e){
@@ -615,19 +608,16 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                     if (prop=='legendabbr') {
                         $updatingItems.find('.abbr-text').text(args.data[prop]);
                     }
-                }
-                ;
+                };
             }
-        }
-        );
+        });
         $(this.$control).on('updateContent', function (e, args) {
             var $activityBtns=$('.state-change-btns button', this.$control);
             if (args !=='null' && args.data.hasOwnProperty('position')) {
                 $activityBtns.data('position', args.data['position']);
                 $activityBtns.attr('data-position', args.data['position']);
             }
-        }
-        ); //МедКарта -> заполняется данными профиля 
+        }); //МедКарта -> заполняется данными профиля 
         this.$control.on('initialUpdatedData', function (e, args) {
             $.each(args["customer"], function (key, value) {
                 if (key=='fullname') {
@@ -650,7 +640,6 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
             }else{
                 console.log(fullName)
             }
-            
         });
 
         this.$control.on('initialUpdatedData', function (e, args) {
@@ -664,10 +653,9 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                         $(element).attr('data-' + prop, dataMap[position][prop]);
                     };
                 }
-            }
-            );
-        }
-        );
+            });
+        });
+
         this.$control.on('initialUpdatedProceduresData', function(e, args) {
             var procedures = args;
             console.table(procedures);
@@ -690,8 +678,7 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                 }
             }
             $('.treat-types-list .card-content', this).html($itemsList)
-        }
-        );
+        });
 
          this.$control.on('initialUpdatedData', function (e, args) {
             var dataMap=args.customer.tooth_map;
@@ -710,10 +697,8 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                 var legendAbbr=$(element).data('legendabbr');
                 var stateColor=$(element).data('color');
                 $(element).find('.abbr-text').text(legendAbbr);
-            }
-            );
-        }
-        );
+            });
+        });
         $(this.$control).on('changeActiveTooth', {
             oldStateData: $(this).data()
         }
@@ -731,11 +716,11 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
         }
         );
 
-        /* dev console --> updateContent*/
+        // dev console --> updateContent
 
-        this.$control.on('initialUpdatedData', function (e, args) {
+       /*  this.$control.on('initialUpdatedData', function (e, args) {
             var $consoleList = $('<ul class="alert alert-info"></ul>');
-            /* data atributes output */
+            // data atributes output 
             for (var key in args.customer.serviceHistory) {
                 if (args.customer.serviceHistory.hasOwnProperty(key)) {
                     let histStringObject = args.customer.serviceHistory[key];
@@ -751,7 +736,7 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
             }
             $('#dev-console', this).html($consoleList);
         
-        });
+        }); */
 
         /* <-- dev console */
 
@@ -807,7 +792,7 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                         $itemContainer.append('<span><b>' + prop + '</b>: ' + historyData[key][prop]+'</span>')
                     }
                     $itemContainer.addClass('d-flex flex-column list-group-item list-group-item-action align-items-start');
-                    var $changeBtns=$('<div class="btn-group redact-btns" role="group">\
+                    var $changeBtns=$('<div class="btn-group redact-btns" style="display:none;" role="group">\
                     <button type="button" class="btn btn-info" data-toggle="modal" data-target="#'+ that.$modal[0].id + '" data-call-type="edit-record" data-edit-btn data-history-id="' + key + '"><i class="fa fa-pencil-square-o" /></i> Изменить </button>\
                     <button type = "button" class = "btn btn-danger" data-remove-btn data-history-id="'+ key +'"><i class="fa fa-remove"/></i> Удалить</button > \
                     </div>');
@@ -816,7 +801,7 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                 }
                 //$focusHistTab.children('.card-title').text('Зуб №'+args.customer.position);
                 $focusHistTab.find('.content').html($histList);
-                $mainHistTab.find('.focus-hist-link').removeClass('disabled').toggle('active');
+                $mainHistTab.find('.focus-hist-link');
             }
         });
         /* History list events on widget state change was triggered */
@@ -922,8 +907,8 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                     $itemContainer.append('<span><b>' + prop + '</b>: ' + historyData[key][prop] + '</span>')
                 }
                 $itemContainer.addClass('d-flex flex-column list-group-item list-group-item-action align-items-start');
-                var $changeBtns = $('<div class="btn-group redact-btns" role="group">\
-                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#'+ widget.$modal[0].id +'" data-call-type="edit-record" data-edit-btn data-history-id="'+ key + '"><i class="fa fa-pencil-square-o" /></i> Изменить </button>\
+                var $changeBtns = $('<div class="btn-group redact-btns" style="display:none" role="group">\
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#'+ that.$modal[0].id +'" data-call-type="edit-record" data-edit-btn data-history-id="'+ key + '"><i class="fa fa-pencil-square-o" /></i> Изменить </button>\
                 <button type="button" class="btn btn-danger" data-remove-btn data-history-id="'+ key + '"><i class="fa fa-remove"/></i> Удалить</button > \
                 </div>');
                 $itemContainer.append($changeBtns);
