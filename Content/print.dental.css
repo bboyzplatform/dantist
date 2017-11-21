@@ -1,0 +1,132 @@
+.BSDentalGrid.btContainer {
+    background: transparent;
+    /* display: inline-block; */
+    color: #black;
+    border: none;
+    padding: .75rem 1.25rem;
+    border-radius: 0;
+}
+
+.BSDentalGrid .divider {
+    display: none;
+}
+
+.BSDentalGrid .tooth-grid {
+    display: none;
+}
+
+.BSDentalGrid .action-list {
+    display: none;
+}
+
+.BSDentalGrid .action-list {
+    display: none;
+}
+
+.BSDentalGrid .col-md-12.col-lg-9.col-sm-12 {
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+.BSDentalGrid #collapse-legend-container {
+    display: block;
+}
+
+.BSDentalGrid .card-header {
+    padding: initial;
+    background-color: initial;
+    border-bottom: none;
+}
+
+.BSDentalGrid .card-header a {
+    color: black;
+    font-size: 20px;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+
+.BSDentalGrid #collapse-legend-container .col-md-12.d-flex.flex-row.justify-content-around {
+    display: block !important;
+}
+
+.BSDentalGrid #collapse-legend-container .col-md-12.d-flex.flex-row.justify-content-around>.d-flex.flex-column {
+    flex-direction: row!important;
+    display: inline-block !important;
+}
+
+.BSDentalGrid [data-state]:not(.btn) {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-radius: 0;
+    color: black;
+    font-weight: initial !important;
+    background-color: transparent !important;
+    border: 1px solid;
+}
+
+.BSDentalGrid .dental-legend-item span[data-state] {
+    border: none!important;
+    font-weight: bold !important;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    min-width: initial;
+    display: inline-block;
+    min-height: initial;
+}
+
+.BSDentalGrid .main-hist-link {
+    display: none;
+}
+
+.BSDentalGrid .main-hist-tab {
+    display: none;
+}
+
+.BSDentalGrid .focus-hist-tab {
+    width: 100% !important;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+.BSDentalGrid .card {
+    -webkit-box-shadow: !important;
+    box-shadow: initial !important;
+}
+
+.BSDentalGrid .history-list .nav-link.active {
+    border: none;
+}
+
+.BSDentalGrid .list-group-item {
+    position: relative;
+    display: block;
+    padding: 0;
+    margin-bottom: 10px;
+    background-color: transparent;
+    ;
+    border: transparent;
+}
+
+.BSDentalGrid .list-group-item-action {
+    width: 100%;
+    color: #495057;
+    text-align: inherit;
+}
+
+.BSDentalGrid .list-group {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.BSDentalGrid .dental-legend-item {
+    margin-right: 0;
+    margin-bottom: 0;
+}

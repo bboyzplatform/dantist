@@ -124,7 +124,7 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
         this.proceduresUrl='/api/getProcedures';
         this.doctorDataUrl = '/api/getDoctorData';
         this.saveRecordUrl = '/api/saveNewRecord';
-        console.log(options);
+        /* console.log(options); */
     },
     components: {
         layoutGrid: function () {
@@ -181,14 +181,20 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                         <div class="tooth-double-item" \
                             data-position="' + posValue + '"\
                             data-active-state="inactive">\
-                            <svg id="circle" height="70px" width="40px" \
+                            <svg id="circle" height="60px" width="50px" \
+                            xmlns="http://www.w3.org/2000/svg"  \
+                            xmlns: xlink="http://www.w3.org/1999/xlink">\
+                                <image x="0" y="0" height="50" width="40" xlink: href="Content/svg/tooth.svg" />\
+                            </svg>\
+                            <span class="position-text badge badge-pill lighten-3 blue text-center">' + posValue + "</span>\
+                        </div>");
+                /*
+                <svg id="circle" height="70px" width="40px" \
                             xmlns="http://www.w3.org/2000/svg"  \
                             xmlns: xlink="http://www.w3.org/1999/xlink">\
                                     <image x="-15" y="-5" height="70" width="60" xlink: href="Content/svg/oldtooths/t-' + posValue + '.svg" />\
                             </svg>\
-                            <span class="position-text badge badge-pill lighten-3 blue text-center">' + posValue + "</span>\
-                        </div>");
-                /*  <img src="Content/svg/t-'+posValue+'.svg"></img>\ <img src="Content/svg/oldtooths/t-' + posValue + '.svg"></img>\
+                <img src="Content/svg/t-'+posValue+'.svg"></img>\ <img src="Content/svg/oldtooths/t-' + posValue + '.svg"></img>\
                             <span class="position-text badge badge-pill lighten-3 blue text-center">' + posValue + "</span>\ 
                             */
             }
@@ -378,8 +384,7 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
             var curr_date = d.getDate();
             var curr_month = d.getMonth() + 1;
             var curr_year = d.getFullYear();
-            document.write(curr_year + "-" + curr_month + "-" + curr_date);
-
+            
             var $navPanel=$('<nav class="nav nav-tabs mb-3 nav-fill" role="tablist">\
                 <a class="nav-item nav-link active main-hist-link active disabled" data-toggle="tab" href="#'+widget.id+'-main-hist-tab" role="tab">Процесс Лечения:</a>\
                 <a class="nav-item nav-link focus-hist-link active disabled" data-toggle="tab" href="#'+widget.id+'-focus-hist-tab" role="tab">История изменений</a>\
@@ -633,12 +638,12 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
         );
         
         this.$control.on('initialUpdateDoctorData', function(e,args){
-            console.log('doctorGeted data');
+            //console.log('doctorGeted data');
             var fullName = args.doctor['full_name'];
             if(fullName){
                 $(e.currentTarget).find('.doctor-name_fullname').text(fullName);
             }else{
-                console.log(fullName)
+                //console.log(fullName)
             }
         });
 
@@ -658,7 +663,7 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
 
         this.$control.on('initialUpdatedProceduresData', function(e, args) {
             var procedures = args;
-            console.table(procedures);
+            //console.table(procedures);
             var $itemsList=$('<ul class="list-group"></ul>');
             for (var key in procedures) {
                 if (procedures.hasOwnProperty(key)) {
@@ -806,7 +811,7 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
         });
         /* History list events on widget state change was triggered */
         this.$control.on('changeActiveTooth', function(e, args){
-            console.log(args);
+            //console.log(args);
             var $mainHistTab = $('.main-hist-tab', this);
             $('[data-legendabbr]', $mainHistTab).text(args.data['legendabbr']);
             $('[data-position]', $mainHistTab).text(args.data['position']);
@@ -816,7 +821,7 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
         /* history on state change */
 
         this.$control.on('changeToothState', function(e, args){
-            console.log(args);
+            //console.log(args);
             var $mainHistTab = $('.main-hist-tab', this);
             $('[data-legendabbr]', $mainHistTab)
                 .data('legendabbr', args.data['legendabbr'])
@@ -825,7 +830,7 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
 
         this.$modal.on('show.bs.modal', function (e) {
             if ($(e.relatedTarget, that.$control).length !== 0){
-                console.log('modal from dental widget');
+                //console.log('modal from dental widget');
             }
             var $button = $(event.target) // Button that triggered the modal
             var callType = $button.data('call-type'); // Extract info from data-* attributes
@@ -864,7 +869,7 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
         
         //Сохранение новой записи в журнал
         this.$control.on('saveNewRecord', function (e, data){
-            console.log(data.serviceRecord);
+            //console.log(data.serviceRecord);
             var keysArray = ['Врач', 'Дата', 'Номер зуба', 'Состояние', 'Процедуры', 'Комментарии'];
             var oldServiceRecord = that.dentalData.customer.serviceHistory;
             var maxIndex = 0;
