@@ -808,7 +808,7 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                     }
                     $itemContainer.addClass('d-flex flex-column list-group-item list-group-item-action align-items-start');
                     var $changeBtns=$('<div class="btn-group redact-btns" role="group">\
-                    <button type="button" class="btn btn-info" data-edit-btn data-history-id="'+key+'"><i class="fa fa-pencil-square-o" /></i> Изменить </button>\
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#'+ that.$modal[0].id + '" data-call-type="edit-record" data-edit-btn data-history-id="' + key + '"><i class="fa fa-pencil-square-o" /></i> Изменить </button>\
                     <button type = "button" class = "btn btn-danger" data-remove-btn data-history-id="'+ key +'"><i class="fa fa-remove"/></i> Удалить</button > \
                     </div>');
                     $itemContainer.append($changeBtns);
@@ -908,11 +908,11 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                     that.$control.trigger('refreshAfterSave');
                 }
             }); */
-            that.$control.trigger('refreshAfterSave');
+            that.$control.trigger('refreshHistory');
         });
 
         //обновить компонеенты History List после добавления\редактирования или удаления записи истории
-        this.$control.on('refreshAfterSave', function (e) {
+        this.$control.on('refreshHistory', function (e) {
             var historyData = that.dentalData.customer.serviceHistory;
             var $focusHistTab = $('.focus-hist-tab', this);
             var $histList = $('<ul class="list-group"></ul>');
@@ -923,16 +923,31 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                 }
                 $itemContainer.addClass('d-flex flex-column list-group-item list-group-item-action align-items-start');
                 var $changeBtns = $('<div class="btn-group redact-btns" role="group">\
-                <button type="button" class="btn btn-info" data-edit-btn data-history-id="'+ key + '"><i class="fa fa-pencil-square-o" /></i> Изменить </button>\
-                <button type = "button" class = "btn btn-danger" data-remove-btn data-history-id="'+ key + '"><i class="fa fa-remove"/></i> Удалить</button > \
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#'+ widget.$modal[0].id +'" data-call-type="edit-record" data-edit-btn data-history-id="'+ key + '"><i class="fa fa-pencil-square-o" /></i> Изменить </button>\
+                <button type="button" class="btn btn-danger" data-remove-btn data-history-id="'+ key + '"><i class="fa fa-remove"/></i> Удалить</button > \
                 </div>');
                 $itemContainer.append($changeBtns);
                 $histList.append($itemContainer);
             }
                 $focusHistTab.find('.content').html($histList);
                 that.$modal.modal('hide');
-            debugger;
+                alert('Сохранено!');
         });
+        //Удалить запись в Истории изменений
+        this.$control.on('click', '[data-remove-btn]', function(e){
+            var id = $(e.currentTarget).data('historyId');
+            areUShure = confirm("Вы уверены что хотите удалить запись?");
+            if(areUShure){
+                that.$control.trigger('removeHistoryRecord', { id });
+            }
+        })
+        this.$control.on('removeHistoryRecord', function(e, data){
+            var serviceHistory = that.dentalData.customer.serviceHistory;
+            delete serviceHistory[data.id];
+            that.$control.trigger('refreshHistory');
+            alert('Запись удалена!');
+        });
+
 
         var modalCall = function (e, callType, fromElement,data) {
             $(e.currentTarget).data('modal-type', callType);
@@ -964,7 +979,30 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                    
                     break;
                 case 'edit-record': $(e.currentTarget).find('.modal-title').text('Редактировать запись журнала');
-                    
+                    $elementsCont = $(fromElement).parent();
+                    debugger;
+                    var comment = $elementsCont.find('[data-comment]').val();
+                    var doctorName = $elementsCont.find('.doctor-name_fullname').text();
+                    var date = $elementsCont.find('.hist-date').text();
+                    var procedures = $elementsCont.find('[data-procedures]').parent().html()
+                    var proceduresArr = [];
+                    $elementsCont.find('[data-procedures] *').each(function (index, element) {
+                        proceduresArr.push($(element).text());
+                    });
+                    var $newCommentMarkup = $('<div class="form-controls">\
+                                                   <div class="col-auto" >\
+                                                   <p>Ответственный врач: '+ doctorName + '</p>\
+                                                   <p>Дата: '+ date + '</p>\
+                                                   <p>Номер зуба: '+ data.serviceRecord.position + '</p>\
+                                                   <p>Состояние: '+ data.serviceRecord.legendabbr + '</p>\
+                                                   <p class="comments">Комментарий: '+ comment + '</p>\
+                                                   <p>'+ procedures + '</p>\
+                                                    <button class="btn btn-success" data-save-new-record >\
+                                                    Сохранить</button>\
+                                                        </div>\
+                                                    </div>\
+                                                </div>');
+                    $(e.currentTarget).find('.modal-body').html($newCommentMarkup);
                 default: break;
             }
         }
