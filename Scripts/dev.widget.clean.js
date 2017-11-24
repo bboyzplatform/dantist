@@ -239,17 +239,17 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                 <button class="btn  btn-outline-red" data-state="disease" data-legendabbr="Гп" data-color="red"> Гипоплазия</button>\
                 <button class="btn  btn-outline-red" data-state="disease" data-legendabbr="Кл" data-color="red"> Клиновидный дефект</button>\
             </div>');
-            var $mobilityRateTemplate = $('<div class="card" data-visible-state="removed">\
+            var $mobilityRateTemplate = $('<div class="card mobrate-container"  data-visible-state="removed">\
             <div class="card-block">\
             <h4 class="card-title badge badge-pill light-blue lighten-2">\
                 <i class="bbz-i i_repair"></i> Подвижность:\
                 </h4>\
                 <div class="form-group" >\
-                    <input class="with-gap form-control radio-1" disabled name="group1" type="radio" id="radio1" >\
+                    <input class="with-gap form-control radio-1" disabled name="group1" data-mobilityrate="1" type="radio" id="radio1" >\
                     <label for="radio1">I</label>\
-                    <input class="with-gap radio-2" name="group1" disabled type="radio" id="radio2">\
+                    <input class="with-gap radio-2" name="group1" disabled type="radio" id="radio2" data-mobilityrate="2">\
                     <label for="radio2">II</label>\
-                     <input class="with-gap radio-3" name="group1" disabled type="radio" id="radio3">\
+                     <input class="with-gap radio-3" name="group1" disabled type="radio" id="radio3" data-mobilityrate="3">\
                     <label for="radio3">III</label>\
                 </div>\
             </div>');
@@ -558,6 +558,27 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
             $(element).attr('data-active-state', ($(element).attr('data-active-state') == 'active' ? 'inactive' : 'active'));
         };
 
+        var applyVisibilityStateByData = function (collection, args) {
+            if (args.state === 'removed') args.mobilityrate = "0";
+
+            $(collection).each(function (e) {
+                stateToHide = $(this).data('visible-state');
+                if (args.state == stateToHide) {
+                    $(this).hide().find('input').prop({
+                        'disabled': 'disabled',
+                        'checked': false
+                    });
+                } else {
+                    $(this).show().find('input')
+                        .prop('disabled', false)
+                        .data('position', args.position)
+                        .filter('.radio-' + args.mobilityrate)
+                        .prop('checked', true);
+                }
+
+            });
+        }
+
         this.$control.find('.tooth-grid').on('click', '.tooth-double-item', function (e) {
             var $item = $(e.currentTarget);
             var data = $(this).data();
@@ -575,6 +596,7 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
             var itemPosition = $(e.currentTarget).data('position');
             data = $(e.currentTarget).data();
             delete data['activeState'];
+            if (!data.mobilityrate) data.mobilityrate = that.dentalData.customer.tooth_map[itemPosition].mobilityrate;
             if (typeof data['position'] == 'undefined') {
                 alert('Сначала выберите что хотите изменить');
                 deactivate('.state-change-btns button');
@@ -583,8 +605,21 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                     data
                 });
             }
-        });
 
+        });
+        //подвижность зуба
+        $('[data-mobilityrate]', this.$control).on('change', function (e) {
+            var currentRate = $(e.currentTarget).data('mobilityrate');
+            console.table(that);
+            console.table(that.dentalData);
+            var position = $(this).data('position');
+            var data = that.dentalData.customer.tooth_map;
+            data[position].mobilityrate = currentRate;
+            that.$control.trigger('changeToothState', {
+                data
+            });
+
+        })
         //add current procedures to HistProcess list
         this.$control.find('button[data-add-procedures]').on('click', function (e) {
             var activeStateElement = $('.state-change-btns [data-active-state="active"]', this.$control);
@@ -631,32 +666,28 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                     $updatingItems.data(prop, args.data[prop]);
                     $updatingItems.attr('data-' + prop, args.data[prop]);
                     if (prop == 'legendabbr') {
-                        $updatingItems.find('.abbr-text').text(args.data[prop]);
+                        if (args.data['mobilityrate'] !== '0') {
+                            $updatingItems.find('.abbr-text').text(args.data[prop] + '-' + args.data['mobilityrate']);
+                        } else {
+                            $updatingItems.find('.abbr-text').text(args.data[prop]);
+                        }
                     }
                 };
             }
+            var collection = $('[data-visible-state]', this);
+            applyVisibilityStateByData(collection, args.data);
         });
+
         $(this.$control).on('updateContent', function (e, args) {
             var $activityBtns = $('.state-change-btns button', this.$control);
             if (args !== 'null' && args.data.hasOwnProperty('position')) {
+                if (args.data.state === 'removed') args.data.mobilityrate = "0";
                 $activityBtns.data('position', args.data['position']);
                 $activityBtns.attr('data-position', args.data['position']);
-                
-                 $('[data-visible-state]', this).each(function (e) {
-                     stateToHide = $(this).data('visible-state');
-                     if (args.data.state == stateToHide) {
-                         $(this).hide().find('input').prop({
-                             'disabled': 'disabled',
-                             'checked': false
-                         });
-                     } else {
-                         $(this).show().find('input')
-                            .prop('disabled' , false)
-                            .filter('.radio-' + args.data.mobility_rate)
-                            .prop('checked', true);
-                     }
-                 });
+                var collection = $('[data-visible-state]', this);
+                applyVisibilityStateByData(collection, args.data);
             }
+
         });
 
         this.$control.on('initialUpdateDoctorData', function (e, args) {
@@ -733,14 +764,19 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
             $('.focus-tooth .card-content', this).trigger('updateContent', args);
             $('.state-change-btns', this).trigger('updateContent', args);
             $('.history-list .card-text', this).trigger('updateContent', args);
-            $('[data-visible-state]', this).trigger('updateContent', args);
+            var collection = $('[data-visible-state]', this);
+            applyVisibilityStateByData(collection, args.data);
         });
 
         $('.state-change-btns', this.$control).on('updateContent', function (e, args) {
             var $toggledButton = $('.state-change-btns button[data-state="' + args.data.state + '"]', this.$control);
             deactivate($(this).find('button'));
             toggleState($toggledButton);
+
         });
+
+
+
         /*  $('[data-visible-state]', this.$control).on('updateContent', function(e,args){
              stateToHide = $(e.currentTargegt).data('visible-state');
             if (args.data.state == stateToHide) {
