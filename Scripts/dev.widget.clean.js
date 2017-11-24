@@ -297,7 +297,7 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                         <p class="dental-legend-item" >\
                             <span data-state="heal" data-legendabbr=" " data-color="white"> </span> - Здоров</p>\
                         <p class="dental-legend-item" >\
-                            <span data-state="O" data-legendabbr="О" data-color="light-gray">О</span> - Отсутствующий зуб</p>\
+                            <span data-state="removed" data-legendabbr="О" data-color="light-gray">О</span> - Отсутствующий зуб</p>\
                         <p class="dental-legend-item">\
                             <span data-state="disease" data-legendabbr="К" data-color="red">Pt</span> - кариес</p>\
                         <p class="dental-legend-item">\
@@ -328,6 +328,10 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                             <span data-state="disease" data-legendabbr="Гп" data-color="red">Гп</span> - Гипоплазия</p>\
                         <p class="dental-legend-item">\
                             <span data-state="disease" data-legendabbr="Кл" data-color="red">Кл</span> - Клиновидный дефект</p> \
+                           <p class="dental-legend-item">\
+                            <span data-state="disease" data-legendabbr="Гп" data-color="red">Гп</span> - Гипоплазия</p>\
+                        <p class="dental-legend-item">\
+                            <span data-state="implant" data-legendabbr="И" data-color=""> -2</span> - Подвижность зуба (1,2,3)</p> \
                         </div>\
                     </div>\
                 </div>\
@@ -613,8 +617,8 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
             console.table(that);
             console.table(that.dentalData);
             var position = $(this).data('position');
-            var data = that.dentalData.customer.tooth_map;
-            data[position].mobilityrate = currentRate;
+            var data = that.dentalData.customer.tooth_map[position];
+            data.mobilityrate = currentRate;
             that.$control.trigger('changeToothState', {
                 data
             });
@@ -752,7 +756,11 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                 }
                 var legendAbbr = $(element).data('legendabbr');
                 var stateColor = $(element).data('color');
-                $(element).find('.abbr-text').text(legendAbbr);
+                if (dataMap[pos]['mobilityrate'] != 0) {
+                    $(element).find('.abbr-text').text(legendAbbr + '-' + dataMap[pos]['mobilityrate']);
+                }else{
+                     $(element).find('.abbr-text').text(legendAbbr);
+                }
             });
         });
 
