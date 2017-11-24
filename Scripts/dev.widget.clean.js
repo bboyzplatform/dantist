@@ -17,7 +17,9 @@ var BS_BT_Utils = Class({
         UTFREGEXP: /\\u([\d\w]{4})/gi
     },
     utfDecode: function (str) {
-        return str.replace(this.UTFREGEXP, function (match, grp) { return String.fromCharCode(parseInt(grp, 16)); });
+        return str.replace(this.UTFREGEXP, function (match, grp) {
+            return String.fromCharCode(parseInt(grp, 16));
+        });
     },
     stripHtml: function (str) {
         var tmp = document.createElement("DIV");
@@ -106,7 +108,7 @@ var BS_BT_Widget = Class({
     afterInit: function () {
         //console.log('afterInit >> '+this.ClassName);
     },
-    _init: function () { },
+    _init: function () {},
     init: function () {
         this.beforeInit.apply(this, arguments);
         this._init.apply(this, arguments);
@@ -116,19 +118,19 @@ var BS_BT_Widget = Class({
 
 });
 
-var BS_BT_DentalGrid=Class(BS_BT_Widget, {
+var BS_BT_DentalGrid = Class(BS_BT_Widget, {
     constructor: function (options) {
-        this.className="BSDentalGrid";
+        this.className = "BSDentalGrid";
         BS_BT_DentalGrid.$super.call(this, options); //Приватная переменная хранящая путь до сервера, предоставляющего информацию для модуля
-        this.dataUrl='/api/getToothMap';
-        this.proceduresUrl='/api/getProcedures';
+        this.dataUrl = '/api/getToothMap';
+        this.proceduresUrl = '/api/getProcedures';
         this.doctorDataUrl = '/api/getDoctorData';
         this.saveRecordUrl = '/api/saveNewRecord';
         /* console.log(options); */
     },
     components: {
         layoutGrid: function () {
-            var template=$('<div class="row">\
+            var template = $('<div class="row">\
                 <div class="col-md-12 col-lg-9 col-sm-12 ">\
                 <div class="tooth-grid"></div>\
                     <hr class="divider"/>\
@@ -145,15 +147,15 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                 </div>\
                 <hr>\
                  </div>');
-                /* <div class="container m-3"><!--dev-console remove it in prod --> \
-                <h4>Dev-Console: data</h4>\
-                    <blockquote id="dev-console"></blockquote>\
-                </div>\ */
-           
+            /* <div class="container m-3"><!--dev-console remove it in prod --> \
+            <h4>Dev-Console: data</h4>\
+                <blockquote id="dev-console"></blockquote>\
+            </div>\ */
+
             return template;
         },
         toothGrid: function () {
-            var template=$('<div class="card">\
+            var template = $('<div class="card">\
                                 <div class="card-header light-blue lighten-1">\
                                      <span class="badge badge-pill light-blue lighten-2">\
                         <img class="head-logo" src="Content/Images/white-tooth-icon.png" style="width:20px;"> Зубная карта пациента</span>\
@@ -174,10 +176,10 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
             return template;
         },
         toothGridItem: function (index, containerNumber, dentalData) {
-            var lineTemplate=$('<div class="tooth-line"></div>');
-            for (let i=1; i < 9; i++) {
-                posValue=containerNumber.toLocaleString() + i.toLocaleString();
-                $(lineTemplate).append('\
+                var lineTemplate = $('<div class="tooth-line"></div>');
+                for (let i = 1; i < 9; i++) {
+                    posValue = containerNumber.toLocaleString() + i.toLocaleString();
+                    $(lineTemplate).append('\
                         <div class="tooth-double-item" \
                             data-position="' + posValue + '"\
                             data-active-state="inactive">\
@@ -188,34 +190,35 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                             </svg>\
                             <span class="position-text badge badge-pill lighten-3 blue text-center">' + posValue + "</span>\
                         </div>");
-                /*
-                <svg id="circle" height="70px" width="40px" \
-                            xmlns="http://www.w3.org/2000/svg"  \
-                            xmlns: xlink="http://www.w3.org/1999/xlink">\
-                                    <image x="-15" y="-5" height="70" width="60" xlink: href="Content/svg/oldtooths/t-' + posValue + '.svg" />\
-                            </svg>\
-                <img src="Content/svg/t-'+posValue+'.svg"></img>\ <img src="Content/svg/oldtooths/t-' + posValue + '.svg"></img>\
-                            <span class="position-text badge badge-pill lighten-3 blue text-center">' + posValue + "</span>\ 
-                            */
+                    /*
+                    <svg id="circle" height="70px" width="40px" \
+                                xmlns="http://www.w3.org/2000/svg"  \
+                                xmlns: xlink="http://www.w3.org/1999/xlink">\
+                                        <image x="-15" y="-5" height="70" width="60" xlink: href="Content/svg/oldtooths/t-' + posValue + '.svg" />\
+                                </svg>\
+                    <img src="Content/svg/t-'+posValue+'.svg"></img>\ <img src="Content/svg/oldtooths/t-' + posValue + '.svg"></img>\
+                                <span class="position-text badge badge-pill lighten-3 blue text-center">' + posValue + "</span>\ 
+                                */
+                }
+                return lineTemplate;
             }
-            return lineTemplate;
-        }
-       /*  , focusTooth: function () {
-            var template=$('<div class="card">\
-                                    <div class="card-block p-2">\
-                                    <div class="badge badge-pill light-blue lighten-2">Фокус на зуб:</div>\
-                                      <h4 class="card-title"></h4>\
-                                      <h6 class="card-subtitle mb-2 text-muted"></h6>\
-                                      <p class="card-content">Ничего не выбрано</p>\
-                                    </div>\
-                                  </div>\
-                                    </div>\
-                                </div>');
-            return template;
-        } */
-        , actionList: function (proceduresData) {
-            var template=$('<div></div>');
-            var $stateChangeBtnsTemplate=$('<div class="state-change-btns card">\
+            /*  , focusTooth: function () {
+                 var template=$('<div class="card">\
+                                         <div class="card-block p-2">\
+                                         <div class="badge badge-pill light-blue lighten-2">Фокус на зуб:</div>\
+                                           <h4 class="card-title"></h4>\
+                                           <h6 class="card-subtitle mb-2 text-muted"></h6>\
+                                           <p class="card-content">Ничего не выбрано</p>\
+                                         </div>\
+                                       </div>\
+                                         </div>\
+                                     </div>');
+                 return template;
+             } */
+            ,
+        actionList: function (proceduresData) {
+            var template = $('<div></div>');
+            var $stateChangeBtnsTemplate = $('<div class="state-change-btns card">\
             <div class="card-block"><h4 class="card-title badge badge-pill light-blue lighten-2">\
                 <i class="bbz-i i_repair"></i> Состояние:\
             </div>\
@@ -236,8 +239,23 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                 <button class="btn  btn-outline-red" data-state="disease" data-legendabbr="Гп" data-color="red"> Гипоплазия</button>\
                 <button class="btn  btn-outline-red" data-state="disease" data-legendabbr="Кл" data-color="red"> Клиновидный дефект</button>\
             </div>');
+            var $mobilityRateTemplate = $('<div class="card" data-visible-state="removed">\
+            <div class="card-block">\
+            <h4 class="card-title badge badge-pill light-blue lighten-2">\
+                <i class="bbz-i i_repair"></i> Подвижность:\
+                </h4>\
+                <div class="form-group" >\
+                    <input class="with-gap form-control radio-1" disabled name="group1" type="radio" id="radio1" >\
+                    <label for="radio1">I</label>\
+                    <input class="with-gap radio-2" name="group1" disabled type="radio" id="radio2">\
+                    <label for="radio2">II</label>\
+                     <input class="with-gap radio-3" name="group1" disabled type="radio" id="radio3">\
+                    <label for="radio3">III</label>\
+                </div>\
+            </div>');
+
             /*  $stateChangeBtnsTemplate.append('<button class="btn btn-sm btn-primary invisible">Применить</button>'); Временно скрыта */
-            var $treatTypesListTemplate=$('<div class="treat-types-list">\
+            var $treatTypesListTemplate = $('<div class="treat-types-list">\
                                                 <div class="card">\
                                                     <div class="card-block p-2">\
                                                     <h4 class="card-title badge badge-pill light-blue lighten-2">\
@@ -246,16 +264,19 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                                                     <div class="treat-items list-group card-content"><span class="text-center pb-2">Ни один элемент не выбран</span></div>\
                                                 </div>\
                                                 <button type="submit" class="btn btn-outline-info col-md-12 mt-2" data-add-procedures> Применить процедуры</button>');
-            $(template).append($stateChangeBtnsTemplate).append($treatTypesListTemplate);
+            $(template)
+                .append($stateChangeBtnsTemplate)
+                .append($mobilityRateTemplate)
+                .append($treatTypesListTemplate);
             return template;
-        }
-        , anamnesis: function (data) {
-            var template=$('<div class="card sh4 p-4" data-dental-card><span class="heading"></span>\
+        },
+        anamnesis: function (data) {
+            var template = $('<div class="card sh4 p-4" data-dental-card><span class="heading"></span>\
                     <div class="user-inform custom-controls-stacked invisible" data-user-inform></div>\
                     <div class="item-table"></div>\
                 </div>');
-            $tableGrid=$('<div class="row"></div>');
-            var $heading=$('<h4 class="card-title"><strong>Медицинская карта стоматологического больного</h4>');
+            $tableGrid = $('<div class="row"></div>');
+            var $heading = $('<h4 class="card-title"><strong>Медицинская карта стоматологического больного</h4>');
             /*  var $heading = $('<h4 class="card-title invisible"><strong>Медицинская карта стоматологического больного</h4>');
             var $userInfoCardBlockTemplate = $('<ul class="list-inline d-flex flex-wrap flex-column">\
                     <li class="list-inline-item" data-prop="fullname"><b>ФИО: </b><span></span></li>\
@@ -264,7 +285,7 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                     <li class="list-inline-item" data-prop="phone"><b>Телефон: </b><span></span></li>\
                     <li class="list-inline-item" data-prop="mail"><b>E-mail: </b><span></span></li>\
                  </ul>');*/
-            var $legendTemplate=$('<div id="dental-legend-container" role="tablist" data-children=".legend-item">\
+            var $legendTemplate = $('<div id="dental-legend-container" role="tablist" data-children=".legend-item">\
                 <div class="card legend-item">\
                 <div class="card-header" role="tab">\
                         <h4><a data-toggle="collapse" href="#collapse-legend-container" data-parent="#dental-legend-container"> Легенда:</a></h4>\
@@ -312,98 +333,88 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                 </div>\
                 </div>\
                 </div>');
-            var $dentalTable=$('<table></table>').addClass('dental-card-table table table-striped table-bordered table-hover table-responsive');
+            var $dentalTable = $('<table></table>').addClass('dental-card-table table table-striped table-bordered table-hover table-responsive');
             $dentalTable.data('table-data', data); //var $thead = $('<thead></thead>'); //Шапка таблицы находиться в середине таблицы
-            var $tbody=$('<tbody></tbody>'); //$tr = $('<tr>');
-            var tRow='<tr class="inline-body-divider">';
-            for (var index=0; index < 1; index++) {
+            var $tbody = $('<tbody></tbody>'); //$tr = $('<tr>');
+            var tRow = '<tr class="inline-body-divider">';
+            for (var index = 0; index < 1; index++) {
                 //var tr = '<tr data-position-group='+(index+1)+'>';
-                var tr="<tr>";
-                for (var i=8;
-                i > 0;
-                i--) {
-                    var cell='<td data-group="' + (index + 1) + '" data-pos="' + i + '"><span class="abbr-text">' + i + "</span></td>";
-                    tr +=cell;
+                var tr = "<tr>";
+                for (var i = 8; i > 0; i--) {
+                    var cell = '<td data-group="' + (index + 1) + '" data-pos="' + i + '"><span class="abbr-text">' + i + "</span></td>";
+                    tr += cell;
                 }
-                for (var i=1;
-                i <=8;
-                i++) {
-                    var cell="<td data-group=" + (index + 1) * 2 + ' data-pos="' + i + '"><span class="abbr-text">' + i + "</span></td>";
-                    tr +=cell;
+                for (var i = 1; i <= 8; i++) {
+                    var cell = "<td data-group=" + (index + 1) * 2 + ' data-pos="' + i + '"><span class="abbr-text">' + i + "</span></td>";
+                    tr += cell;
                 }
-                tr +="</tr>";
+                tr += "</tr>";
                 $tbody.append(tr);
             }
             /* Шапку таблицы вставляем в середину таблицы */
-            for (var i=8;
-            i > 0;
-            i--) {
-                var cell='<td data-row-pos="' + i + '">' + i + "</td>";
-                tRow +=cell;
+            for (var i = 8; i > 0; i--) {
+                var cell = '<td data-row-pos="' + i + '">' + i + "</td>";
+                tRow += cell;
             }
-            for (var i=1;
-            i <=8;
-            i++) {
-                var cell='<td data-row-pos="' + i + '">' + i + "</td>";
-                tRow +=cell;
+            for (var i = 1; i <= 8; i++) {
+                var cell = '<td data-row-pos="' + i + '">' + i + "</td>";
+                tRow += cell;
             }
-            tRow +="</tr>";
+            tRow += "</tr>";
             $tbody.append(tRow); //$thead.append(tRow);
             /* 3 и 4 ряды зубов */
-            for (var index=4; index > 3; index--) {
-                var tr="<tr>";
-                for (var i=8; i > 0; i--) {
-                    var cell='<td data-group="' + index + '" data-pos="' + i + '"><span class="abbr-text">' + i + "</span></td>";
-                    tr +=cell;
+            for (var index = 4; index > 3; index--) {
+                var tr = "<tr>";
+                for (var i = 8; i > 0; i--) {
+                    var cell = '<td data-group="' + index + '" data-pos="' + i + '"><span class="abbr-text">' + i + "</span></td>";
+                    tr += cell;
                 }
-                for (var i=1; i <=8;
-                i++) {
-                    var cell="<td data-group=" + (index-1) + ' data-pos="' + i + '"><span class="abbr-text">' + i + "</span></td>";
-                    tr +=cell;
+                for (var i = 1; i <= 8; i++) {
+                    var cell = "<td data-group=" + (index - 1) + ' data-pos="' + i + '"><span class="abbr-text">' + i + "</span></td>";
+                    tr += cell;
                 }
-                tr +="</tr>";
+                tr += "</tr>";
                 $tbody.append(tr);
             } //$dentalTable.append($thead);
             $dentalTable.append($tbody);
-            $tableLegend=$("<div></div>") .addClass("card") .append($legendTemplate);
-            var $itemsList=$('<ul class="list-group d-flex" data-dental-card></ul>');
+            $tableLegend = $("<div></div>").addClass("card").append($legendTemplate);
+            var $itemsList = $('<ul class="list-group d-flex" data-dental-card></ul>');
             $(".heading", template).html($heading);
-            var _getPos=function(elem) {
+            var _getPos = function (elem) {
                 return $(elem).data("position");
-            }
-            ; //template.find(".user-inform").html($userInfoCardBlockTemplate);
-            template .find(".item-table") .html($itemsList);
+            }; //template.find(".user-inform").html($userInfoCardBlockTemplate);
+            template.find(".item-table").html($itemsList);
             template.append($tableGrid);
             template.append($dentalTable);
             template.append($tableLegend);
             return template;
-        }
-        , historyList: function(widget) {
-            var template=$('<div class="card"></div>');
+        },
+        historyList: function (widget) {
+            var template = $('<div class="card"></div>');
             var d = new Date();
             var curr_date = d.getDate();
             var curr_month = d.getMonth() + 1;
             var curr_year = d.getFullYear();
-            
-            var $navPanel=$('<nav class="nav nav-tabs mb-3 nav-fill" role="tablist">\
-                <a class="nav-item nav-link active main-hist-link active disabled" data-toggle="tab" href="#'+widget.id+'-main-hist-tab" role="tab">Процесс Лечения:</a>\
-                <a class="nav-item nav-link focus-hist-link active disabled" data-toggle="tab" href="#'+widget.id+'-focus-hist-tab" role="tab">История изменений</a>\
+
+            var $navPanel = $('<nav class="nav nav-tabs mb-3 nav-fill" role="tablist">\
+                <a class="nav-item nav-link active main-hist-link active disabled" data-toggle="tab" href="#' + widget.id + '-main-hist-tab" role="tab">Процесс Лечения:</a>\
+                <a class="nav-item nav-link focus-hist-link active disabled" data-toggle="tab" href="#' + widget.id + '-focus-hist-tab" role="tab">История изменений</a>\
                 </nav>');
-            var $histTabsPanel=$('<div class="tab-content row" id="'+widget.id+'-hist-tabs"></div>');
-            
-            var $mainHistTab=$('<div class="col-md-6 main-hist-tab tab-pane fade show active" id="' + widget.id +'-main-hist-tab">\
+            var $histTabsPanel = $('<div class="tab-content row" id="' + widget.id + '-hist-tabs"></div>');
+
+            var $mainHistTab = $('<div class="col-md-6 main-hist-tab tab-pane fade show active" id="' + widget.id + '-main-hist-tab">\
                                     <h4 class= "card-title text-center">Зуб № <span data-position></span></h4 >\
                                     <div class="card-body">\
                                     <h6 class="doctor-name">Врач: <span class="doctor-name_fullname" data-record-value></span></h6>\
-                                    <span class="h6"><b>Дата:</b> <span class="hist-date" data-record-value>'+ curr_date + "-" + curr_month + "-" + curr_year +'</span></span>\
+                                    <span class="h6"><b>Дата:</b> <span class="hist-date" data-record-value>' + curr_date + "-" + curr_month + "-" + curr_year + '</span></span>\
                                     <span class="h6"><b>Номер зуба:</b> <span class="hist-active-tooth-number" data-position="" data-record-value>Зуб не выбран...</span></span>\
                                     <span class="h6"><b>Состояние:</b> <span class="abbr-text" data-record-value data-legendabbr>Зуб не выбран...</span></span>\
                                     <span class="h6"><b>Процедуры:</b> <ul data-procedures data-record-value>Процедуры не определены...</ul></span>\
                                     <textarea data-record-value data-comment="" class="form-control comment-text invisible" rows="4" placeholder="Новый комментарий"></textarea>\
-                                    <button type="button" class="btn btn-outline-primary m-5 invisible" data-toggle="modal" data-target="#'+ widget.$modal[0].id +'" data-call-type="new-record"> Сохранить запись в историю</button>\
+                                    <button type="button" class="btn btn-outline-primary m-5 invisible" data-toggle="modal" data-target="#' + widget.$modal[0].id + '" data-call-type="new-record"> Сохранить запись в историю</button>\
                                 </div>');
 
-            var $focusHistTab = $('<div class="col-md-6 focus-hist-tab tab-pane fade show active" id="' + widget.id +'-focus-hist-tab" data-tab>\
+            var $focusHistTab = $('<div class="col-md-6 focus-hist-tab tab-pane fade show active" id="' + widget.id + '-focus-hist-tab" data-tab>\
                 <div class="card-body">\
                     <div class="card-text content">В истории еще не было записей...</div>\
                 </div>\
@@ -411,17 +422,17 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
             $histTabsPanel.append($mainHistTab).append($focusHistTab);
             $(template).append($navPanel).append($histTabsPanel);
             return template;
-        }
-        , modalCont: function (widget, btId) {
-            var modalContent=function () {
-                var previewMarkup='<h6>Just a modal</h6>\
+        },
+        modalCont: function (widget, btId) {
+            var modalContent = function () {
+                var previewMarkup = '<h6>Just a modal</h6>\
                         <span><b>Дата</b>: </span>\
                         <span><b>Процедуры</b>:</span>\
                         <span><b>Комментарии</b>: </span>';
                 return previewMarkup;
             }
-            var stateMarkups= {
-                'new-record': function() {
+            var stateMarkups = {
+                'new-record': function () {
                     return '<div class="form-row">\
                                 <div class="form-group col-md-6" >\
                                 <label for="inputEmail4">Email</label>\
@@ -434,43 +445,47 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                         </div>';
                 }
             };
-            var modal=document.getElementById(btId + '-dental-modal') || $('<div id="' + btId + '-preview-modal" class="modal fade preview-modal" role="dialog">' +
-            '<div class="modal-dialog modal-lg">'+
-            '<div class="modal-content">' +
-            '<div class="modal-header">' +
-             '<h4 class="modal-title">Новая запись:</h4>' +
-              '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>' +
-            '</div>' +
-             '<div class="modal-body">' + modalContent() +
-              '</div>' +
-               '</div>' +
+            var modal = document.getElementById(btId + '-dental-modal') || $('<div id="' + btId + '-preview-modal" class="modal fade preview-modal" role="dialog">' +
+                '<div class="modal-dialog modal-lg">' +
+                '<div class="modal-content">' +
+                '<div class="modal-header">' +
+                '<h4 class="modal-title">Новая запись:</h4>' +
+                '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>' +
                 '</div>' +
-                 '</div>').appendTo('body');
+                '<div class="modal-body">' + modalContent() +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '</div>').appendTo('body');
 
-            widget.$modal=$(modal);
+            widget.$modal = $(modal);
         }
         /* Comment devConsole component in prod. 
         devConsole: function(){
             let template = $('<ul class="dev-console"></ul>');
             return template;
         }*/
-    }
-    , getToothData: function (url) {
-        var $this=this;
-        var data='Нет данных';
-        $.ajax( {
-            type: "get", url: url, data: JSON.stringify( {
-                "btid": this.id, "docId": this.docId
-            }
-            ), contentType: 'application/json', dataType: "json", success: function (response) {
-                $this.dentalData=response;
+    },
+    getToothData: function (url) {
+        var $this = this;
+        var data = 'Нет данных';
+        $.ajax({
+            type: "get",
+            url: url,
+            data: JSON.stringify({
+                "btid": this.id,
+                "docId": this.docId
+            }),
+            contentType: 'application/json',
+            dataType: "json",
+            success: function (response) {
+                $this.dentalData = response;
                 $this.$control.trigger('initialUpdatedData', response);
             }
-        }
-        );
+        });
         return data;
     },
-    getDoctorData: function(doctorDataUrl){
+    getDoctorData: function (doctorDataUrl) {
         var that = this;
         this.doctorData = '';
         $.ajax({
@@ -481,7 +496,7 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                 "docId": that.docId
             }),
             contentType: 'application/json',
-            dataType: "json", 
+            dataType: "json",
             success: function (response) {
                 that.doctorData = response;
                 that.$control.trigger('initialUpdateDoctorData', response);
@@ -489,23 +504,26 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
         });
         return this.doctorData;
     },
-    getProcedures: function(proceduresUrl) {
-        var $this=this;
-        var data='Нет данных';
-        $.ajax( {
-            type: "get", url: proceduresUrl, data: JSON.stringify( {
-                "btid": this.id, "docId": this.docId
-            }
-            ), contentType: 'application/json', dataType: "json", 
+    getProcedures: function (proceduresUrl) {
+        var $this = this;
+        var data = 'Нет данных';
+        $.ajax({
+            type: "get",
+            url: proceduresUrl,
+            data: JSON.stringify({
+                "btid": this.id,
+                "docId": this.docId
+            }),
+            contentType: 'application/json',
+            dataType: "json",
             success: function (response) {
                 $this.proceduresData = response;
                 $this.$control.trigger('initialUpdatedProceduresData', response);
             }
-        }
-        );
+        });
         return data;
-    }
-    , _init: function () {
+    },
+    _init: function () {
         // Получим data с сервера
         this.getToothData(this.dataUrl);
         this.getProcedures(this.proceduresUrl);
@@ -513,64 +531,64 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
         this.render(this.components, this.dentalData, this.proceduresData); //И привяжем DOM события к нужным элементам модуля
         this.event();
         return this;
-    }
-    , render: function (components, dentalData, proceduresData) {
+    },
+    render: function (components, dentalData, proceduresData) {
         var that = this;
-        this.$control.append(this.components.layoutGrid) .find('.tooth-grid').append(this.components.toothGrid());
-        this.$control.find('.color-section') .each(function (ind, elem) {
-            let containerNumber=$(elem).data('partValue');
+        this.$control.append(this.components.layoutGrid).find('.tooth-grid').append(this.components.toothGrid());
+        this.$control.find('.color-section').each(function (ind, elem) {
+            let containerNumber = $(elem).data('partValue');
             $(elem).append(that.components.toothGridItem(ind, containerNumber, dentalData));
-        }
-        ); //this.$control.find('.focus-tooth').append(this.components.focusTooth());
+        }); //this.$control.find('.focus-tooth').append(this.components.focusTooth());
         this.components.modalCont(this, this.options.btid); //this = widget
         this.$control.find('.action-list').append(this.components.actionList(proceduresData));
         this.$control.find('.anamnesis').append(this.components.anamnesis(dentalData));
-        this.$control.find('.history-list').append(this.components.historyList(this)); 
+        this.$control.find('.history-list').append(this.components.historyList(this));
         //this.$control.find('.focus-tooth').append(this.components.focusTooth())    
         //this.$control.find('#dev-console').append(this.components.devConsole(dentalData));
-    }
-    , event: function () {
-        var that=this; //Toothgrid actions
-        var deactivate=function (elements) {
+    },
+    event: function () {
+        var that = this; //Toothgrid actions
+        var deactivate = function (elements) {
             $(elements).data('active-state', 'inactive');
             $(elements).attr('data-active-state', 'inactive');
-        }
-        ;
+        };
         /* State - ui а не состояние модели */
         var toggleState = function (element) {
-            $(element).data('active-state', ($(element).data('active-state')=='active' ? 'inactive': 'active'));
-            $(element).attr('data-active-state', ($(element).attr('data-active-state')=='active' ? 'inactive': 'active'));
+            $(element).data('active-state', ($(element).data('active-state') == 'active' ? 'inactive' : 'active'));
+            $(element).attr('data-active-state', ($(element).attr('data-active-state') == 'active' ? 'inactive' : 'active'));
         };
-       
+
         this.$control.find('.tooth-grid').on('click', '.tooth-double-item', function (e) {
-            var $item=$(e.currentTarget);
-            var data=$(this).data();
+            var $item = $(e.currentTarget);
+            var data = $(this).data();
             deactivate('.tooth-double-item');
             toggleState($item); //global
-            $(that.$control).trigger('changeActiveTooth', {data}
-            );
+            $(that.$control).trigger('changeActiveTooth', {
+                data
+            });
         });
 
         this.$control.find('.state-change-btns button').on('click', function (e, args) {
             //var state = $(e.currentTarget).data('activity-state');
             deactivate('.state-change-btns button');
             toggleState(e.currentTarget);
-            var itemPosition=$(e.currentTarget).data('position');
-            data=$(e.currentTarget).data();
+            var itemPosition = $(e.currentTarget).data('position');
+            data = $(e.currentTarget).data();
             delete data['activeState'];
-            if (typeof data['position']=='undefined') {
+            if (typeof data['position'] == 'undefined') {
                 alert('Сначала выберите что хотите изменить');
                 deactivate('.state-change-btns button');
-            }
-            else {
-                $(that.$control).trigger('changeToothState', {data});
+            } else {
+                $(that.$control).trigger('changeToothState', {
+                    data
+                });
             }
         });
 
         //add current procedures to HistProcess list
-        this.$control.find('button[data-add-procedures]').on('click', function(e){
+        this.$control.find('button[data-add-procedures]').on('click', function (e) {
             var activeStateElement = $('.state-change-btns [data-active-state="active"]', this.$control);
-           
+
             if (activeStateElement.length !== 0) {
                 var activeData = $(activeStateElement).data();
                 var proceduresMap = $(this).parent().find('input[type="checkbox"]:checked');
@@ -580,7 +598,10 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                     // element == this
                     proceduresList.push($(element).data('procedure'));
                 });
-                that.$control.trigger('currentProceduresAccepted', { proceduresList, activeData }, );
+                that.$control.trigger('currentProceduresAccepted', {
+                    proceduresList,
+                    activeData
+                }, );
 
             } else {
                 alert('Выберите зуб!');
@@ -588,70 +609,71 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
         });
 
         //hist update
-        this.$control.on('currentProceduresAccepted', function(e, data){
-                var $histProcList = $('<ul class="current-procedures"></ul>');
-                $.each(data.proceduresList, function (indexInArray, valueOfElement) {
-                    $histProcList.append('<li>' + valueOfElement + '</li>');
-                });
-                $('.main-hist-tab [data-procedures]', this.$control)
-                    .html($histProcList.html());
-           
+        this.$control.on('currentProceduresAccepted', function (e, data) {
+            var $histProcList = $('<ul class="current-procedures"></ul>');
+            $.each(data.proceduresList, function (indexInArray, valueOfElement) {
+                $histProcList.append('<li>' + valueOfElement + '</li>');
+            });
+            $('.main-hist-tab [data-procedures]', this.$control)
+                .html($histProcList.html());
+
         });
 
         this.$control.on('changeToothState', function (e, args) {
-            var itemPosition=args.data.position;
+            var itemPosition = args.data.position;
             var $updatingItems = $('[data-position="' + itemPosition + '"]', this.$control).not('button');
-            
+
             for (var prop in args.data) {
                 if (args.data['bs.button']) {
                     delete args.data['bs.button'];
-                }
-                else if (args.data[prop]) {
-                    that.dentalData.customer.tooth_map[itemPosition][prop]=data[prop];
+                } else if (args.data[prop]) {
+                    that.dentalData.customer.tooth_map[itemPosition][prop] = data[prop];
                     $updatingItems.data(prop, args.data[prop]);
                     $updatingItems.attr('data-' + prop, args.data[prop]);
-                    if (prop=='legendabbr') {
+                    if (prop == 'legendabbr') {
                         $updatingItems.find('.abbr-text').text(args.data[prop]);
                     }
                 };
             }
         });
         $(this.$control).on('updateContent', function (e, args) {
-            var $activityBtns=$('.state-change-btns button', this.$control);
-            if (args !=='null' && args.data.hasOwnProperty('position')) {
+            var $activityBtns = $('.state-change-btns button', this.$control);
+            if (args !== 'null' && args.data.hasOwnProperty('position')) {
                 $activityBtns.data('position', args.data['position']);
                 $activityBtns.attr('data-position', args.data['position']);
+                
+                 $('[data-visible-state]', this).each(function (e) {
+                     stateToHide = $(this).data('visible-state');
+                     if (args.data.state == stateToHide) {
+                         $(this).hide().find('input').prop({
+                             'disabled': 'disabled',
+                             'checked': false
+                         });
+                     } else {
+                         $(this).show().find('input')
+                            .prop('disabled' , false)
+                            .filter('.radio-' + args.data.mobility_rate)
+                            .prop('checked', true);
+                     }
+                 });
             }
-        }); //МедКарта -> заполняется данными профиля 
-        this.$control.on('initialUpdatedData', function (e, args) {
-            $.each(args["customer"], function (key, value) {
-                if (key=='fullname') {
-                    that.$control.find('[data-prop="fullname"]').text(value)
-                }
-                ;
-                if ($('.anamnesis', this.$control).find('[data-prop="' + key + '"] span').length !==0) {
-                    $('.anamnesis', this.$control).find('[data-prop="' + key + '"] span').html(value);
-                }
-            }
-            );
-        }
-        );
-        
-        this.$control.on('initialUpdateDoctorData', function(e,args){
+        });
+
+        this.$control.on('initialUpdateDoctorData', function (e, args) {
             //console.log('doctorGeted data');
             var fullName = args.doctor['full_name'];
-            if(fullName){
+            if (fullName) {
                 $(e.currentTarget).find('.doctor-name_fullname').text(fullName);
-            }else{
+            } else {
                 //console.log(fullName)
             }
         });
 
         this.$control.on('initialUpdatedData', function (e, args) {
-            var dataMap=args.customer.tooth_map;
-            var $updateCollection=$('.tooth-double-item', this.$control);
+            var dataMap = args.customer.tooth_map;
+            var $updateCollection = $('.tooth-double-item', this.$control);
             $updateCollection.each(function (index, element) {
-                var position=$(this).data('position');
+                var position = $(this).data('position');
                 for (var prop in dataMap[position]) {
                     if (dataMap[position].hasOwnProperty(prop)) {
                         $(element).data(prop, dataMap[position][prop]);
@@ -661,92 +683,105 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
             });
         });
 
-        this.$control.on('initialUpdatedProceduresData', function(e, args) {
+        this.$control.on('initialUpdatedProceduresData', function (e, args) {
             var procedures = args;
             //console.table(procedures);
-            var $itemsList=$('<ul class="list-group"></ul>');
+            var $itemsList = $('<ul class="list-group"></ul>');
             for (var key in procedures) {
                 if (procedures.hasOwnProperty(key)) {
                     $itemsList.append('<li>\
                         <form class="form-inline">\
                             <div class="form-group">\
-                                <input type="checkbox" id="checkbox'+ key + '" data-procedure="' + key+'">\
-                                <label for="checkbox'+key+'">'+key+'\
-                                    &nbsp;<i class="bbz-i i_'+ procedures[key]["icon-name"]+'"></i>\
+                                <input type="checkbox" id="checkbox' + key + '" data-procedure="' + key + '">\
+                                <label for="checkbox' + key + '">' + key + '\
+                                    &nbsp;<i class="bbz-i i_' + procedures[key]["icon-name"] + '"></i>\
                                 </label>\
                             </div>\
                         </form>\
                     </li>');
-                }
-                else {
+                } else {
                     $itemsList.html('<ul class="list-group"><li>Ничего не выбрано...</li></ul>');
                 }
             }
             $('.treat-types-list .card-content', this).html($itemsList)
         });
 
-         this.$control.on('initialUpdatedData', function (e, args) {
-            var dataMap=args.customer.tooth_map;
-            var $dentalTableCells=$('.dental-card-table [data-pos]', this.$control);
+        this.$control.on('initialUpdatedData', function (e, args) {
+            var dataMap = args.customer.tooth_map;
+            var $dentalTableCells = $('.dental-card-table [data-pos]', this.$control);
             $dentalTableCells.each(function (index, element) {
-                var position=$(this).data('pos');
-                var group=$(this).data('group');
-                var pos=group + '' + position;
+                var position = $(this).data('pos');
+                var group = $(this).data('group');
+                var pos = group + '' + position;
                 for (var prop in dataMap[pos]) {
                     if (dataMap[pos].hasOwnProperty(prop)) {
                         $(element).data(prop, dataMap[pos][prop]);
                         $(element).attr('data-' + prop, dataMap[pos][prop]);
-                    }
-                    ;
+                    };
                 }
-                var legendAbbr=$(element).data('legendabbr');
-                var stateColor=$(element).data('color');
+                var legendAbbr = $(element).data('legendabbr');
+                var stateColor = $(element).data('color');
                 $(element).find('.abbr-text').text(legendAbbr);
             });
         });
+
+
         $(this.$control).on('changeActiveTooth', {
             oldStateData: $(this).data()
-        }
-        , function (e, args) {
+        }, function (e, args) {
             $(this).data('old-state', args);
             $('.focus-tooth .card-content', this).trigger('updateContent', args);
             $('.state-change-btns', this).trigger('updateContent', args);
             $('.history-list .card-text', this).trigger('updateContent', args);
+            $('[data-visible-state]', this).trigger('updateContent', args);
         });
 
         $('.state-change-btns', this.$control).on('updateContent', function (e, args) {
-            var $toggledButton=$('.state-change-btns button[data-state="' + args.data.state + '"]', this.$control);
+            var $toggledButton = $('.state-change-btns button[data-state="' + args.data.state + '"]', this.$control);
             deactivate($(this).find('button'));
             toggleState($toggledButton);
-        }
-        );
+        });
+        /*  $('[data-visible-state]', this.$control).on('updateContent', function(e,args){
+             stateToHide = $(e.currentTargegt).data('visible-state');
+            if (args.data.state == stateToHide) {
+                $(e.currentTarget).hide().find('input').prop({
+                    'disabled': 'disabled',
+                    'checked': false
+                });
+            } else {
+                $(e.currentTarget).show().find('input').prop({
+                    'disabled': 'disabled',
+                    'checked': false
+                });
+            }
+         }); */
 
         // dev console --> updateContent
 
-       /*  this.$control.on('initialUpdatedData', function (e, args) {
-            var $consoleList = $('<ul class="alert alert-info"></ul>');
-            // data atributes output 
-            for (var key in args.customer.serviceHistory) {
-                if (args.customer.serviceHistory.hasOwnProperty(key)) {
-                    let histStringObject = args.customer.serviceHistory[key];
-                    let $histItemBlock = $('<ul class="hist-block"></ul>');
-                    for(let item in histStringObject ){
-                        $histItemBlock.append('<li><b>' + item + '</b>: ' + histStringObject[item] + '</li>');
-                    }
-                    $consoleList.append($histItemBlock);
-                }
-                else {
-                    $consoleList.html('Ничего не выбрано');
-                }
-            }
-            $('#dev-console', this).html($consoleList);
-        
-        }); */
+        /*  this.$control.on('initialUpdatedData', function (e, args) {
+             var $consoleList = $('<ul class="alert alert-info"></ul>');
+             // data atributes output 
+             for (var key in args.customer.serviceHistory) {
+                 if (args.customer.serviceHistory.hasOwnProperty(key)) {
+                     let histStringObject = args.customer.serviceHistory[key];
+                     let $histItemBlock = $('<ul class="hist-block"></ul>');
+                     for(let item in histStringObject ){
+                         $histItemBlock.append('<li><b>' + item + '</b>: ' + histStringObject[item] + '</li>');
+                     }
+                     $consoleList.append($histItemBlock);
+                 }
+                 else {
+                     $consoleList.html('Ничего не выбрано');
+                 }
+             }
+             $('#dev-console', this).html($consoleList);
+         
+         }); */
 
         /* <-- dev console */
 
         $('.focus-tooth .card-content', this.$control).on('updateContent', function (e, args) {
-            var stateContent=$('<ul></ul>');
+            var stateContent = $('<ul></ul>');
             stateContent.append('<li class="preview-with-controls">\
                     <img class="focus-panel-left-img" src="/Content/svg/app-icon-grid.png">\
                     <img class="focus-panel-right-img" src="/Content/Images/side-tooth.png">\
@@ -757,23 +792,21 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                     <img data-marker-position="left" src ="/Content/svg/marker.svg" />\
                     <img data-marker-position="bottom" src ="/Content/svg/marker.svg" />\
                     </span></li>');
-            var canalList=$('<div class="alert alert-info"></div>');
+            var canalList = $('<div class="alert alert-info"></div>');
             $('[overlay-marker]', stateContent).each(function (index, element) {
                 // element == this
-                dependedPanelList=$('<div data-position="'+$(element).data('position')+'">'+[index]+'Info block</div>').appendTo(canalList);
+                dependedPanelList = $('<div data-position="' + $(element).data('position') + '">' + [index] + 'Info block</div>').appendTo(canalList);
             });
             stateContent.append(canalList);
-            stateContent.on('click', function(e) {
+            stateContent.on('click', function (e) {
                 toggleState(e.target);
-                let currentPosition=$(e.target).data('position')|| 'null'; //Сменить стейт canalList ..-> пробросить data-props
-            }
-            );
+                let currentPosition = $(e.target).data('position') || 'null'; //Сменить стейт canalList ..-> пробросить data-props
+            });
             /* data atributes output */
             for (var key in args.data) {
                 if (args.data.hasOwnProperty(key)) {
                     $(stateContent).append('<li><b>' + key + '</b>: ' + args.data[key] + '</li>');
-                }
-                else {
+                } else {
                     $(stateContent).html('Ничего не выбрано');
                 }
             }
@@ -782,24 +815,23 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
 
         //history list initial update from data
         this.$control.on('initialUpdatedData', function (e, args) {
-            var $mainHistTab=$('.main-hist-tab', this);
-            var $focusHistTab=$('.focus-hist-tab', this);
-            
-            if(!args.customer || args.customer.serviceHistory==='null') {
+            var $mainHistTab = $('.main-hist-tab', this);
+            var $focusHistTab = $('.focus-hist-tab', this);
+
+            if (!args.customer || args.customer.serviceHistory === 'null') {
                 $('.content', $mainHistTab).html('<span class="text-center">Не выбран зуб...</span>');
-            }
-            else {
+            } else {
                 var historyData = args.customer.serviceHistory;
-                var $histList=$('<ul class="list-group"></ul>');
+                var $histList = $('<ul class="list-group"></ul>');
                 for (var key in historyData) {
-                    var $itemContainer=$('<li data-toggle="list"><h6>Запись №<span data-history-id="'+key+'">'+key+'</span></h6></li>');
+                    var $itemContainer = $('<li data-toggle="list"><h6>Запись №<span data-history-id="' + key + '">' + key + '</span></h6></li>');
                     for (var prop in historyData[key]) {
-                        $itemContainer.append('<span><b>' + prop + '</b>: ' + historyData[key][prop]+'</span>')
+                        $itemContainer.append('<span><b>' + prop + '</b>: ' + historyData[key][prop] + '</span>')
                     }
                     $itemContainer.addClass('d-flex flex-column list-group-item list-group-item-action align-items-start');
-                    var $changeBtns=$('<div class="btn-group redact-btns" style="display:none;" role="group">\
-                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#'+ that.$modal[0].id + '" data-call-type="edit-record" data-edit-btn data-history-id="' + key + '"><i class="fa fa-pencil-square-o" /></i> Изменить </button>\
-                    <button type = "button" class = "btn btn-danger" data-remove-btn data-history-id="'+ key +'"><i class="fa fa-remove"/></i> Удалить</button > \
+                    var $changeBtns = $('<div class="btn-group redact-btns" style="display:none;" role="group">\
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#' + that.$modal[0].id + '" data-call-type="edit-record" data-edit-btn data-history-id="' + key + '"><i class="fa fa-pencil-square-o" /></i> Изменить </button>\
+                    <button type = "button" class = "btn btn-danger" data-remove-btn data-history-id="' + key + '"><i class="fa fa-remove"/></i> Удалить</button > \
                     </div>');
                     $itemContainer.append($changeBtns);
                     $histList.append($itemContainer);
@@ -810,7 +842,7 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
             }
         });
         /* History list events on widget state change was triggered */
-        this.$control.on('changeActiveTooth', function(e, args){
+        this.$control.on('changeActiveTooth', function (e, args) {
             //console.log(args);
             var $mainHistTab = $('.main-hist-tab', this);
             $('[data-legendabbr]', $mainHistTab).text(args.data['legendabbr']);
@@ -820,7 +852,7 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
         });
         /* history on state change */
 
-        this.$control.on('changeToothState', function(e, args){
+        this.$control.on('changeToothState', function (e, args) {
             //console.log(args);
             var $mainHistTab = $('.main-hist-tab', this);
             $('[data-legendabbr]', $mainHistTab)
@@ -829,14 +861,14 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
         });
 
         this.$modal.on('show.bs.modal', function (e) {
-            if ($(e.relatedTarget, that.$control).length !== 0){
+            if ($(e.relatedTarget, that.$control).length !== 0) {
                 //console.log('modal from dental widget');
             }
             var $button = $(event.target) // Button that triggered the modal
             var callType = $button.data('call-type'); // Extract info from data-* attributes
             // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
             // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-            var currentElementData = $button.data() 
+            var currentElementData = $button.data()
             var serviceRecord = that.dentalData.customer.tooth_map[currentElementData.position];
             var data = {
                 serviceRecord
@@ -849,7 +881,7 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
             $('[data-save-new-record]').on('click', function (e, serviceRecord) {
                 var $elemsCollection = $('[data-record-value]', that.$control);
                 var serviceRecord = [];
-                
+
                 $elemsCollection.each(function (index, elem) {
                     var recData = ''
                     if (typeof $(elem)[0].type == 'undefined' && !$(elem).data('procedures')) {
@@ -863,12 +895,14 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                     }
                     serviceRecord.push(recData);
                 });
-                that.$control.trigger('saveNewRecord', {serviceRecord});
+                that.$control.trigger('saveNewRecord', {
+                    serviceRecord
+                });
             });
         });
-        
+
         //Сохранение новой записи в журнал
-        this.$control.on('saveNewRecord', function (e, data){
+        this.$control.on('saveNewRecord', function (e, data) {
             //console.log(data.serviceRecord);
             var keysArray = ['Врач', 'Дата', 'Номер зуба', 'Состояние', 'Процедуры', 'Комментарии'];
             var oldServiceRecord = that.dentalData.customer.serviceHistory;
@@ -913,25 +947,27 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                 }
                 $itemContainer.addClass('d-flex flex-column list-group-item list-group-item-action align-items-start');
                 var $changeBtns = $('<div class="btn-group redact-btns" style="display:none" role="group">\
-                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#'+ that.$modal[0].id +'" data-call-type="edit-record" data-edit-btn data-history-id="'+ key + '"><i class="fa fa-pencil-square-o" /></i> Изменить </button>\
-                <button type="button" class="btn btn-danger" data-remove-btn data-history-id="'+ key + '"><i class="fa fa-remove"/></i> Удалить</button > \
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#' + that.$modal[0].id + '" data-call-type="edit-record" data-edit-btn data-history-id="' + key + '"><i class="fa fa-pencil-square-o" /></i> Изменить </button>\
+                <button type="button" class="btn btn-danger" data-remove-btn data-history-id="' + key + '"><i class="fa fa-remove"/></i> Удалить</button > \
                 </div>');
                 $itemContainer.append($changeBtns);
                 $histList.append($itemContainer);
             }
-                $focusHistTab.find('.content').html($histList);
-                that.$modal.modal('hide');
-                alert('Сохранено!');
+            $focusHistTab.find('.content').html($histList);
+            that.$modal.modal('hide');
+            alert('Сохранено!');
         });
         //Удалить запись в Истории изменений
-        this.$control.on('click', '[data-remove-btn]', function(e){
+        this.$control.on('click', '[data-remove-btn]', function (e) {
             var id = $(e.currentTarget).data('historyId');
             areUShure = confirm("Вы уверены что хотите удалить запись?");
-            if(areUShure){
-                that.$control.trigger('removeHistoryRecord', { id });
+            if (areUShure) {
+                that.$control.trigger('removeHistoryRecord', {
+                    id
+                });
             }
         })
-        this.$control.on('removeHistoryRecord', function(e, data){
+        this.$control.on('removeHistoryRecord', function (e, data) {
             var serviceHistory = that.dentalData.customer.serviceHistory;
             delete serviceHistory[data.id];
             that.$control.trigger('refreshHistory');
@@ -939,36 +975,38 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
         });
 
 
-        var modalCall = function (e, callType, fromElement,data) {
+        var modalCall = function (e, callType, fromElement, data) {
             $(e.currentTarget).data('modal-type', callType);
             switch (callType) {
-                case 'new-record': $(e.currentTarget).find('.modal-title').text('Новая запись в журнал');
+                case 'new-record':
+                    $(e.currentTarget).find('.modal-title').text('Новая запись в журнал');
                     $elementsCont = $(fromElement).parent();
                     var comment = $elementsCont.find('[data-comment]').val();
                     var doctorName = $elementsCont.find('.doctor-name_fullname').text();
                     var date = $elementsCont.find('.hist-date').text();
                     var procedures = $elementsCont.find('[data-procedures]').parent().html()
                     var proceduresArr = [];
-                    $elementsCont.find('[data-procedures] *').each(function (index, element) { 
+                    $elementsCont.find('[data-procedures] *').each(function (index, element) {
                         proceduresArr.push($(element).text());
                     });
                     var $newCommentMarkup = $('<div class="form-controls">\
                                                    <div class="col-auto" >\
-                                                   <p>Ответственный врач: '+ doctorName + '</p>\
-                                                   <p>Дата: '+date+'</p>\
-                                                   <p>Номер зуба: '+ data.serviceRecord.position+'</p>\
-                                                   <p>Состояние: '+data.serviceRecord.legendabbr+'</p>\
-                                                   <p class="comments">Комментарий: '+comment+'</p>\
-                                                   <p>'+ procedures+'</p>\
+                                                   <p>Ответственный врач: ' + doctorName + '</p>\
+                                                   <p>Дата: ' + date + '</p>\
+                                                   <p>Номер зуба: ' + data.serviceRecord.position + '</p>\
+                                                   <p>Состояние: ' + data.serviceRecord.legendabbr + '</p>\
+                                                   <p class="comments">Комментарий: ' + comment + '</p>\
+                                                   <p>' + procedures + '</p>\
                                                     <button class="btn btn-success" data-save-new-record >\
                                                     Сохранить</button>\
                                                         </div>\
                                                     </div>\
                                                 </div>');
                     $(e.currentTarget).find('.modal-body').html($newCommentMarkup);
-                   
+
                     break;
-                case 'edit-record': $(e.currentTarget).find('.modal-title').text('Редактировать запись журнала');
+                case 'edit-record':
+                    $(e.currentTarget).find('.modal-title').text('Редактировать запись журнала');
                     $elementsCont = $(fromElement).parent();
                     debugger;
                     var comment = $elementsCont.find('[data-comment]').val();
@@ -981,19 +1019,20 @@ var BS_BT_DentalGrid=Class(BS_BT_Widget, {
                     });
                     var $newCommentMarkup = $('<div class="form-controls">\
                                                    <div class="col-auto" >\
-                                                   <p>Ответственный врач: '+ doctorName + '</p>\
-                                                   <p>Дата: '+ date + '</p>\
-                                                   <p>Номер зуба: '+ data.serviceRecord.position + '</p>\
-                                                   <p>Состояние: '+ data.serviceRecord.legendabbr + '</p>\
-                                                   <p class="comments">Комментарий: '+ comment + '</p>\
-                                                   <p>'+ procedures + '</p>\
+                                                   <p>Ответственный врач: ' + doctorName + '</p>\
+                                                   <p>Дата: ' + date + '</p>\
+                                                   <p>Номер зуба: ' + data.serviceRecord.position + '</p>\
+                                                   <p>Состояние: ' + data.serviceRecord.legendabbr + '</p>\
+                                                   <p class="comments">Комментарий: ' + comment + '</p>\
+                                                   <p>' + procedures + '</p>\
                                                     <button class="btn btn-success" data-save-new-record >\
                                                     Сохранить</button>\
                                                         </div>\
                                                     </div>\
                                                 </div>');
                     $(e.currentTarget).find('.modal-body').html($newCommentMarkup);
-                default: break;
+                default:
+                    break;
             }
         }
 
