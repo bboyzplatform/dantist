@@ -618,8 +618,8 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
         //подвижность зуба
         $('[data-mobilityrate]', this.$control).on('change', function (e) {
             var currentRate = $(e.currentTarget).data('mobilityrate');
-            console.table(that);
-            console.table(that.dentalData);
+            /* consoconsole.table(that);
+            console.table(that.dentalData); */
             var position = $(this).data('position');
             var data = that.dentalData.customer.tooth_map[position];
             data.mobilityrate = currentRate;
@@ -1056,7 +1056,6 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                 case 'edit-record':
                     $(e.currentTarget).find('.modal-title').text('Редактировать запись журнала');
                     $elementsCont = $(fromElement).parent();
-                    debugger;
                     var comment = $elementsCont.find('[data-comment]').val();
                     var doctorName = $elementsCont.find('.doctor-name_fullname').text();
                     var date = $elementsCont.find('.hist-date').text();
