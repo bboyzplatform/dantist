@@ -183,10 +183,14 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                         <div class="tooth-double-item" \
                             data-position="' + posValue + '"\
                             data-active-state="inactive">\
-                            <svg id="circle" height="60px" width="50px" \
+                            <svg height="60px" width="50px" \
                             xmlns="http://www.w3.org/2000/svg"  \
-                            xmlns: xlink="http://www.w3.org/1999/xlink">\
-                                <image x="0" y="0" height="50" width="40" xlink: href="Content/svg/tooth.svg" />\
+                            xmlns: xlink="http://www.w3.org/1999/xlink"\
+                             stroke="#000"\
+                              stroke-width = "8"\
+                              fill="none"\
+                            >\
+                                <image x="0" y="0" height="50" width="40" xlink: href="Content/svg/bbz-dental-icons/t-'+posValue+'.svg" />\
                             </svg>\
                             <span class="position-text badge badge-pill lighten-3 blue text-center">' + posValue + "</span>\
                         </div>");
