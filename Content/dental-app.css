@@ -224,7 +224,7 @@
     }
 
     .BSDentalGrid .tooth-double-item>*:not(span) {
-        padding: .3rem;
+        padding: 0;
     }
 
     .BSDentalGrid .d-flex[data-dental-card] {
@@ -459,6 +459,10 @@
         overflow: auto;
     }
 
+    .BSDentalGrid .state-change-btns>.card-block {
+        padding: 0 .5rem .5rem .5rem;
+    }
+
     .BSDentalGrid .state-change-btns .btn-sm {
         padding: .25rem .5rem;
         font-size: .875rem;
@@ -566,4 +570,8 @@
 
     .BSDentalGrid .focus-hist-tab .list-group-item.active {
         border: 1px solid transparent;
+    }
+
+    .BSDentalGrid .mobrate-container {
+        padding: 1rem;
     }

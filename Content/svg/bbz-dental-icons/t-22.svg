@@ -30,11 +30,11 @@
 <defs>
     <style>
       .cls-1 {
-        fill: none;
-        stroke: red;
+        stroke:#000;
+        fill:none;
         stroke-linecap: round;
         stroke-linejoin: round;
-        stroke-width: 3px;
+        stroke-width: 10px;
         fill-rule: evenodd;
       }
     </style>

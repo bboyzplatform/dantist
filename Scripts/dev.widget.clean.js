@@ -108,7 +108,7 @@ var BS_BT_Widget = Class({
     afterInit: function () {
         //console.log('afterInit >> '+this.ClassName);
     },
-    _init: function () {},
+    _init: function () { },
     init: function () {
         this.beforeInit.apply(this, arguments);
         this._init.apply(this, arguments);
@@ -176,50 +176,73 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
             return template;
         },
         toothGridItem: function (index, containerNumber, dentalData) {
-                var lineTemplate = $('<div class="tooth-line"></div>');
-                for (let i = 1; i < 9; i++) {
-                    posValue = containerNumber.toLocaleString() + i.toLocaleString();
-                    $(lineTemplate).append('\
+            var lineTemplate = $('<div class="tooth-line"></div>');
+            for (var i = 1; i < 9; i++) {
+                posValue = containerNumber.toLocaleString() + i.toLocaleString();
+                $(lineTemplate).append('\
                         <div class="tooth-double-item" \
                             data-position="' + posValue + '"\
                             data-active-state="inactive">\
                             <svg height="60px" width="50px" \
-                            xmlns="http://www.w3.org/2000/svg"  \
-                            xmlns: xlink="http://www.w3.org/1999/xlink"\
-                             stroke="#000"\
-                              stroke-width = "8"\
-                              fill="none"\
+                                height="70px"\
+                                width="50px"\
+                                viewBox="0 0 320 480"\
+                                xmlns="http://www.w3.org/2000/svg"\
+                                xlink="http://www.w3.org/1999/xlink"\
                             >\
-                                <image x="0" y="0" height="50" width="40" xlink: href="Content/svg/bbz-dental-icons/t-'+posValue+'.svg" />\
+                                <image xlink: href="Content/svg/bbz-dental-icons/t-'+ posValue + '.svg" />\
                             </svg>\
                             <span class="position-text badge badge-pill lighten-3 blue text-center">' + posValue + "</span>\
                         </div>");
-                    /*
-                    <svg id="circle" height="70px" width="40px" \
-                                xmlns="http://www.w3.org/2000/svg"  \
-                                xmlns: xlink="http://www.w3.org/1999/xlink">\
-                                        <image x="-15" y="-5" height="70" width="60" xlink: href="Content/svg/oldtooths/t-' + posValue + '.svg" />\
-                                </svg>\
-                    <img src="Content/svg/t-'+posValue+'.svg"></img>\ <img src="Content/svg/oldtooths/t-' + posValue + '.svg"></img>\
-                                <span class="position-text badge badge-pill lighten-3 blue text-center">' + posValue + "</span>\ 
-                                */
-                }
-                return lineTemplate;
+                /*
+                 < div class = "tooth-double-item"\
+                 data - position = "' + posValue + '"\
+                 data - active - state = "inactive" > \
+                     <
+                     svg height = "60px"
+                 width = "50px"\
+                 xmlns = "http://www.w3.org/2000/svg"\
+                 xmlns: xlink = "http://www.w3.org/1999/xlink"\
+                 stroke = "#000"\
+                 stroke - width = "8"\
+                 fill = "none"\ >
+                     \
+                     <
+                     image x = "0"
+                 y = "0"
+                 height = "50"
+                 width = "40"
+                 xlink: href = "Content/svg/bbz-dental-icons/t-'+posValue+'.svg" / > \
+                     <
+                     /svg>\ <
+                     span class = "position-text badge badge-pill lighten-3 blue text-center" > ' + posValue + "</span>\
+                    </div>");
+
+                <svg id="circle" height="70px" width="40px" \
+                            xmlns="http://www.w3.org/2000/svg"  \
+                            xmlns: xlink="http://www.w3.org/1999/xlink">\
+                                    <image x="-15" y="-5" height="70" width="60" xlink: href="Content/svg/oldtooths/t-' + posValue + '.svg" />\
+                            </svg>\
+                <img src="Content/svg/t-'+posValue+'.svg"></img>\ <img src="Content/svg/oldtooths/t-' + posValue + '.svg"></img>\
+                            <span class="position-text badge badge-pill lighten-3 blue text-center">' + posValue + "</span>\ 
+                            */
             }
-            /*  , focusTooth: function () {
-                 var template=$('<div class="card">\
-                                         <div class="card-block p-2">\
-                                         <div class="badge badge-pill light-blue lighten-2">Фокус на зуб:</div>\
-                                           <h4 class="card-title"></h4>\
-                                           <h6 class="card-subtitle mb-2 text-muted"></h6>\
-                                           <p class="card-content">Ничего не выбрано</p>\
-                                         </div>\
-                                       </div>\
-                                         </div>\
-                                     </div>');
-                 return template;
-             } */
-            ,
+            return lineTemplate;
+        }
+        /*  , focusTooth: function () {
+             var template=$('<div class="card">\
+                                     <div class="card-block p-2">\
+                                     <div class="badge badge-pill light-blue lighten-2">Фокус на зуб:</div>\
+                                       <h4 class="card-title"></h4>\
+                                       <h6 class="card-subtitle mb-2 text-muted"></h6>\
+                                       <p class="card-content">Ничего не выбрано</p>\
+                                     </div>\
+                                   </div>\
+                                     </div>\
+                                 </div>');
+             return template;
+         } */
+        ,
         actionList: function (proceduresData) {
             var template = $('<div></div>');
             var $stateChangeBtnsTemplate = $('<div class="state-change-btns card">\
@@ -544,7 +567,7 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
         var that = this;
         this.$control.append(this.components.layoutGrid).find('.tooth-grid').append(this.components.toothGrid());
         this.$control.find('.color-section').each(function (ind, elem) {
-            let containerNumber = $(elem).data('partValue');
+            var containerNumber = $(elem).data('partValue');
             $(elem).append(that.components.toothGridItem(ind, containerNumber, dentalData));
         }); //this.$control.find('.focus-tooth').append(this.components.focusTooth());
         this.components.modalCont(this, this.options.btid); //this = widget
@@ -567,8 +590,10 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
         };
 
         var applyVisibilityStateByData = function (collection, args) {
+            
             if (args.state === 'removed') args.mobilityrate = "0";
-
+            if(args.mobilityrate == ""){$(collection).find('input').prop('checked', false)};
+            
             $(collection).each(function (e) {
                 stateToHide = $(this).data('visible-state');
                 if (args.state == stateToHide) {
@@ -644,7 +669,7 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                 that.$control.trigger('currentProceduresAccepted', {
                     proceduresList,
                     activeData
-                }, );
+                } );
 
             } else {
                 alert('Выберите зуб!');
@@ -670,7 +695,7 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                 if (args.data['bs.button']) {
                     delete args.data['bs.button'];
                 } else if (args.data[prop]) {
-                    that.dentalData.customer.tooth_map[itemPosition][prop] = data[prop];
+                    that.dentalData.customer.tooth_map[itemPosition][prop] = args.data[prop];
                     $updatingItems.data(prop, args.data[prop]);
                     $updatingItems.attr('data-' + prop, args.data[prop]);
                     if (prop == 'legendabbr') {
@@ -762,8 +787,8 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                 var stateColor = $(element).data('color');
                 if (dataMap[pos]['mobilityrate'] != 0) {
                     $(element).find('.abbr-text').text(legendAbbr + '-' + dataMap[pos]['mobilityrate']);
-                }else{
-                     $(element).find('.abbr-text').text(legendAbbr);
+                } else {
+                    $(element).find('.abbr-text').text(legendAbbr);
                 }
             });
         });
@@ -848,7 +873,7 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
             stateContent.append(canalList);
             stateContent.on('click', function (e) {
                 toggleState(e.target);
-                let currentPosition = $(e.target).data('position') || 'null'; //Сменить стейт canalList ..-> пробросить data-props
+                var currentPosition = $(e.target).data('position') || 'null'; //Сменить стейт canalList ..-> пробросить data-props
             });
             /* data atributes output */
             for (var key in args.data) {
@@ -955,7 +980,7 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
             var keysArray = ['Врач', 'Дата', 'Номер зуба', 'Состояние', 'Процедуры', 'Комментарии'];
             var oldServiceRecord = that.dentalData.customer.serviceHistory;
             var maxIndex = 0;
-            for (let index in that.dentalData.customer.serviceHistory) {
+            for (var index in that.dentalData.customer.serviceHistory) {
                 maxIndex = index;
             }
             var oldSRMap = oldServiceRecord[parseInt(maxIndex) + 1] = {};
