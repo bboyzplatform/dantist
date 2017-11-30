@@ -543,7 +543,7 @@
         padding: 0;
         border-radius: 50%;
         border: 1px solid black;
-        background-color: #aee2f870;
+        background-color: #a2dff770;
         -webkit-transition: .3s;
         transition: .3s;
     }
@@ -574,4 +574,87 @@
 
     .BSDentalGrid .mobrate-container {
         padding: 1rem;
+    }
+
+    .BSDentalGrid .switch label {
+        cursor: pointer;
+    }
+
+    .BSDentalGrid .switch label input[type=checkbox]:disabled+.lever {
+        cursor: default;
+    }
+
+    .BSDentalGrid .switch label .lever {
+        position: relative;
+        width: 40px;
+        height: 15px;
+        background-color: rgb(129, 129, 129);
+        border-radius: 15px;
+        -webkit-transition: background .3s ease;
+        transition: background .3s ease;
+        margin: 0 16px;
+    }
+
+    .BSDentalGrid .switch label .lever,
+    .BSDentalGrid .switch label .lever:after {
+        display: inline-block;
+        content: "";
+    }
+
+    .BSDentalGrid .btn .fa,
+    .BSDentalGrid .btn-floating,
+    .BSDentalGrid .picker .picker__box,
+    .BSDentalGrid .picker__date-display .clockpicker-display,
+    .BSDentalGrid .product-table td,
+    .BSDentalGrid .switch label .lever,
+    .BSDentalGrid .waves-input-wrapper {
+        vertical-align: middle;
+    }
+
+    .BSDentalGrid .switch,
+    .BSDentalGrid .switch * {
+        -khtml-user-select: none;
+    }
+
+    .BSDentalGrid .clockpicker-plate,
+    .picker,
+    .switch,
+    .switch * {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+    }
+
+    .BSDentalGrid .switch label input[type=checkbox]:disabled+.lever:after,
+    .BSDentalGrid .switch label input[type=checkbox]:disabled:checked+.lever:after {
+        background-color: rgb(189, 189, 189);
+    }
+
+    .BSDentalGrid .switch label .lever:after {
+        position: absolute;
+        width: 21px;
+        height: 21px;
+        background-color: rgb(241, 241, 241);
+        border-radius: 21px;
+        -webkit-box-shadow: 0 1px 3px 1px rgba(0, 0, 0, .4);
+        box-shadow: 0 1px 3px 1px rgba(0, 0, 0, .4);
+        left: -5px;
+        top: -3px;
+        -webkit-transition: left .3s ease, background .3s ease, box-shadow .1s ease;
+        -webkit-transition: left .3s ease, background .3s ease, -webkit-box-shadow .1s ease;
+        transition: left .3s ease, background .3s ease, -webkit-box-shadow .1s ease;
+        transition: left .3s ease, background .3s ease, box-shadow .1s ease;
+        transition: left .3s ease, background .3s ease, box-shadow .1s ease, -webkit-box-shadow .1s ease;
+    }
+
+    .BSDentalGrid .switch label .lever,
+    .BSDentalGrid .switch label .lever:after {
+        display: inline-block;
+        content: "";
+    }
+
+    .BSDentalGrid ::after,
+    .BSDentalGrid ::before {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
     }

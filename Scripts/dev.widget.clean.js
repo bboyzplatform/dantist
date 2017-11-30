@@ -159,6 +159,19 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                                 <div class="card-header light-blue lighten-1">\
                                      <span class="badge badge-pill light-blue lighten-2">\
                         <img class="head-logo" src="Content/Images/white-tooth-icon.png" style="width:20px;"> Зубная карта пациента</span>\
+                                <div class="grid-view-swtitcher">\
+                                <div class="switch">\
+                                        <label>\
+                                            Тип:Детский\
+                                            <input type="checkbox">\
+                                            <span class="lever"></span>\
+                                            Тип: Взрослый\
+                                        </label>\
+                                    </div>\
+                                    <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">\
+                                    Native toggle\
+                                </button>\
+                                </div>\
                                 </div>\
                                 <div class="card-body">\
                                 <div class="row">\
