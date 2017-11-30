@@ -30,9 +30,13 @@
 
     <link type="text/css" href="Content/Styles.css" rel="stylesheet">
     
-    <!--
-        *** Стили для печати ***
-        <link type="text/css" href="Content/print.dental.css" rel="stylesheet">-->
+    
+ *** Стили для печати 
+
+<!--
+<link type="text/css" href="Content/print.dental.css" rel="stylesheet">
+***-->
+
     
 </head>
 
@@ -44,7 +48,12 @@
             BsDocControls.push(new BS_BT_DentalGrid({
                 btid: 13084,
                 id: 50,
-                field: 'DentalGrid'
+                field: 'DentalGrid',
+                viewOpts: 'material', //material ios simple
+                appConfig: {
+                    //конфигурация для кастомизации модели данных клиники(кастом. набор видов лечения, услуг, заболеваний и пр.)
+                    toothNotation: []
+                }
             }).init());
         </script>
 

@@ -231,7 +231,7 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
         }
         /*  , focusTooth: function () {
              var template=$('<div class="card">\
-                                     <div class="card-block p-2">\
+                                     <div class="card-block p-2">\\
                                      <div class="badge badge-pill light-blue lighten-2">Фокус на зуб:</div>\
                                        <h4 class="card-title"></h4>\
                                        <h6 class="card-subtitle mb-2 text-muted"></h6>\
@@ -576,6 +576,28 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
         this.$control.find('.history-list').append(this.components.historyList(this));
         //this.$control.find('.focus-tooth').append(this.components.focusTooth())    
         //this.$control.find('#dev-console').append(this.components.devConsole(dentalData));
+        
+        setTimeout(function(){
+            that.dentalToPrint();
+         } , 1000);
+    },
+    dentalToPrint: function(){
+         var $printClone = $('<div class="BSDentalGrid print-view"></div>');
+         printTable = this.$control.find('.dental-card-table').clone();
+         //this.$control.find('.history-list').clone().appendTo($printClone);
+         $printClone.append(printTable);
+         var $histPrintList = $('<div class="hist-print"></div>');
+         var servicesHistData = this.dentalData.customer.serviceHistory;
+         for (var serviceString in servicesHistData) {
+             var $histBlock = $('<div></div>').css('display', 'inline-block');
+
+             for (var item in servicesHistData[serviceString]) {
+                 $histBlock.append('<div><b>' + item + ': <span>' + servicesHistData[serviceString][item]+ '</span></div>');
+             }
+             $histPrintList.append($histBlock);
+         }
+         $printClone.append($histPrintList);
+         $('body').append($printClone);
     },
     event: function () {
         var that = this; //Toothgrid actions
@@ -629,16 +651,13 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
             var itemPosition = $(e.currentTarget).data('position');
             data = $(e.currentTarget).data();
             delete data['activeState'];
-            if (!data.mobilityrate) data.mobilityrate = that.dentalData.customer.tooth_map[itemPosition].mobilityrate;
             if (typeof data['position'] == 'undefined') {
                 alert('Сначала выберите что хотите изменить');
                 deactivate('.state-change-btns button');
             } else {
-                $(that.$control).trigger('changeToothState', {
-                    data
-                });
+                if (typeof data.mobilityrate == 'undefined') data.mobilityrate = that.dentalData.customer.tooth_map[itemPosition]['mobilityrate'];
+                $(that.$control).trigger('changeToothState', {data});
             }
-
         });
         //подвижность зуба
         $('[data-mobilityrate]', this.$control).on('change', function (e) {
