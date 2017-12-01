@@ -155,24 +155,23 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
             return template;
         },
         toothGrid: function () {
-            var template = $('<div class="card">\
+            var template = $('<div class="card" data-grid-type="adult">\
                                 <div class="card-header light-blue lighten-1">\
                                      <span class="badge badge-pill light-blue lighten-2">\
                         <img class="head-logo" src="Content/Images/white-tooth-icon.png" style="width:20px;"> Зубная карта пациента</span>\
-                                <div class="grid-view-swtitcher">\
-                                <div class="switch">\
-                                        <label>\
-                                            Тип:Детский\
-                                            <input type="checkbox">\
-                                            <span class="lever"></span>\
-                                            Тип: Взрослый\
-                                        </label>\
-                                    </div>\
-                                    <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">\
-                                    Native toggle\
-                                </button>\
-                                </div>\
-                                </div>\
+                        <div class="notation-type-container" data-notation-type="Стандартная(FDI)">\
+                            <span>Нотация: </span>\
+                        <select class="form-control-sm">\
+                                    <option>Стандартная(FDI ISO 3950)</option>\
+                                    <option>Универсальная система(Американская)</option>\
+                                </select>\
+                            </div>\
+                            <div class="grid-toggler">\
+                                <b>Тип: </b><span>Взрослый</span>\
+                                <button type="button" class="btn btn-primary bz-switcher" data-toggle="button" aria-pressed="false" autocomplete="off" data-grid-type="adult"></button>\
+                                <span>Детский</span>\
+                            </div>\
+                        </div>\
                                 <div class="card-body">\
                                 <div class="row">\
                                     <div class="color-section reverse col-xs-12 col-sm-12 col-md-12 col-lg-6" data-part-value="1">\
@@ -312,19 +311,19 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
         },
         anamnesis: function (data) {
             var template = $('<div class="card sh4 p-4" data-dental-card><span class="heading"></span>\
-                    <div class="user-inform custom-controls-stacked invisible" data-user-inform></div>\
+                    <div class="user-inform custom-controls-stacked" data-user-inform></div>\
                     <div class="item-table"></div>\
                 </div>');
             $tableGrid = $('<div class="row"></div>');
             var $heading = $('<h4 class="card-title"><strong>Медицинская карта стоматологического больного</h4>');
-            /*  var $heading = $('<h4 class="card-title invisible"><strong>Медицинская карта стоматологического больного</h4>');
+            var $heading = $('<h4 class="card-title "><strong>Медицинская карта стоматологического больного</h4>');
             var $userInfoCardBlockTemplate = $('<ul class="list-inline d-flex flex-wrap flex-column">\
                     <li class="list-inline-item" data-prop="fullname"><b>ФИО: </b><span></span></li>\
                     <li class="list-inline-item" data-prop="gender"><b>Пол: </b><span></span></li>\
                     <li class="list-inline-item" data-prop="birthday"><b>Дата рождения: </b><span></span></li>\
                     <li class="list-inline-item" data-prop="phone"><b>Телефон: </b><span></span></li>\
                     <li class="list-inline-item" data-prop="mail"><b>E-mail: </b><span></span></li>\
-                 </ul>');*/
+                 </ul>');
             var $legendTemplate = $('<div id="dental-legend-container" role="tablist" data-children=".legend-item">\
                 <div class="card legend-item">\
                 <div class="card-header" role="tab">\
@@ -378,11 +377,13 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                 </div>\
                 </div>');
             var $dentalTable = $('<table></table>').addClass('dental-card-table table table-striped table-bordered table-hover table-responsive');
-            $dentalTable.data('table-data', data); //var $thead = $('<thead></thead>'); //Шапка таблицы находиться в середине таблицы
-            var $tbody = $('<tbody></tbody>'); //$tr = $('<tr>');
+            $dentalTable.data('table-data', data); 
+            var $thead = $('<thead></thead>'); //Шапка таблицы находиться в середине таблицы
+            var $tbody = $('<tbody></tbody>'); 
+            $tr = $('<tr>');
             var tRow = '<tr class="inline-body-divider">';
             for (var index = 0; index < 1; index++) {
-                //var tr = '<tr data-position-group='+(index+1)+'>';
+                var tr = '<tr data-position-group='+(index+1)+'>';
                 var tr = "<tr>";
                 for (var i = 8; i > 0; i--) {
                     var cell = '<td data-group="' + (index + 1) + '" data-pos="' + i + '"><span class="abbr-text">' + i + "</span></td>";
@@ -405,7 +406,8 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                 tRow += cell;
             }
             tRow += "</tr>";
-            $tbody.append(tRow); //$thead.append(tRow);
+            $tbody.append(tRow); 
+            $thead.append(tRow);
             /* 3 и 4 ряды зубов */
             for (var index = 4; index > 3; index--) {
                 var tr = "<tr>";
@@ -419,14 +421,16 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                 }
                 tr += "</tr>";
                 $tbody.append(tr);
-            } //$dentalTable.append($thead);
+            } 
+            $dentalTable.append($thead);
             $dentalTable.append($tbody);
             $tableLegend = $("<div></div>").addClass("card").append($legendTemplate);
             var $itemsList = $('<ul class="list-group d-flex" data-dental-card></ul>');
             $(".heading", template).html($heading);
             var _getPos = function (elem) {
                 return $(elem).data("position");
-            }; //template.find(".user-inform").html($userInfoCardBlockTemplate);
+            }; 
+            template.find(".user-inform").html($userInfoCardBlockTemplate);
             template.find(".item-table").html($itemsList);
             template.append($tableGrid);
             template.append($dentalTable);
@@ -582,7 +586,8 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
         this.$control.find('.color-section').each(function (ind, elem) {
             var containerNumber = $(elem).data('partValue');
             $(elem).append(that.components.toothGridItem(ind, containerNumber, dentalData));
-        }); //this.$control.find('.focus-tooth').append(this.components.focusTooth());
+        }); 
+        //this.$control.find('.focus-tooth').append(this.components.focusTooth());
         this.components.modalCont(this, this.options.btid); //this = widget
         this.$control.find('.action-list').append(this.components.actionList(proceduresData));
         this.$control.find('.anamnesis').append(this.components.anamnesis(dentalData));
@@ -590,9 +595,6 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
         //this.$control.find('.focus-tooth').append(this.components.focusTooth())    
         //this.$control.find('#dev-console').append(this.components.devConsole(dentalData));
         
-        setTimeout(function(){
-            that.dentalToPrint();
-         } , 1000);
     },
     dentalToPrint: function(){
          var $printClone = $('<div class="BSDentalGrid print-view"></div>');
@@ -613,7 +615,8 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
          $('body').append($printClone);
     },
     event: function () {
-        var that = this; //Toothgrid actions
+        var that = this; 
+        //Toothgrid actions
         var deactivate = function (elements) {
             $(elements).data('active-state', 'inactive');
             $(elements).attr('data-active-state', 'inactive');
@@ -624,8 +627,16 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
             $(element).attr('data-active-state', ($(element).attr('data-active-state') == 'active' ? 'inactive' : 'active'));
         };
 
+        var toggleGridType = function(element) {
+            $(element).data('active-type', ($(element).data('active-type') == 'child' ? 'adult' : 'child'));
+            $(element).attr('data-active-type', ($(element).attr('data-active-type') == 'child' ? 'adult' : 'child'));
+        }
+        
+        $('[data-grid-type]', this.$control).on('click', function(e){
+            toggleGridType(this);
+        });
+
         var applyVisibilityStateByData = function (collection, args) {
-            
             if (args.state === 'removed') args.mobilityrate = "0";
             if(args.mobilityrate == ""){$(collection).find('input').prop('checked', false)};
             
