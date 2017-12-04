@@ -715,3 +715,10 @@ textarea {
     margin-right: .5rem;
     margin-left: .5rem;
 }
+
+.BSDentalGrid .mobrate-container{
+    margin:0;
+    margin-bottom:1rem;
+    padding-bottom:0;
+    padding:0.5rem 0 0 1rem  
+}
