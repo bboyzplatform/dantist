@@ -173,7 +173,17 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                             </div>\
                         </div>\
                                 <div class="card-body">\
-                                <div class="row">\
+                                <div class="row adult-section" data-visible-grid="adult-grid">\
+                                    <div class="color-section reverse col-xs-12 col-sm-12 col-md-12 col-lg-6" data-part-value="1">\
+                                    </div>\
+                                    <div class="color-section col-xs-12 col-sm-12 col-md-12 col-lg-6" data-part-value="2">\
+                                    </div>\
+                                    <div class="color-section reverse col-xs-12 col-sm-12 col-md-12 col-lg-6" data-part-value="4">\
+                                    </div>\
+                                    <div class="color-section col-xs-12 col-sm-12 col-md-12 col-lg-6" data-part-value="3">\
+                                    </div>\
+                                </div>\
+                                <div class="row kid-section inactive-grid" data-visible-grid="kid-grid" >\
                                     <div class="color-section reverse col-xs-12 col-sm-12 col-md-12 col-lg-6" data-part-value="1">\
                                     </div>\
                                     <div class="color-section col-xs-12 col-sm-12 col-md-12 col-lg-6" data-part-value="2">\
@@ -206,41 +216,33 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                             </svg>\
                             <span class="position-text badge badge-pill lighten-3 blue text-center">' + posValue + "</span>\
                         </div>");
-                /*
-                 < div class = "tooth-double-item"\
-                 data - position = "' + posValue + '"\
-                 data - active - state = "inactive" > \
-                     <
-                     svg height = "60px"
-                 width = "50px"\
-                 xmlns = "http://www.w3.org/2000/svg"\
-                 xmlns: xlink = "http://www.w3.org/1999/xlink"\
-                 stroke = "#000"\
-                 stroke - width = "8"\
-                 fill = "none"\ >
-                     \
-                     <
-                     image x = "0"
-                 y = "0"
-                 height = "50"
-                 width = "40"
-                 xlink: href = "Content/svg/bbz-dental-icons/t-'+posValue+'.svg" / > \
-                     <
-                     /svg>\ <
-                     span class = "position-text badge badge-pill lighten-3 blue text-center" > ' + posValue + "</span>\
-                    </div>");
-
-                <svg id="circle" height="70px" width="40px" \
-                            xmlns="http://www.w3.org/2000/svg"  \
-                            xmlns: xlink="http://www.w3.org/1999/xlink">\
-                                    <image x="-15" y="-5" height="70" width="60" xlink: href="Content/svg/oldtooths/t-' + posValue + '.svg" />\
-                            </svg>\
-                <img src="Content/svg/t-'+posValue+'.svg"></img>\ <img src="Content/svg/oldtooths/t-' + posValue + '.svg"></img>\
-                            <span class="position-text badge badge-pill lighten-3 blue text-center">' + posValue + "</span>\ 
-                            */
+               
             }
             return lineTemplate;
-        }
+        },
+        kidToothGridItem: function(index, containerNumber, dentalData) {
+            var lineTemplate = $('<div class="tooth-line"></div>');
+            for (var i = 1; i < 6; i++) {
+                posValue = containerNumber.toLocaleString() + i.toLocaleString();
+                $(lineTemplate).append('\
+                        <div class="tooth-double-item" \
+                            data-position="' + posValue + '"\
+                            data-active-state="inactive">\
+                            <svg height="60px" width="50px" \
+                                height="70px"\
+                                width="50px"\
+                                viewBox="0 0 320 480"\
+                                xmlns="http://www.w3.org/2000/svg"\
+                                xlink="http://www.w3.org/1999/xlink"\
+                            >\
+                                <image xlink: href="Content/svg/bbz-dental-icons/kid-grid/t-kid-' + posValue + '.svg" />\
+                            </svg>\
+                            <span class="position-text badge badge-pill lighten-3 blue text-center">' + posValue + "</span>\
+                        </div>");
+
+            }
+            return lineTemplate;
+        },
         /*  , focusTooth: function () {
              var template=$('<div class="card">\
                                      <div class="card-block p-2">\\
@@ -254,7 +256,7 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                                  </div>');
              return template;
          } */
-        ,
+        
         actionList: function (proceduresData) {
             var template = $('<div></div>');
             var $stateChangeBtnsTemplate = $('<div class="state-change-btns card">\
@@ -583,10 +585,14 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
     render: function (components, dentalData, proceduresData) {
         var that = this;
         this.$control.append(this.components.layoutGrid).find('.tooth-grid').append(this.components.toothGrid());
-        this.$control.find('.color-section').each(function (ind, elem) {
+        this.$control.find('.adult-section .color-section').each(function (ind, elem) {
             var containerNumber = $(elem).data('partValue');
             $(elem).append(that.components.toothGridItem(ind, containerNumber, dentalData));
         }); 
+         this.$control.find('.kid-section .color-section').each(function (ind, elem) {
+             var containerNumber = parseFloat($(elem).data('partValue')) + 4;
+             $(elem).append(that.components.kidToothGridItem(ind, containerNumber, dentalData));
+         });
         //this.$control.find('.focus-tooth').append(this.components.focusTooth());
         this.components.modalCont(this, this.options.btid); //this = widget
         this.$control.find('.action-list').append(this.components.actionList(proceduresData));
@@ -630,6 +636,13 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
         var toggleGridType = function(element) {
             $(element).data('active-type', ($(element).data('active-type') == 'child' ? 'adult' : 'child'));
             $(element).attr('data-active-type', ($(element).attr('data-active-type') == 'child' ? 'adult' : 'child'));
+            if ($(element).data('active-type') == 'child' ){
+                that.$control.find('[data-visible-grid="kid-grid"]').removeClass('inactive-grid');
+                that.$control.find('[data-visible-grid="adult-grid"]').addClass('inactive-grid');
+            }else{
+                that.$control.find('[data-visible-grid="kid-grid"]').addClass('inactive-grid');
+                that.$control.find('[data-visible-grid="adult-grid"]').removeClass('inactive-grid');
+            }
         }
         
         $('[data-grid-type]', this.$control).on('click', function(e){
@@ -775,7 +788,7 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                 //console.log(fullName)
             }
         });
-
+        
         this.$control.on('initialUpdatedData', function (e, args) {
             var dataMap = args.customer.tooth_map;
             var $updateCollection = $('.tooth-double-item', this.$control);
