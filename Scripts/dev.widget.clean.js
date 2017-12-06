@@ -535,6 +535,25 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
         });
         return data;
     },
+    getUserData: function (url) {
+        var $this = this;
+        var data = 'Нет данных';
+        $.ajax({
+            type: "get",
+            url: url,
+            data: JSON.stringify({
+                "btid": this.id,
+                "docId": this.docId
+            }),
+            contentType: 'application/json',
+            dataType: "json",
+            success: function (response) {
+                //$this.userData = response;
+                $this.$control.trigger('initialUserUpdate', response);
+            }
+        });
+        return data;
+    },
     getDoctorData: function (doctorDataUrl) {
         var that = this;
         this.doctorData = '';
@@ -575,6 +594,7 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
     },
     _init: function () {
         // Получим data с сервера
+        this.getUserData(this.dataUrl);
         this.getToothData(this.dataUrl);
         this.getProcedures(this.proceduresUrl);
         this.getDoctorData(this.doctorDataUrl);
@@ -644,8 +664,8 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                 that.$control.find('[data-visible-grid="adult-grid"]').removeClass('inactive-grid');
             }
         }
-        
-        $('[data-grid-type]', this.$control).on('click', function(e){
+
+        $('.grid-toggler button', this.$control).on('click', function(e){
             toggleGridType(this);
         });
 
@@ -776,9 +796,19 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                 var collection = $('[data-visible-state]', this);
                 applyVisibilityStateByData(collection, args.data);
             }
-
         });
 
+        this.$control.on('initialUserUpdate', function (e, userDataArgs) {
+            var userDataMap = userDataArgs['customer'];
+            delete userDataMap.tooth_map;
+            delete userDataMap.serviceHistory;
+            console.log(userDataMap);
+            for (var item in userDataMap) {
+                console.log(item)
+                $(this).find('.user-inform [data-prop="' + item + '"] span').text(userDataMap[item]);
+               
+            }
+        });
         this.$control.on('initialUpdateDoctorData', function (e, args) {
             //console.log('doctorGeted data');
             var fullName = args.doctor['full_name'];
