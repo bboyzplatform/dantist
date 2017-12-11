@@ -727,6 +727,10 @@ textarea {
     display: none;
 }
 
-.BSDentalGrid #collapse-legend-container{
+.BSDentalGrid #collapse-legend-container {
     padding: 1rem;
+}
+
+.BSDentalGrid .color-section:nth-child(even) {
+    border-left: 1px dashed gray
 }

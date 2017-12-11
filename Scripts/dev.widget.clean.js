@@ -434,42 +434,55 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
             var $kidDentalTable = $('<table class="inactive-grid" data-visible-grid="kid-grid"></table>').addClass('dental-card-table table table-striped table-bordered table-hover table-responsive');
             $kidDentalTable.data('table-data', data);
             $kidDentalTable.data('visible-grid', 'kid-grid');
-            var $kidThead = $('<thead></thead>'); //Шапка таблицы находиться в середине таблицы
+            var $kidThead = $('<thead></thead>'); 
+            //Шапка таблицы находиться в середине таблицы
             var $kidTbody = $('<tbody></tbody>');
             $kidTr = $('<tr>');
-            
             var kidTRow = '<tr class="inline-body-divider">';
-           /*  for (var index = 5; index < 9; index++) {
+             for (var index = 4; index < 5; index++) {
                 var tr = '<tr data-position-group=' + (index + 1) + '>';
                 var tr = "<tr>";
-                for (var i = 6; i > 0; i--) {
+                for (var i = 5; i > 0; i--) {
                     var cell = '<td data-group="' + (index + 1) + '" data-pos="' + i + '"><span class="abbr-text">' + i + "</span></td>";
                     tr += cell;
-            }
-              
-                for (var i = 1; i <= 6; i++) {
-                    var cell = "<td data-group=" + (index + 1) * 2 + ' data-pos="' + i + '"><span class="abbr-text">' + i + "</span></td>";
+                }
+                for (var i = 1; i <= 5; i++) {
+                    var cell = "<td data-group=" + (index + 2) + ' data-pos="' + i + '"><span class="abbr-text">' + i + "</span></td>";
                     tr += cell;
                 }
                 tr += "</tr>";
                 $kidTbody.append(tr);
-            
-            } */
-             /* Шапку таблицы вставляем в середину таблицы */
-            for (var i = 6; i > 0; i--) {
+            } 
+            /* Шапку таблицы вставляем в середину таблицы */
+            for (var i = 5; i > 0; i--) {
                 var cell = '<td data-row-pos="' + i + '">' + i + "</td>";
                 kidTRow += cell;
             }
-            for (var i = 1; i <= 6; i++) {
+            for (var i = 1; i <= 5; i++) {
                 var cell = '<td data-row-pos="' + i + '">' + i + "</td>";
                 kidTRow += cell;
             }
-            
             kidTRow += "</tr>";
             $kidTbody.append(kidTRow);
-            $kidThead.append(kidTRow);
-            //$kidDentalTable.append($kidThead);
-            $kidDentalTable.append($kidTbody).data('');
+            
+             /* 8 и 7 ряды  зубов */
+             for (var index = 8; index > 7; index--) {
+                 var tr = "<tr>";
+                 for (var i = 5; i > 0; i--) {
+                     var cell = '<td data-group="' + index + '" data-pos="' + i + '"><span class="abbr-text">' + i + "</span></td>";
+                     tr += cell;
+                 }
+                 for (var i = 1; i <= 5; i++) {
+                     var cell = "<td data-group=" + (index - 1) + ' data-pos="' + i + '"><span class="abbr-text">' + i + "</span></td>";
+                     tr += cell;
+                 }
+                 tr += "</tr>";
+                 $kidTbody.append(tr);
+             }
+            
+            $kidDentalTable.append($kidTbody);
+
+            
 
 
             $tableLegend = $("<div></div>").addClass("card").append($legendTemplate);
@@ -902,28 +915,30 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
             $('.treat-types-list .card-content', this).html($itemsList)
         });
 
-        this.$control.on('initialUpdatedData', function (e, args) {
-            var dataMap = args.customer.tooth_map;
-            var $dentalTableCells = $('.dental-card-table [data-pos]', this.$control);
-            $dentalTableCells.each(function (index, element) {
-                var position = $(this).data('pos');
-                var group = $(this).data('group');
-                var pos = group + '' + position;
-                for (var prop in dataMap[pos]) {
-                    if (dataMap[pos].hasOwnProperty(prop)) {
-                        $(element).data(prop, dataMap[pos][prop]);
-                        $(element).attr('data-' + prop, dataMap[pos][prop]);
-                    };
-                }
-                var legendAbbr = $(element).data('legendabbr');
-                var stateColor = $(element).data('color');
-                if (dataMap[pos]['mobilityrate'] != 0) {
-                    $(element).find('.abbr-text').text(legendAbbr + '-' + dataMap[pos]['mobilityrate']);
-                } else {
-                    $(element).find('.abbr-text').text(legendAbbr);
-                }
-            });
-        });
+         this.$control.on('initialUpdatedData', function (e, args) {
+             var dataMap = args.customer.tooth_map;
+             
+             var $dentalTableCells = $('.dental-card-table [data-pos]', this.$control);
+             
+             $dentalTableCells.each(function (index, element) {
+                 var position = $(this).data('pos');
+                 var group = $(this).data('group');
+                 var pos = group + '' + position;
+                 for (var prop in dataMap[pos]) {
+                     if (dataMap[pos].hasOwnProperty(prop)) {
+                         $(element).data(prop, dataMap[pos][prop]);
+                         $(element).attr('data-' + prop, dataMap[pos][prop]);
+                     };
+                 }
+                 var legendAbbr = $(element).data('legendabbr');
+                 var stateColor = $(element).data('color');
+                 if (dataMap[pos]['mobilityrate'] != 0) {
+                     $(element).find('.abbr-text').text(legendAbbr + '-' + dataMap[pos]['mobilityrate']);
+                 } else {
+                     $(element).find('.abbr-text').text(legendAbbr);
+                 }
+             });
+         });
 
 
         $(this.$control).on('changeActiveTooth', {
