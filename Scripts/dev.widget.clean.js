@@ -155,16 +155,17 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
             return template;
         },
         toothGrid: function () {
+            /* 
+            <select class="form-control-sm">\
+                                    <option>Стандартная(FDI ISO 3950)</option>\
+                                    <option>Универсальная система(Американская)</option>\
+                                </select>\ */
             var template = $('<div class="card" data-grid-type="adult">\
                                 <div class="card-header light-blue lighten-1">\
                                      <span class="badge badge-pill light-blue lighten-2">\
                         <img class="head-logo" src="Content/Images/white-tooth-icon.png" style="width:20px;"> Зубная карта пациента</span>\
                         <div class="notation-type-container" data-notation-type="Стандартная(FDI)">\
-                            <span>Нотация: </span>\
-                        <select class="form-control-sm">\
-                                    <option>Стандартная(FDI ISO 3950)</option>\
-                                    <option>Универсальная система(Американская)</option>\
-                                </select>\
+                            <span>Нотация: Стандартная(FDI ISO 3950)</span>\
                             </div>\
                             <div class="grid-toggler">\
                                 <b>Тип: </b><span>Взрослый</span>\
@@ -378,8 +379,10 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                 </div>\
                 </div>\
                 </div>');
-            var $dentalTable = $('<table></table>').addClass('dental-card-table table table-striped table-bordered table-hover table-responsive');
+            var $dentalTable = $('<table data-visible-grid="adult-grid"></table>').addClass('dental-card-table table table-striped table-bordered table-hover table-responsive');
+
             $dentalTable.data('table-data', data); 
+
             var $thead = $('<thead></thead>'); //Шапка таблицы находиться в середине таблицы
             var $tbody = $('<tbody></tbody>'); 
             $tr = $('<tr>');
@@ -424,8 +427,51 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                 tr += "</tr>";
                 $tbody.append(tr);
             } 
-            $dentalTable.append($thead);
+           // $dentalTable.append($thead);
             $dentalTable.append($tbody);
+            
+            //Таблица для детских зубов
+            var $kidDentalTable = $('<table class="inactive-grid" data-visible-grid="kid-grid"></table>').addClass('dental-card-table table table-striped table-bordered table-hover table-responsive');
+            $kidDentalTable.data('table-data', data);
+            $kidDentalTable.data('visible-grid', 'kid-grid');
+            var $kidThead = $('<thead></thead>'); //Шапка таблицы находиться в середине таблицы
+            var $kidTbody = $('<tbody></tbody>');
+            $kidTr = $('<tr>');
+            
+            var kidTRow = '<tr class="inline-body-divider">';
+           /*  for (var index = 5; index < 9; index++) {
+                var tr = '<tr data-position-group=' + (index + 1) + '>';
+                var tr = "<tr>";
+                for (var i = 6; i > 0; i--) {
+                    var cell = '<td data-group="' + (index + 1) + '" data-pos="' + i + '"><span class="abbr-text">' + i + "</span></td>";
+                    tr += cell;
+            }
+              
+                for (var i = 1; i <= 6; i++) {
+                    var cell = "<td data-group=" + (index + 1) * 2 + ' data-pos="' + i + '"><span class="abbr-text">' + i + "</span></td>";
+                    tr += cell;
+                }
+                tr += "</tr>";
+                $kidTbody.append(tr);
+            
+            } */
+             /* Шапку таблицы вставляем в середину таблицы */
+            for (var i = 6; i > 0; i--) {
+                var cell = '<td data-row-pos="' + i + '">' + i + "</td>";
+                kidTRow += cell;
+            }
+            for (var i = 1; i <= 6; i++) {
+                var cell = '<td data-row-pos="' + i + '">' + i + "</td>";
+                kidTRow += cell;
+            }
+            
+            kidTRow += "</tr>";
+            $kidTbody.append(kidTRow);
+            $kidThead.append(kidTRow);
+            //$kidDentalTable.append($kidThead);
+            $kidDentalTable.append($kidTbody).data('');
+
+
             $tableLegend = $("<div></div>").addClass("card").append($legendTemplate);
             var $itemsList = $('<ul class="list-group d-flex" data-dental-card></ul>');
             $(".heading", template).html($heading);
@@ -436,6 +482,7 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
             template.find(".item-table").html($itemsList);
             template.append($tableGrid);
             template.append($dentalTable);
+            template.append($kidDentalTable);
             template.append($tableLegend);
             return template;
         },
@@ -806,7 +853,6 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
             for (var item in userDataMap) {
                 console.log(item)
                 $(this).find('.user-inform [data-prop="' + item + '"] span').text(userDataMap[item]);
-               
             }
         });
         this.$control.on('initialUpdateDoctorData', function (e, args) {

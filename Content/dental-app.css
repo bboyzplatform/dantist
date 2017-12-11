@@ -723,6 +723,10 @@ textarea {
     padding: 0.5rem 0 0 1rem
 }
 
-.BSDentalGrid [data-visible-grid].inactive-grid{
-    display:none;
+.BSDentalGrid [data-visible-grid].inactive-grid {
+    display: none;
+}
+
+.BSDentalGrid #collapse-legend-container{
+    padding: 1rem;
 }
