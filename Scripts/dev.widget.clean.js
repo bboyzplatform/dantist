@@ -742,8 +742,10 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                     });
                 } else {
                     $(this).show().find('input')
-                        .prop('disabled', false)
-                        .data('position', args.position)
+                        .prop({
+                         'checked': false,
+                         'disabled': false
+                        }).data('position', args.position)
                         .filter('.radio-' + args.mobilityrate)
                         .prop('checked', true);
                 }

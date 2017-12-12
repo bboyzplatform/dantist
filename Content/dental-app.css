@@ -734,3 +734,7 @@ textarea {
 .BSDentalGrid .color-section:nth-child(even) {
     border-left: 1px dashed gray
 }
+
+.BSDentalGrid .dental-card-table[data-visible-grid="kid-grid"] {
+    width: calc(80% + 2rem);
+}
