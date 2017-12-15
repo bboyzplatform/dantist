@@ -986,7 +986,7 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
         });
 
         $('.state-change-btns', this.$control).on('updateContent', function (e, args) {
-            var $toggledButton = $('.state-change-btns button[data-state="' + args.data.state + '"]', this.$control);
+            var $toggledButton = $('.state-change-btns button[data-state="' + args.data.state + '"][data-legendabbr="' + args.data.legendabbr + '"]', this.$control);
             deactivate($(this).find('button'));
             toggleState($toggledButton);
         });
