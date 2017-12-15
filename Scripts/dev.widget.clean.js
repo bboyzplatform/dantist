@@ -126,6 +126,7 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
         this.proceduresUrl = '/api/getProcedures';
         this.doctorDataUrl = '/api/getDoctorData';
         this.saveRecordUrl = '/api/saveNewRecord';
+        this.anamnesisDataUrl = '/api/getAnamnesis';
         /* console.log(options); */
     },
     components: {
@@ -262,23 +263,23 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
             <div class="card-block"><h4 class="card-title badge badge-pill light-blue lighten-2">\
                 <i class="bbz-i i_repair"></i> Состояние:\
             </div>\
-            <div class="d-flex flex-column card-block" data-toggle="buttons">\
-                <button class="btn btn-outline-light-green" data-state="heal" data-legendabbr=" " data-color="light-green">Здоров</button>\
-                <button class="btn  btn-outline-blue-grey" data-state="removed" data-legendabbr="О" data-color="light-grey">Отсутствует</button>\
-                <button class="btn  btn-outline-light-grey" data-state="plomb" data-legendabbr="П" data-color="light-gray">Пломбирован</button>\
-                <button class="btn  btn-outline-light-grey" data-state="koronka" data-legendabbr="K" data-color="light-gray">Коронка</button>\
-                <button class="btn  btn-outline-light-blue" data-state="implant" data-legendabbr="Им" data-color="light-blue">Имплант</button>\
-                <button class="btn  btn-outline-light-blue" data-state="shtift" data-legendabbr="Ш" data-color="light-blue">Штифт</button>\
-                <button class="btn  btn-outline-red" data-state="disease" data-legendabbr="К" data-color="red"> Кариес</button>\
-                <button class="btn  btn-outline-red" data-state="disease" data-legendabbr="Pt" data-color="red"> Периодонтит</button>\
-                <button class="btn  btn-outline-red" data-state="disease" data-legendabbr="A" data-color="red"> Парадантоз</button>\
-                <button class="btn  btn-outline-red" data-state="disease" data-legendabbr="Г" data-color="red"> Гранулема</button>\
-                <button class="btn  btn-outline-red" data-state="disease" data-legendabbr="Гк" data-color="red"> Кистогранулема</button>\
-                <button class="btn  btn-outline-red" data-state="disease" data-legendabbr="Ки" data-color="red"> Киста</button>\
-                <button class="btn  btn-outline-red" data-state="disease" data-legendabbr="R" data-color="red"> Корень</button>\
-                <button class="btn  btn-outline-red" data-state="disease" data-legendabbr="Гп" data-color="red"> Гипоплазия</button>\
-                <button class="btn  btn-outline-red" data-state="disease" data-legendabbr="Кл" data-color="red"> Клиновидный дефект</button>\
+            <div class="state-list">\
             </div>');
+            /* <button class="btn btn-outline-light-green" data-state="heal" data-legendabbr=" " data-color="light-green">Здоров</button>\
+                            <button class="btn  btn-outline-blue-grey" data-state="removed" data-legendabbr="О" data-color="light-grey">Отсутствует</button>\
+                            <button class="btn  btn-outline-light-grey" data-state="plomb" data-legendabbr="П" data-color="light-gray">Пломбирован</button>\
+                            <button class="btn  btn-outline-light-grey" data-state="koronka" data-legendabbr="K" data-color="light-gray">Коронка</button>\
+                            <button class="btn  btn-outline-light-blue" data-state="implant" data-legendabbr="Им" data-color="light-blue">Имплант</button>\
+                            <button class="btn  btn-outline-light-blue" data-state="shtift" data-legendabbr="Ш" data-color="light-blue">Штифт</button>\
+                            <button class="btn  btn-outline-red" data-state="disease" data-legendabbr="К" data-color="red"> Кариес</button>\
+                            <button class="btn  btn-outline-red" data-state="disease" data-legendabbr="Pt" data-color="red"> Периодонтит</button>\
+                            <button class="btn  btn-outline-red" data-state="disease" data-legendabbr="A" data-color="red"> Парадантоз</button>\
+                            <button class="btn  btn-outline-red" data-state="disease" data-legendabbr="Г" data-color="red"> Гранулема</button>\
+                            <button class="btn  btn-outline-red" data-state="disease" data-legendabbr="Гк" data-color="red"> Кистогранулема</button>\
+                            <button class="btn  btn-outline-red" data-state="disease" data-legendabbr="Ки" data-color="red"> Киста</button>\
+                            <button class="btn  btn-outline-red" data-state="disease" data-legendabbr="R" data-color="red"> Корень</button>\
+                            <button class="btn  btn-outline-red" data-state="disease" data-legendabbr="Гп" data-color="red"> Гипоплазия</button>\
+                            <button class="btn  btn-outline-red" data-state="disease" data-legendabbr="Кл" data-color="red"> Клиновидный дефект</button>\ */;
             var $mobilityRateTemplate = $('<div class="card mobrate-container"  data-visible-state="removed">\
             <div class="card-block">\
             <h4 class="card-title badge badge-pill light-blue lighten-2">\
@@ -480,9 +481,6 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
 
             $kidDentalTable.append($kidTbody);
 
-
-
-
             $tableLegend = $("<div></div>").addClass("card").append($legendTemplate);
             var $itemsList = $('<ul class="list-group d-flex" data-dental-card></ul>');
             $(".heading", template).html($heading);
@@ -580,10 +578,6 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
         $.ajax({
             type: "get",
             url: url,
-            data: JSON.stringify({
-                "btid": this.id,
-                "docId": this.docId
-            }),
             contentType: 'application/json',
             dataType: "json",
             success: function (response) {
@@ -650,12 +644,31 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
         });
         return data;
     },
+    getAnamnesis: function (anamnesisDataUrl){
+        var $this = this;
+        var data = 'Нет данных';
+        $.ajax({
+            type: "get",
+            url: anamnesisDataUrl,
+            contentType: 'application/json',
+            dataType: "json",
+            complete: function (response) {
+                console.log(response);
+                if (response.readyState === 4) {
+                    $this.anamnesisData = JSON.parse(response.responseText);
+                    $this.$control.trigger('initialUpdatedActionsData', $this.anamnesisData);
+                }
+            }
+        });
+        return data;
+    },
     _init: function () {
         // Получим data с сервера
         this.getUserData(this.dataUrl);
         this.getToothData(this.dataUrl);
         this.getProcedures(this.proceduresUrl);
         this.getDoctorData(this.doctorDataUrl);
+        this.getAnamnesis(this.anamnesisDataUrl);
         this.render(this.components, this.dentalData, this.proceduresData); //И привяжем DOM события к нужным элементам модуля
         this.event();
         return this;
@@ -763,23 +776,6 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
             });
         });
 
-        this.$control.find('.state-change-btns button').on('click', function (e, args) {
-            //var state = $(e.currentTarget).data('activity-state');
-            deactivate('.state-change-btns button');
-            toggleState(e.currentTarget);
-            var itemPosition = $(e.currentTarget).data('position');
-            data = $(e.currentTarget).data();
-            delete data['activeState'];
-            if (typeof data['position'] == 'undefined') {
-                alert('Сначала выберите что хотите изменить');
-                deactivate('.state-change-btns button');
-            } else {
-                if (typeof data.mobilityrate == 'undefined') data.mobilityrate = that.dentalData.customer.tooth_map[itemPosition]['mobilityrate'];
-                $(that.$control).trigger('changeToothState', {
-                    data
-                });
-            }
-        });
         //подвижность зуба
         $('[data-mobilityrate]', this.$control).on('change', function (e) {
             var currentRate = $(e.currentTarget).data('mobilityrate');
@@ -792,28 +788,6 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                 data
             });
 
-        })
-        //add current procedures to HistProcess list
-        this.$control.find('button[data-add-procedures]').on('click', function (e) {
-            var activeStateElement = $('.state-change-btns [data-active-state="active"]', this.$control);
-
-            if (activeStateElement.length !== 0) {
-                var activeData = $(activeStateElement).data();
-                var proceduresMap = $(this).parent().find('input[type="checkbox"]:checked');
-
-                var proceduresList = [];
-                $(proceduresMap).each(function (index, element) {
-                    // element == this
-                    proceduresList.push($(element).data('procedure'));
-                });
-                that.$control.trigger('currentProceduresAccepted', {
-                    proceduresList,
-                    activeData
-                });
-
-            } else {
-                alert('Выберите зуб!');
-            }
         });
 
         //hist update
@@ -861,25 +835,38 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
                 applyVisibilityStateByData(collection, args.data);
             }
         });
-
+        
         this.$control.on('initialUserUpdate', function (e, userDataArgs) {
             var userDataMap = userDataArgs['customer'];
             delete userDataMap.tooth_map;
             delete userDataMap.serviceHistory;
-            console.log(userDataMap);
             for (var item in userDataMap) {
-                console.log(item)
                 $(this).find('.user-inform [data-prop="' + item + '"] span').text(userDataMap[item]);
             }
         });
         this.$control.on('initialUpdateDoctorData', function (e, args) {
-            //console.log('doctorGeted data');
             var fullName = args.doctor['full_name'];
             if (fullName) {
                 $(e.currentTarget).find('.doctor-name_fullname').text(fullName);
-            } else {
-                //console.log(fullName)
-            }
+            } 
+        });
+
+        this.$control.on('initialUpdatedActionsData', function(e, args){
+            console.table(args);
+            var stateList = $('<div class="d-flex flex-column card-block" data-toggle="buttons"></div>');
+            $.each(args, function (index, value) {
+               var stateButton = $('<button\
+                                        class="btn btn-outline-'+args[index].color+'"\
+                                        data-active-state="inactive"\
+                                        data-state="'+args[index].state+'"\
+                                        data-legendabbr="'+args[index].legendabbr+'"\
+                                        data-color="'+args[index].color+'"\
+                                        >'+args[index].name+'\
+                                        </button>');
+               $(stateList).append(stateButton);
+            });
+            that.$control.find('.state-list').append(stateList);
+            
         });
 
         this.$control.on('initialUpdatedData', function (e, args) {
@@ -944,7 +931,49 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
             });
         });
 
+        this.$control.find('.state-change-btns').on('click', 'button', function (e, args) {
+             //var state = $(e.currentTarget).data('activity-state');
+             deactivate('.state-change-btns button');
+             toggleState(e.currentTarget);
+             var itemPosition = $(e.currentTarget).data('position');
+             data = $(e.currentTarget).data();
+             delete data['activeState'];
+             if (typeof data['position'] == 'undefined') {
+                 alert('Сначала выберите что хотите изменить');
+                 deactivate('.state-change-btns button');
+             } else {
+                 if (typeof data.mobilityrate == 'undefined') data.mobilityrate = that.dentalData.customer.tooth_map[itemPosition]['mobilityrate'];
+                 $(that.$control).trigger('changeToothState', {
+                     data
+                 });
+             }
+         });
+       
+        
+        //add current procedures to HistProcess list
+        this.$control.find('button[data-add-procedures]').on('click', function (e) {
+            var activeStateElement = $('.state-change-btns [data-active-state="active"]', this.$control);
 
+            if (activeStateElement.length !== 0) {
+                var activeData = $(activeStateElement).data();
+                var proceduresMap = $(this).parent().find('input[type="checkbox"]:checked');
+
+                var proceduresList = [];
+                $(proceduresMap).each(function (index, element) {
+                    // element == this
+                    proceduresList.push($(element).data('procedure'));
+                });
+                that.$control.trigger('currentProceduresAccepted', {
+                    proceduresList,
+                    activeData
+                });
+
+            } else {
+                alert('Выберите зуб!');
+            }
+        });
+        
+        
         $(this.$control).on('changeActiveTooth', {
             oldStateData: $(this).data()
         }, function (e, args) {
@@ -960,7 +989,6 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
             var $toggledButton = $('.state-change-btns button[data-state="' + args.data.state + '"]', this.$control);
             deactivate($(this).find('button'));
             toggleState($toggledButton);
-
         });
 
 
@@ -1067,26 +1095,27 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
         });
         /* History list events on widget state change was triggered */
         this.$control.on('changeActiveTooth', function (e, args) {
-            //console.log(args);
             var $mainHistTab = $('.main-hist-tab', this);
             $('[data-legendabbr]', $mainHistTab).text(args.data['legendabbr']);
             $('[data-position]', $mainHistTab).text(args.data['position']);
             $('[data-call-type]', $mainHistTab).data('position', args.data['position']);
             $('[data-call-type], .comment-text', $mainHistTab).removeClass('invisible');
         });
+        
+
         /* history on state change */
 
         this.$control.on('changeToothState', function (e, args) {
-            //console.log(args);
             var $mainHistTab = $('.main-hist-tab', this);
             $('[data-legendabbr]', $mainHistTab)
                 .data('legendabbr', args.data['legendabbr'])
                 .text(args.data['legendabbr']);
         });
 
+
         this.$modal.on('show.bs.modal', function (e) {
             if ($(e.relatedTarget, that.$control).length !== 0) {
-                //console.log('modal from dental widget');
+               
             }
             var $button = $(event.target) // Button that triggered the modal
             var callType = $button.data('call-type'); // Extract info from data-* attributes
