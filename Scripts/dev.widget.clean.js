@@ -852,7 +852,6 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
         });
 
         this.$control.on('initialUpdatedActionsData', function(e, args){
-            console.table(args);
             var stateList = $('<div class="d-flex flex-column card-block" data-toggle="buttons"></div>');
             $.each(args, function (index, value) {
                var stateButton = $('<button\
@@ -990,8 +989,6 @@ var BS_BT_DentalGrid = Class(BS_BT_Widget, {
             deactivate($(this).find('button'));
             toggleState($toggledButton);
         });
-
-
 
         /*  $('[data-visible-state]', this.$control).on('updateContent', function(e,args){
              stateToHide = $(e.currentTargegt).data('visible-state');
