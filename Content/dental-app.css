@@ -738,6 +738,8 @@ textarea {
 .BSDentalGrid .dental-card-table[data-visible-grid="kid-grid"] {
     width: calc(80% + 2rem);
 }
+
+
 /* tooth app styles */
 
 [role=button],
@@ -1481,7 +1483,7 @@ textarea {
     width: calc(80% + 2rem);
 }
 
-.BSDentalGrid .tooth-double-item[data-active-state=active] .position-text{
-    border:0;
-    border-top:1px solid black;
+.BSDentalGrid .tooth-double-item[data-active-state=active] .position-text {
+    border: 0;
+    border-top: 1px solid black;
 }
