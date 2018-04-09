@@ -1,0 +1,198 @@
+.print-view.BSDentalGrid.btContainer {
+    background: transparent;
+    /* display: inline-block; */
+    color: #black;
+    border: none;
+    padding: .75rem 1.25rem;
+    border-radius: 0;
+}
+
+.print-view.BSDentalGrid .divider {
+    display: none;
+}
+
+.print-view.BSDentalGrid .tooth-grid {
+    display: none;
+}
+
+.print-view.BSDentalGrid .action-list {
+    display: none;
+}
+
+.print-view.BSDentalGrid .action-list {
+    display: none;
+}
+
+.print-view.BSDentalGrid .col-md-12.col-lg-9.col-sm-12 {
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+.print-view.BSDentalGrid #collapse-legend-container {
+    display: block;
+}
+
+.print-view.BSDentalGrid .card-header {
+    padding: initial;
+    background-color: initial;
+    border-bottom: none;
+}
+
+.print-view.BSDentalGrid .card-header a {
+    color: black;
+    font-size: 20px;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+
+.print-view.BSDentalGrid #collapse-legend-container .col-md-12.d-flex.flex-row.justify-content-around {
+    display: block !important;
+}
+
+.print-view.BSDentalGrid #collapse-legend-container .col-md-12.d-flex.flex-row.justify-content-around>.d-flex.flex-column {
+    flex-direction: row!important;
+    display: inline-block !important;
+}
+
+.print-view.BSDentalGrid [data-state]:not(.btn) {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-radius: 0;
+    color: black;
+    font-weight: initial !important;
+    background-color: transparent !important;
+    border: 1px solid;
+}
+
+.print-view.BSDentalGrid .dental-legend-item span[data-state] {
+    border: none!important;
+    font-weight: bold !important;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    min-width: initial;
+    display: inline-block;
+    min-height: initial;
+}
+
+.print-view.BSDentalGrid .main-hist-link {
+    display: none;
+}
+
+.print-view.BSDentalGrid .main-hist-tab {
+    display: none;
+}
+
+.print-view.BSDentalGrid .focus-hist-tab {
+    width: 100% !important;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+.print-view.BSDentalGrid .card {
+    -webkit-box-shadow: !important;
+    box-shadow: initial !important;
+}
+
+.print-view.BSDentalGrid .history-list .nav-link.active {
+    border: none;
+}
+
+.print-view.BSDentalGrid .list-group-item {
+    position: relative;
+    display: block;
+    padding: 0;
+    margin-bottom: 10px;
+    background-color: transparent;
+    ;
+    border: transparent;
+}
+
+.print-view.BSDentalGrid .list-group-item-action {
+    width: 100%;
+    color: #495057;
+    text-align: inherit;
+}
+
+.print-view.BSDentalGrid .list-group {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.print-view.BSDentalGrid .dental-legend-item {
+    margin-right: 0;
+    margin-bottom: 0;
+}
+
+.print-view.BSDentalGrid .table-bordered {
+    border: 1px solid rgb(233, 236, 239);
+}
+
+.print-view.BSDentalGrid .table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.print-view.BSDentalGrid table {
+    border-collapse: separate !important;
+}
+
+.print-view.BSDentalGrid .table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, .05);
+}
+
+.print-view.BSDentalGrid [data-state]:not(.btn) {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-radius: 0;
+    color: rgb(0, 0, 0);
+    font-weight: initial !important;
+    background-color: rgba(0, 0, 0, 0) !important;
+    border: 1px solid;
+}
+
+.print-view.BSDentalGrid [data-state="implant"]:not(.btn) {
+    background-color: rgb(19, 166, 248);
+}
+
+.print-view.BSDentalGrid [data-state]:not(.btn) {
+    -webkit-box-shadow: inset 0 0 5px #000000;
+    box-shadow: inset 0 0 5px #000000;
+    border-radius: .5rem;
+    color: rgb(255, 255, 255);
+}
+
+.print-view.BSDentalGrid td[data-color] {
+    font-size: 1rem;
+    text-align: center;
+    font-weight: bold;
+    max-width: 50px;
+}
+
+.print-view.BSDentalGrid .table-bordered td,
+.table-bordered th {
+    border: 1px solid rgb(233, 236, 239);
+}
+
+.print-view.BSDentalGrid .table td,
+.table th {
+    padding: .75rem;
+    vertical-align: top;
+    border-top: 1px solid rgb(233, 236, 239);
+}
+
+.print-view.BSDentalGrid .dental-card-table thead td,
+.print-view.BSDentalGrid .dental-card-table tbody tr.inline-body-divider td {
+    text-align: center;
+    background: rgb(255, 255, 255);
+    border: 2px solid rgb(0, 0, 0);
+}

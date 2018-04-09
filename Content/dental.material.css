@@ -90,10 +90,10 @@
     background-color: #4285F4;
 }
 
-.BSDentalGrid .btn-primary:hover,
-.BSDentalGrid .btn-primary:focus,
-.BSDentalGrid .btn-primary:active,
-.BSDentalGrid .btn-primary.active {
+.BSDentalGrid .btn-primary:not('.bz-switcher'):hover,
+.BSDentalGrid .btn-primary:not('.bz-switcher'):focus,
+.BSDentalGrid .btn-primary:not('.bz-switcher'):active,
+.BSDentalGrid .btn-primary.active:not('.bz-switcher') {
     background-color: #5a95f5 !important;
 }
 
